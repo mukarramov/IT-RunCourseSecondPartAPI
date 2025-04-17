@@ -1,0 +1,6 @@
+@IT_RunCourseSecondPartAPI_HostAddress = http://localhost:5201
+
+GET {{IT_RunCourseSecondPartAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
