@@ -31,3 +31,7 @@ C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSec
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\obj\Debug\net9.0\IT-RunCourseSecondPartAPI.pdb
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\obj\Debug\net9.0\IT-RunCourseSecondPartAPI.genruntimeconfig.cache
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\obj\Debug\net9.0\ref\IT-RunCourseSecondPartAPI.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI\obj\Debug\net9.0\IT-RunCourseSecondPartAPI.sourcelink.json
