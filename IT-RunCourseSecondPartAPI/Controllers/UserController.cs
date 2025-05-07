@@ -1,4 +1,6 @@
+using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_RunCourseSecondPartAPI.Controllers;
@@ -7,29 +9,34 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 [Route("[controller]/[action]")]
 public class UserController : ControllerBase
 {
-    private static readonly List<User> Users = new List<User>();
+    public static readonly List<User> Users = [];
 
     [HttpPost]
     public IActionResult AddUser(User user)
     {
         Users.Add(user);
-        return Ok(user);
+
+        var userResponse = user.Adapt<UserResponse>();
+
+        return Ok(userResponse);
     }
 
     [HttpGet]
     public IActionResult GetAllUser()
     {
-        return Ok(Users);
+        var userResponse = Users.Adapt<List<UserResponse>>();
+
+        return Ok(userResponse);
     }
 
     [HttpPut("[action]")]
-    public IActionResult UpdateUser(int id, User user)
+    public IActionResult UpdateUser(User user)
     {
-        var findUser = Users.FirstOrDefault(x => x.Id == id);
+        var findUser = Users.FirstOrDefault(x => x.Id == user.Id);
 
         if (findUser == null)
         {
-            return NotFound($"user by id: {id} does not exist!");
+            return NotFound($"user by id: {user.Id} does not exist!");
         }
 
         findUser.Address = user.Address;
@@ -39,7 +46,9 @@ public class UserController : ControllerBase
         findUser.Roule = user.Roule;
         findUser.RegisteredAt = user.RegisteredAt;
 
-        return Ok(findUser);
+        var userResponse = user.Adapt<UserResponse>();
+
+        return Ok(userResponse);
     }
 
     [HttpDelete]
