@@ -16,7 +16,7 @@ public class CategoryController : ControllerBase
     {
         Categories.Add(category);
 
-        var categoryResponse = category.Adapt<CategoryResponse>();
+        var categoryResponse = category.Adapt<CategoryDto>();
 
         return Ok(categoryResponse);
     }

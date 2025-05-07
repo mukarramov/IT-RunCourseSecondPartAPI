@@ -14,8 +14,14 @@ public class OrderItemController : ControllerBase
     [HttpPost]
     public IActionResult Create(OrderItem orderItem)
     {
-        var order = OrderController.Orders;
         var product = ProductController.Products;
+        var order = OrderController.Orders;
+        
+        var lookForProduct = product.SingleOrDefault(x => x.Id == orderItem.ProductId);
+        if (lookForProduct == null)
+        {
+            return BadRequest($"the product with id: {orderItem.ProductId} does not exist!");
+        }
 
         var lookForOrder = order.SingleOrDefault(x => x.Id == orderItem.OrderId);
         if (lookForOrder == null)
@@ -23,20 +29,14 @@ public class OrderItemController : ControllerBase
             return BadRequest($"the order with id: {orderItem.Id} does not exist!");
         }
 
-        var lookForProduct = product.SingleOrDefault(x => x.Id == orderItem.ProductId);
-        if (lookForProduct == null)
-        {
-            return BadRequest($"the product with id: {orderItem.ProductId} does not exist!");
-        }
-
-        orderItem.Order = lookForOrder;
-        orderItem.Product = lookForProduct;
         orderItem.ProductId = lookForProduct.Id;
+        orderItem.Product = lookForProduct;
         orderItem.OrderId = lookForOrder.Id;
+        orderItem.Order = lookForOrder;
 
         OrderItems.Add(orderItem);
 
-        var orderItemResponse = orderItem.Adapt<OrderItemResponse>();
+        var orderItemResponse = orderItem.Adapt<OrderItemDto>();
 
         return Ok(orderItemResponse);
     }
@@ -44,7 +44,7 @@ public class OrderItemController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var orderItemResponse = OrderItems.Adapt<List<OrderItemResponse>>();
+        var orderItemResponse = OrderItems.Adapt<List<OrderItemDto>>();
 
         return Ok(orderItemResponse);
     }

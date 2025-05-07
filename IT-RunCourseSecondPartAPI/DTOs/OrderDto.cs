@@ -2,7 +2,7 @@ using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.DTOs;
 
-public record OrderResponse
+public record OrderDto
 {
     public User User { get; set; } = new();
     public decimal TotalPrice { get; set; }

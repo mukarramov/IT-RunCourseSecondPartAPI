@@ -2,7 +2,7 @@ using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.DTOs;
 
-public record ProductResponse
+public record ProductDto
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;

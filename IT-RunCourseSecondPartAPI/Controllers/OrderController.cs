@@ -15,20 +15,20 @@ public class OrderController : ControllerBase
     public IActionResult Create(Order order)
     {
         var listOfUsers = UserController.Users;
-        var existOrNot = listOfUsers.SingleOrDefault(x => x.Id == order.UserId);
+        var existUser = listOfUsers.SingleOrDefault(x => x.Id == order.UserId);
 
-        if (existOrNot == null)
+        if (existUser == null)
         {
-            return BadRequest($"the user with id: {existOrNot} does not exist!");
+            return BadRequest($"the user with id: {existUser} does not exist!");
         }
 
-        order.UserId = existOrNot.Id;
-        order.User = existOrNot;
+        order.UserId = existUser.Id;
+        order.User = existUser;
         order.OrderDate = DateTime.Now;
 
         Orders.Add(order);
 
-        var orderResponse = order.Adapt<OrderResponse>();
+        var orderResponse = order.Adapt<OrderDto>();
 
         return Ok(orderResponse);
     }
@@ -36,7 +36,7 @@ public class OrderController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var orderResponse = Orders.Adapt<List<OrderResponse>>();
+        var orderResponse = Orders.Adapt<List<OrderDto>>();
 
         return Ok(orderResponse);
     }

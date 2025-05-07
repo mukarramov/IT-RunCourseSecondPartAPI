@@ -2,7 +2,7 @@ using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.DTOs;
 
-public record OrderItemResponse
+public record OrderItemDto
 {
     public Product Product { get; set; } = new();
     public Order Order { get; set; } = new();

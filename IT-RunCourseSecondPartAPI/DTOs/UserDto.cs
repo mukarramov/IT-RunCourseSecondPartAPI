@@ -5,7 +5,7 @@ namespace IT_RunCourseSecondPartAPI.DTOs;
 /// For example you have the id, header and something like that you do not want to show that data to user,
 /// and maybe you want to user can not change that data
 /// </summary>
-public record UserResponse
+public record UserDto
 {
     public string FullName { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;

@@ -1,6 +1,6 @@
 namespace IT_RunCourseSecondPartAPI.DTOs;
 
-public record CategoryResponse
+public record CategoryDto
 {
     public string Name { get; set; } = string.Empty;
 }

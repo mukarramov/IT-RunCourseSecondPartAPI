@@ -27,7 +27,7 @@ public class ProductController : ControllerBase
 
         Products.Add(product);
 
-        var productResponse = product.Adapt<ProductResponse>();
+        var productResponse = product.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }
@@ -35,7 +35,7 @@ public class ProductController : ControllerBase
     [HttpGet]
     public IActionResult GetAll()
     {
-        var productResponse = Products.Adapt<List<ProductResponse>>();
+        var productResponse = Products.Adapt<List<ProductDto>>();
 
         return Ok(productResponse);
     }
@@ -50,7 +50,7 @@ public class ProductController : ControllerBase
             return BadRequest($"the product with id: {product.Id} does not exist!");
         }
 
-        var productResponse = lookForProduct.Adapt<ProductResponse>();
+        var productResponse = lookForProduct.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }

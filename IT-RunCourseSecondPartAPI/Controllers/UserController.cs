@@ -16,7 +16,7 @@ public class UserController : ControllerBase
     {
         Users.Add(user);
 
-        var userResponse = user.Adapt<UserResponse>();
+        var userResponse = user.Adapt<UserDto>();
 
         return Ok(userResponse);
     }
@@ -24,7 +24,7 @@ public class UserController : ControllerBase
     [HttpGet]
     public IActionResult GetAllUser()
     {
-        var userResponse = Users.Adapt<List<UserResponse>>();
+        var userResponse = Users.Adapt<List<UserDto>>();
 
         return Ok(userResponse);
     }
@@ -46,7 +46,7 @@ public class UserController : ControllerBase
         findUser.Roule = user.Roule;
         findUser.RegisteredAt = user.RegisteredAt;
 
-        var userResponse = user.Adapt<UserResponse>();
+        var userResponse = user.Adapt<UserDto>();
 
         return Ok(userResponse);
     }
