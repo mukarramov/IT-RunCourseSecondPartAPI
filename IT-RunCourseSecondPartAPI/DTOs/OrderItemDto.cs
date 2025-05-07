@@ -1,11 +1,10 @@
-namespace IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Models;
 
-public class OrderItem
+namespace IT_RunCourseSecondPartAPI.DTOs;
+
+public record OrderItemDto
 {
-    public int Id { get; set; }
-    public int ProductId { get; set; }
     public Product Product { get; set; } = new();
-    public int OrderId { get; set; }
     public Order Order { get; set; } = new();
     public int Quantity { get; set; }
     public decimal Price { get; set; }

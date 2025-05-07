@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "KJapGXOEjnA=",
+  "dgSpecHash": "Tk4pjhgjsyo=",
   "success": true,
   "projectFilePath": "C:\\Users\\Bobo\\Base\\C#\\IT-RUN course c#\\IT-RunCourseSecondPartAPI\\IT-RunCourseSecondPartAPI\\IT-RunCourseSecondPartAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Bobo\\.nuget\\packages\\mapster\\7.4.2-pre02\\mapster.7.4.2-pre02.nupkg.sha512",
+    "C:\\Users\\Bobo\\.nuget\\packages\\mapster.core\\1.2.3-pre02\\mapster.core.1.2.3-pre02.nupkg.sha512",
     "C:\\Users\\Bobo\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.3\\microsoft.aspnetcore.openapi.9.0.3.nupkg.sha512",
     "C:\\Users\\Bobo\\.nuget\\packages\\microsoft.openapi\\1.6.23\\microsoft.openapi.1.6.23.nupkg.sha512",
     "C:\\Users\\Bobo\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\8.1.1\\swashbuckle.aspnetcore.swagger.8.1.1.nupkg.sha512",
