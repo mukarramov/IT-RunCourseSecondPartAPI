@@ -1,5 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,24 +11,10 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 [Route("[controller]/[action]")]
 public class OrderController : ControllerBase
 {
-    public static readonly List<Order> Orders = [];
-
     [HttpPost]
-    public IActionResult Create(Order order)
+    public IActionResult Create(Order order, [FromServices] IOrderRepository orderRepository)
     {
-        var listOfUsers = UserController.Users;
-        var existUser = listOfUsers.SingleOrDefault(x => x.Id == order.UserId);
-
-        if (existUser == null)
-        {
-            return BadRequest($"the user with id: {existUser} does not exist!");
-        }
-
-        order.UserId = existUser.Id;
-        order.User = existUser;
-        order.OrderDate = DateTime.Now;
-
-        Orders.Add(order);
+        orderRepository.Create(order);
 
         var orderResponse = order.Adapt<OrderDto>();
 
@@ -34,9 +22,11 @@ public class OrderController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public IActionResult GetAll([FromServices] IOrderRepository orderRepository)
     {
-        var orderResponse = Orders.Adapt<List<OrderDto>>();
+        orderRepository.GetAll();
+
+        var orderResponse = OrderRepository.Orders.Adapt<List<OrderDto>>();
 
         return Ok(orderResponse);
     }

@@ -1,5 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,62 +11,41 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 [Route("[controller]/[action]")]
 public class ProductController : ControllerBase
 {
-    public static readonly List<Product> Products = [];
-
     [HttpPost]
-    public IActionResult Create(Product product)
+    public IActionResult Create(Product product, [FromServices] IProductRepository productRepository)
     {
-        var categories = CategoryController.Categories;
+        productRepository.Create(product);
 
-        var lookForCategory = categories.SingleOrDefault(x => x.Id == product.CategoryId);
-        if (lookForCategory == null)
-        {
-            return BadRequest($"the product category with id: {product.CategoryId} does not exist!");
-        }
-
-        product.CategoryId = lookForCategory.Id;
-        product.Category = lookForCategory;
-
-        Products.Add(product);
-
-        var productResponse = product.Adapt<ProductDto>();
+        var productResponse = productRepository.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public IActionResult GetAll([FromServices] IProductRepository productRepository)
     {
-        var productResponse = Products.Adapt<List<ProductDto>>();
+        productRepository.GetAll();
+
+        var productResponse = ProductRepository.Products.Adapt<List<Product>>();
 
         return Ok(productResponse);
     }
 
     [HttpPut]
-    public IActionResult Update(Product product)
+    public IActionResult Update(Product product, [FromServices] IProductRepository productRepository)
     {
-        var lookForProduct = Products.SingleOrDefault(x => x.Id == product.Id);
+        productRepository.Update(product);
 
-        if (lookForProduct == null)
-        {
-            return BadRequest($"the product with id: {product.Id} does not exist!");
-        }
-
-        var productResponse = lookForProduct.Adapt<ProductDto>();
+        var productResponse = productRepository.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }
 
     [HttpDelete]
-    public IActionResult Delete(int productId)
+    public IActionResult Delete(int productId, [FromServices] IProductRepository productRepository)
     {
-        var lookForProduct = Products.SingleOrDefault(x => x.Id == productId);
-
-        if (lookForProduct == null)
-        {
-            return BadRequest($"the product with id: {productId} does not exist!");
-        }
-
-        return Ok("successfully deleted!");
+        productRepository.Delete(productId);
+        
+        return Ok(true);
     }
 }
