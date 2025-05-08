@@ -1,5 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +11,10 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 [Route("[controller]/[action]")]
 public class UserController : ControllerBase
 {
-    public static readonly List<User> Users = [];
-
     [HttpPost]
-    public IActionResult AddUser(User user)
+    public IActionResult AddUser(User user, [FromServices] IUserRepository userRepository)
     {
-        Users.Add(user);
+        userRepository.Create(user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -22,29 +22,19 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAllUser()
+    public IActionResult GetAllUser([FromServices] IUserRepository userRepository)
     {
-        var userResponse = Users.Adapt<List<UserDto>>();
+        userRepository.GetAll();
+
+        var userResponse = UserRepository.Users.Adapt<List<UserDto>>();
 
         return Ok(userResponse);
     }
 
     [HttpPut("[action]")]
-    public IActionResult UpdateUser(User user)
+    public IActionResult UpdateUser(User user, [FromServices] IUserRepository userRepository)
     {
-        var findUser = Users.FirstOrDefault(x => x.Id == user.Id);
-
-        if (findUser == null)
-        {
-            return NotFound($"user by id: {user.Id} does not exist!");
-        }
-
-        findUser.Address = user.Address;
-        findUser.Email = user.Email;
-        findUser.FullName = user.FullName;
-        findUser.Password = user.Password;
-        findUser.Roule = user.Roule;
-        findUser.RegisteredAt = user.RegisteredAt;
+        userRepository.Update(user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -52,16 +42,10 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete]
-    public IActionResult DeleteUser(int id)
+    public IActionResult DeleteUser(int userId, [FromServices] IUserRepository userRepository)
     {
-        var findUser = Users.FirstOrDefault(x => x.Id == id);
-
-        if (findUser == null)
-        {
-            return NotFound($"user by id: {id} does not exist");
-        }
-
-        Users.RemoveAt(id);
-        return Ok();
+        userRepository.Delete(userId);
+        
+        return Ok(true);
     }
 }

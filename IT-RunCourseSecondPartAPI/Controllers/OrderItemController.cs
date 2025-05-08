@@ -1,5 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,42 +11,22 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 [Route("[controller][action]")]
 public class OrderItemController : ControllerBase
 {
-    private static readonly List<OrderItem> OrderItems = [];
-
     [HttpPost]
-    public IActionResult Create(OrderItem orderItem)
+    public IActionResult Create(OrderItem orderItem, [FromServices] IOrderItemRepository orderItemRepository)
     {
-        var product = ProductController.Products;
-        var order = OrderController.Orders;
-        
-        var lookForProduct = product.SingleOrDefault(x => x.Id == orderItem.ProductId);
-        if (lookForProduct == null)
-        {
-            return BadRequest($"the product with id: {orderItem.ProductId} does not exist!");
-        }
+        orderItemRepository.Create(orderItem);
 
-        var lookForOrder = order.SingleOrDefault(x => x.Id == orderItem.OrderId);
-        if (lookForOrder == null)
-        {
-            return BadRequest($"the order with id: {orderItem.Id} does not exist!");
-        }
-
-        orderItem.ProductId = lookForProduct.Id;
-        orderItem.Product = lookForProduct;
-        orderItem.OrderId = lookForOrder.Id;
-        orderItem.Order = lookForOrder;
-
-        OrderItems.Add(orderItem);
-
-        var orderItemResponse = orderItem.Adapt<OrderItemDto>();
+        var orderItemResponse = orderItemRepository.Adapt<OrderItemDto>();
 
         return Ok(orderItemResponse);
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public IActionResult GetAll([FromServices] IOrderItemRepository orderItemRepository)
     {
-        var orderItemResponse = OrderItems.Adapt<List<OrderItemDto>>();
+        orderItemRepository.GetAll();
+
+        var orderItemResponse = OrderItemRepository.OrderItems.Adapt<List<OrderItemDto>>();
 
         return Ok(orderItemResponse);
     }
