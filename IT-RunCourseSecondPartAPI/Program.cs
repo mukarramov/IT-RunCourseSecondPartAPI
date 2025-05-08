@@ -1,4 +1,5 @@
 using IT_RunCourseSecondPartAPI.Extensions;
+using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
 
@@ -12,6 +13,7 @@ builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
 builder.Services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
+builder.Services.AddSingleton<IGenericRepository<User>, GenericRepository>();
 
 builder.Services.AddSwaggerGen();
 
