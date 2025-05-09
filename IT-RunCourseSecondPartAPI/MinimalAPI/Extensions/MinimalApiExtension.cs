@@ -1,4 +1,4 @@
-namespace IT_RunCourseSecondPartAPI.Extensions;
+namespace IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
 
 /// <summary>
 /// This is an extended class for mapping (from program.cs)

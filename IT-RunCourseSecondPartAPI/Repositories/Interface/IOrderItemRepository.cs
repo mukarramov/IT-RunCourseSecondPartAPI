@@ -7,5 +7,5 @@ public interface IOrderItemRepository
     OrderItem Create(OrderItem orderItem);
     IEnumerable<OrderItem> GetAll();
     OrderItem Update(OrderItem orderItem);
-    bool Delete(int orderItemId);
+    bool Delete(Guid orderItemId);
 }

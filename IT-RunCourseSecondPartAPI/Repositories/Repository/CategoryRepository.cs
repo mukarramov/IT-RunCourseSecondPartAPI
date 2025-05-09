@@ -10,7 +10,7 @@ public class CategoryRepository : ICategoryRepository
     public Category Create(Category category)
     {
         Categories.Add(category);
-        
+
         return category;
     }
 
@@ -24,7 +24,7 @@ public class CategoryRepository : ICategoryRepository
         throw new NotImplementedException();
     }
 
-    public bool Delete(int categoryId)
+    public bool Delete(Guid categoryId)
     {
         throw new NotImplementedException();
     }

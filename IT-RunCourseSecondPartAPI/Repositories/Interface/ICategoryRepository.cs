@@ -7,5 +7,5 @@ public interface ICategoryRepository
     Category Create(Category category);
     IEnumerable<Category> GetAll();
     Category Update(Category category);
-    bool Delete(int categoryId);
+    bool Delete(Guid categoryId);
 }
