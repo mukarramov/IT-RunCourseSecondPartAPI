@@ -38,7 +38,7 @@ public class UserRepository : IUserRepository
         return findUser;
     }
 
-    public bool Delete(int userId)
+    public bool Delete(Guid userId)
     {
         var findUser = Users.FirstOrDefault(x => x.Id == userId);
 
@@ -48,7 +48,7 @@ public class UserRepository : IUserRepository
         }
 
         Users.Remove(findUser);
-        
+
         return true;
     }
 }

@@ -42,10 +42,10 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete]
-    public IActionResult DeleteUser(int userId, [FromServices] IUserRepository userRepository)
+    public IActionResult DeleteUser(Guid userId, [FromServices] IUserRepository userRepository)
     {
         userRepository.Delete(userId);
-        
+
         return Ok(true);
     }
 }

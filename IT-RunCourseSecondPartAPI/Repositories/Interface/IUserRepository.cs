@@ -7,5 +7,5 @@ public interface IUserRepository
     User Create(User user);
     IEnumerable<User> GetAll();
     User Update(User user);
-    bool Delete(int userId);
+    bool Delete(Guid userId);
 }

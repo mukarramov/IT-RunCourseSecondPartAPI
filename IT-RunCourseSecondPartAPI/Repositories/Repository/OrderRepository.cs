@@ -1,8 +1,5 @@
-using IT_RunCourseSecondPartAPI.Controllers;
-using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using Mapster;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
@@ -39,7 +36,7 @@ public class OrderRepository : IOrderRepository
         throw new NotImplementedException();
     }
 
-    public bool Delete(int orderId)
+    public bool Delete(Guid orderId)
     {
         throw new NotImplementedException();
     }

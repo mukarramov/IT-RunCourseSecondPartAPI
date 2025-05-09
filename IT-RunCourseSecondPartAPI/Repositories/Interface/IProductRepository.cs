@@ -7,5 +7,5 @@ public interface IProductRepository
     Product Create(Product product);
     IEnumerable<Product> GetAll();
     Product Update(Product product);
-    bool Delete(int productId);
+    bool Delete(Guid productId);
 }

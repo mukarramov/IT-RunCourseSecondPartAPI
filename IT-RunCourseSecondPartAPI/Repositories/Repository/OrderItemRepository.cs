@@ -44,7 +44,7 @@ public class OrderItemRepository : IOrderItemRepository
         throw new NotImplementedException();
     }
 
-    public bool Delete(int orderItemId)
+    public bool Delete(Guid orderItemId)
     {
         throw new NotImplementedException();
     }

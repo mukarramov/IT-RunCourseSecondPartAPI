@@ -42,10 +42,10 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete]
-    public IActionResult Delete(int productId, [FromServices] IProductRepository productRepository)
+    public IActionResult Delete(Guid productId, [FromServices] IProductRepository productRepository)
     {
         productRepository.Delete(productId);
-        
+
         return Ok(true);
     }
 }

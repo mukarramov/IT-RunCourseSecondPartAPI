@@ -56,7 +56,7 @@ public class ProductRepository : IProductRepository
         return lookForProduct;
     }
 
-    public bool Delete(int productId)
+    public bool Delete(Guid productId)
     {
         var lookForProduct = Products.SingleOrDefault(x => x.Id == productId);
 
