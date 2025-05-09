@@ -1,6 +1,6 @@
 namespace IT_RunCourseSecondPartAPI.Models;
 
-public class Order:IEntity
+public class Order : IEntity
 {
     public Guid Id { get; set; }
     public Guid UserId { get; set; }

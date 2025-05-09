@@ -49,6 +49,7 @@ public class ProductRepository : IProductRepository
 
         lookForProduct.Id = product.Id;
         lookForProduct.Name = product.Name;
+        lookForProduct.Description = product.Description;
         lookForProduct.Price = product.Price;
         lookForProduct.CategoryId = lookForCategory.Id;
         lookForProduct.Category = lookForCategory;

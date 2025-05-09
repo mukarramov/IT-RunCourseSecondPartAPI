@@ -1,3 +1,4 @@
+using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
@@ -22,13 +23,20 @@ builder.Services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
 
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddAutoMapper(x =>
+{
+    x.AddMaps(typeof(UserProfile).Assembly);
+});
+
+builder.Services.AddMapster();
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.UseSwagger();
-    app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1"); });
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
