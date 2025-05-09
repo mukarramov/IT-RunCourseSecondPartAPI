@@ -1,3 +1,4 @@
+using AutoMapper;
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
@@ -14,20 +15,22 @@ public static class UserApiExtension
 {
     public static void MapUserApis(this WebApplication app)
     {
-        app.MapPost("api/create/user", (User user, [FromServices] IRepository<User> repository) =>
-        {
-            repository.Create(user);
+        app.MapPost("api/create/user",
+            (User user, [FromServices] IRepository<User> repository, [FromServices] IMapper mapper) =>
+            {
+                repository.Create(user);
 
-            var userResponse = user.Adapt<UserDto>();
+                var createdUser = mapper.Map<UserDto>(user);
 
-            return Results.Ok(user);
-        });
+                return Results.Ok(createdUser);
+            });
 
         app.MapGet("api/getAll/user",
             ([FromServices] IRepository<User> repository) =>
             {
                 var usersResponse = Repository<User>.Entities.Adapt<List<UserDto>>();
-                return Results.Ok(repository.GetAll());
+
+                return Results.Ok(usersResponse);
             });
     }
 }

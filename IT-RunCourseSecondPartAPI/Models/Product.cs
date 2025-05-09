@@ -1,6 +1,6 @@
 namespace IT_RunCourseSecondPartAPI.Models;
 
-public class Product:IEntity
+public class Product : IEntity
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;

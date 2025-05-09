@@ -2,7 +2,7 @@ using IT_RunCourseSecondPartAPI.Models.Enums;
 
 namespace IT_RunCourseSecondPartAPI.Models;
 
-public class User:IEntity
+public class User : IEntity
 {
     public Guid Id { get; set; }
     public string FullName { get; set; } = string.Empty;
