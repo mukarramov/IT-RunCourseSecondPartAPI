@@ -1,9 +1,11 @@
 using AutoMapper;
+using FluentValidation;
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Models;
 using Mapster;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
@@ -24,6 +26,30 @@ public static class UserApiExtension
 
                 return Results.Ok(createdUser);
             });
+
+        app.MapPost("api/addUser/validation", (User user, [FromServices] IValidator<User> validator,
+            [FromServices] IUserRepository userRepository) =>
+        {
+            if (user is null)
+            {
+                return Results.BadRequest("Client is null");
+            }
+
+            var result = validator.Validate(user);
+            if (!result.IsValid)
+            {
+                var errors = result.Errors.Select(e => new
+                {
+                    e.PropertyName, e.ErrorMessage
+                });
+
+                return Results.BadRequest(new { Errors = errors });
+            }
+
+            userRepository.Create(user);
+
+            return Results.Ok(user);
+        });
 
         app.MapGet("api/getAll/user",
             ([FromServices] IRepository<User> repository) =>

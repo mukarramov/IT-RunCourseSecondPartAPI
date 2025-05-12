@@ -1,9 +1,11 @@
+using FluentValidation;
 using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Validations;
 using IUserRepository = IT_RunCourseSecondPartAPI.Repositories.Interface.IUserRepository;
 using UserRepository = IT_RunCourseSecondPartAPI.Repositories.Repository.UserRepository;
 
@@ -13,7 +15,8 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 builder.Services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
-builder.Services.AddSingleton<IUserRepositoryGeneric, UserRepositoryGenetic>();
+builder.Services
+    .AddSingleton<IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface.IUserRepository, UserRepositoryGenetic>();
 
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
@@ -23,12 +26,10 @@ builder.Services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(x =>
-{
-    x.AddMaps(typeof(UserProfile).Assembly);
-});
+builder.Services.AddAutoMapper(x => { x.AddMaps(typeof(UserProfile).Assembly); });
 
 builder.Services.AddMapster();
+builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidation>();
 
 var app = builder.Build();
 
