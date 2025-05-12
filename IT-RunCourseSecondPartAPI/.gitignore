@@ -86,3 +86,10 @@ ASALocalRun/
 csFilesHash.txt
 *.generated.cs
 *.env
+IT-RunCourseSecondPartAPI.assets.cache/
+apphost.exe/
+IT-RunCourseSecondPartAPI.csproj.AssemblyReference.cache/
+IT-RunCourseSecondPartAPI.csproj.CoreCompileInputs.cache/
+IT-RunCourseSecondPartAPI.dll/
+IT-RunCourseSecondPartAPI.pdb/
+project.nuget.cache/
