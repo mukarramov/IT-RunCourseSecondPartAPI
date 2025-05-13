@@ -1,6 +1,7 @@
 using AutoMapper;
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.DTOs;
+using IT_RunCourseSecondPartAPI.Exceptions;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Models;
@@ -27,6 +28,7 @@ public static class UserApiExtension
                 return Results.Ok(createdUser);
             });
 
+        // use validators in post method (FluentValidation)
         app.MapPost("api/addUser/validation", (User user, [FromServices] IValidator<User> validator,
             [FromServices] IUserRepository userRepository) =>
         {
@@ -44,6 +46,27 @@ public static class UserApiExtension
                 });
 
                 return Results.BadRequest(new { Errors = errors });
+            }
+
+            userRepository.Create(user);
+
+            return Results.Ok(user);
+        });
+
+        // use exceptions in post method (try catch)
+        app.MapPost("api/addUser/useExceptions", (User user, [FromServices] IValidator<User> validator,
+            [FromServices] IUserRepository userRepository) =>
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(user.FullName))
+                {
+                    throw new BadRequestException("fulName is required!");
+                }
+            }
+            catch (Exception e)
+            {
+                return Results.BadRequest(e.Message);
             }
 
             userRepository.Create(user);
