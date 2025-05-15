@@ -1,3 +1,5 @@
+using IT_RunCourseSecondPartAPI.MinimalAPI.Endpoints;
+
 namespace IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
 
 /// <summary>

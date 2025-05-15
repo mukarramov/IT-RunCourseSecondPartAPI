@@ -3,8 +3,11 @@ using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Services.Interface;
+using IT_RunCourseSecondPartAPI.Services.Service;
 using IT_RunCourseSecondPartAPI.Validations;
 using IUserRepository = IT_RunCourseSecondPartAPI.Repositories.Interface.IUserRepository;
 using UserRepository = IT_RunCourseSecondPartAPI.Repositories.Repository.UserRepository;
@@ -23,6 +26,8 @@ builder.Services.AddSingleton<ICategoryRepository, CategoryRepository>();
 builder.Services.AddSingleton<IProductRepository, ProductRepository>();
 builder.Services.AddSingleton<IOrderRepository, OrderRepository>();
 builder.Services.AddSingleton<IOrderItemRepository, OrderItemRepository>();
+
+builder.Services.AddSingleton<IService<User>, Service>();
 
 builder.Services.AddSwaggerGen();
 

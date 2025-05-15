@@ -6,15 +6,14 @@ using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Models;
 using Mapster;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
-namespace IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
+namespace IT_RunCourseSecondPartAPI.MinimalAPI.Endpoints;
 
 /// <summary>
 /// This is a minimal api and also the extended method
 /// </summary>
-public static class UserApiExtension
+public static class Users
 {
     public static void MapUserApis(this WebApplication app)
     {

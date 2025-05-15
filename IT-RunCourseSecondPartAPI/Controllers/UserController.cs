@@ -1,7 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Services.Interface;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +9,12 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class UserController : ControllerBase
+public class UserController(IService<User> service) : ControllerBase
 {
     [HttpPost]
-    public IActionResult AddUser(User user, [FromServices] IUserRepository userRepository)
+    public IActionResult AddUser(User user)
     {
-        userRepository.Create(user);
+        service.Add(user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -22,19 +22,17 @@ public class UserController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAllUser([FromServices] IUserRepository userRepository)
+    public IActionResult GetAllUser()
     {
-        userRepository.GetAll();
-
         var userResponse = UserRepository.Users.Adapt<List<UserDto>>();
 
         return Ok(userResponse);
     }
 
     [HttpPut("[action]")]
-    public IActionResult UpdateUser(User user, [FromServices] IUserRepository userRepository)
+    public IActionResult UpdateUser(Guid id, User user)
     {
-        userRepository.Update(user);
+        service.Update(id, user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -42,9 +40,9 @@ public class UserController : ControllerBase
     }
 
     [HttpDelete]
-    public IActionResult DeleteUser(Guid userId, [FromServices] IUserRepository userRepository)
+    public IActionResult DeleteUser(Guid userId)
     {
-        userRepository.Delete(userId);
+        service.Delete(userId);
 
         return Ok(true);
     }
