@@ -1,7 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Services.Interface;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,42 +9,39 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class ProductController : ControllerBase
+public class ProductController(IService<Product> productService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Create(Product product, [FromServices] IProductRepository productRepository)
+    public IActionResult Create(Product product)
     {
-        productRepository.Create(product);
+        productService.Add(product);
 
-        var productResponse = productRepository.Adapt<ProductDto>();
+        var productResponse = product.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }
 
     [HttpGet]
-    public IActionResult GetAll([FromServices] IProductRepository productRepository)
+    public IActionResult GetAll()
     {
-        productRepository.GetAll();
-
         var productResponse = ProductRepository.Products.Adapt<List<Product>>();
 
         return Ok(productResponse);
     }
 
     [HttpPut]
-    public IActionResult Update(Product product, [FromServices] IProductRepository productRepository)
+    public IActionResult Update(Guid id, Product product)
     {
-        productRepository.Update(product);
-
-        var productResponse = productRepository.Adapt<ProductDto>();
+        productService.Update(id, product);
+        var productResponse = product.Adapt<ProductDto>();
 
         return Ok(productResponse);
     }
 
     [HttpDelete]
-    public IActionResult Delete(Guid productId, [FromServices] IProductRepository productRepository)
+    public IActionResult Delete(Guid productId)
     {
-        productRepository.Delete(productId);
+        productService.Delete(productId);
 
         return Ok(true);
     }

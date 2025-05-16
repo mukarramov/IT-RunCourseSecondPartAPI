@@ -5,7 +5,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class Service(IUserRepository userRepository) : IService<User>
+public class UserService(IUserRepository userRepository) : IService<User>
 {
     public User Add(User user)
     {

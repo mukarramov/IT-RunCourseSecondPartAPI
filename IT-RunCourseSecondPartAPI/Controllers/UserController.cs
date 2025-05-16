@@ -9,12 +9,12 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class UserController(IService<User> service) : ControllerBase
+public class UserController(IService<User> userService) : ControllerBase
 {
     [HttpPost]
     public IActionResult AddUser(User user)
     {
-        service.Add(user);
+        userService.Add(user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -32,7 +32,7 @@ public class UserController(IService<User> service) : ControllerBase
     [HttpPut("[action]")]
     public IActionResult UpdateUser(Guid id, User user)
     {
-        service.Update(id, user);
+        userService.Update(id, user);
 
         var userResponse = user.Adapt<UserDto>();
 
@@ -42,7 +42,7 @@ public class UserController(IService<User> service) : ControllerBase
     [HttpDelete]
     public IActionResult DeleteUser(Guid userId)
     {
-        service.Delete(userId);
+        userService.Delete(userId);
 
         return Ok(true);
     }
