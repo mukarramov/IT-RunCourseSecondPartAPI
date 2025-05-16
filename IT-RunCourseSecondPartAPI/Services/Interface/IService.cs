@@ -2,7 +2,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Interface;
 
 public interface IService<TEntity>
 {
-    TEntity Add(TEntity user);
+    TEntity Add(TEntity entity);
     IEnumerable<TEntity> GetAll();
     bool Update(Guid id, TEntity entity);
     bool Delete(Guid id);

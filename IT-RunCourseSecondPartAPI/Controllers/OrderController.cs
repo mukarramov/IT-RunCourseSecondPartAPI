@@ -1,7 +1,7 @@
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.Services.Interface;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +9,12 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class OrderController : ControllerBase
+public class OrderController(IService<Order> orderService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Create(Order order, [FromServices] IOrderRepository orderRepository)
+    public IActionResult Create(Order order)
     {
-        orderRepository.Create(order);
+        orderService.Add(order);
 
         var orderResponse = order.Adapt<OrderDto>();
 
@@ -22,10 +22,8 @@ public class OrderController : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll([FromServices] IOrderRepository orderRepository)
+    public IActionResult GetAll()
     {
-        orderRepository.GetAll();
-
         var orderResponse = OrderRepository.Orders.Adapt<List<OrderDto>>();
 
         return Ok(orderResponse);

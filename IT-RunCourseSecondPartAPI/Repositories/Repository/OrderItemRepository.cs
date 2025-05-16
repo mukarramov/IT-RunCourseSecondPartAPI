@@ -3,7 +3,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderItemRepository : IOrderItemRepository
+public class OrderItemRepository : IRepository<OrderItem>
 {
     public static readonly List<OrderItem> OrderItems = [];
 
@@ -39,12 +39,12 @@ public class OrderItemRepository : IOrderItemRepository
         return OrderItems;
     }
 
-    public OrderItem Update(OrderItem orderItem)
+    public OrderItem Update(Guid id, OrderItem orderItem)
     {
         throw new NotImplementedException();
     }
 
-    public bool Delete(Guid orderItemId)
+    public OrderItem Delete(Guid orderItemId)
     {
         throw new NotImplementedException();
     }

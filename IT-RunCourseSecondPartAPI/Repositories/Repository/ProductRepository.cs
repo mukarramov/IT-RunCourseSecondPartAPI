@@ -3,7 +3,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class ProductRepository : IProductRepository
+public class ProductRepository : IRepository<Product>
 {
     public static readonly List<Product> Products = [];
 
@@ -30,7 +30,7 @@ public class ProductRepository : IProductRepository
         return Products;
     }
 
-    public Product Update(Product product)
+    public Product Update(Guid id, Product product)
     {
         var lookForProduct = Products.SingleOrDefault(x => x.Id == product.Id);
 
@@ -57,7 +57,7 @@ public class ProductRepository : IProductRepository
         return lookForProduct;
     }
 
-    public bool Delete(Guid productId)
+    public Product Delete(Guid productId)
     {
         var lookForProduct = Products.SingleOrDefault(x => x.Id == productId);
 
@@ -68,6 +68,6 @@ public class ProductRepository : IProductRepository
 
         Products.Remove(lookForProduct);
 
-        return true;
+        return lookForProduct;
     }
 }

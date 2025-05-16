@@ -5,7 +5,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class UserService(IUserRepository userRepository) : IService<User>
+public class UserService(IRepository<User> userRepository) : IService<User>
 {
     public User Add(User user)
     {
@@ -21,7 +21,7 @@ public class UserService(IUserRepository userRepository) : IService<User>
 
     public bool Update(Guid id, User user)
     {
-        userRepository.Update(user);
+        userRepository.Update(id, user);
         return true;
     }
 

@@ -3,7 +3,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderRepository : IOrderRepository
+public class OrderRepository : IRepository<Order>
 {
     public static readonly List<Order> Orders = [];
 
@@ -31,12 +31,12 @@ public class OrderRepository : IOrderRepository
         return Orders;
     }
 
-    public Order Update(Order order)
+    public Order Update(Guid id, Order order)
     {
         throw new NotImplementedException();
     }
 
-    public bool Delete(Guid orderId)
+    public Order Delete(Guid orderId)
     {
         throw new NotImplementedException();
     }

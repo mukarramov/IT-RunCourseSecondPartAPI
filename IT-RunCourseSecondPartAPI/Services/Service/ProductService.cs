@@ -5,7 +5,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IProductRepository productRepository) : IService<Product>
+public class ProductService(IRepository<Product> productRepository) : IService<Product>
 {
     public Product Add(Product product)
     {
@@ -21,7 +21,7 @@ public class ProductService(IProductRepository productRepository) : IService<Pro
 
     public bool Update(Guid id, Product product)
     {
-        productRepository.Update(product);
+        productRepository.Update(id, product);
 
         return true;
     }

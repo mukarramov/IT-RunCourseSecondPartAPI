@@ -12,12 +12,18 @@ public static class DependencyInjection
     public static IServiceCollection DependInjection(this IServiceCollection service)
     {
         service.AddSingleton<IUserRepository, IUserRepository>();
-        service.AddSingleton<ICategoryRepository, CategoryRepository>();
-        service.AddSingleton<IProductRepository, ProductRepository>();
-        service.AddSingleton<IOrderRepository, OrderRepository>();
-        service.AddSingleton<IOrderItemRepository, OrderItemRepository>();
+
+        service.AddSingleton<IRepository<User>, UserRepository>();
+        service.AddSingleton<IRepository<Category>, CategoryRepository>();
+        service.AddSingleton<IRepository<Product>, ProductRepository>();
+        service.AddSingleton<IRepository<Order>, OrderRepository>();
+        service.AddSingleton<IRepository<OrderItem>, OrderItemRepository>();
 
         service.AddSingleton<IService<User>, UserService>();
+        service.AddSingleton<IService<Category>, CategoryService>();
+        service.AddSingleton<IService<Product>, ProductService>();
+        service.AddSingleton<IService<Order>, OrderService>();
+        service.AddSingleton<IService<OrderItem>, OrderItemService>();
         
         return service;
     }

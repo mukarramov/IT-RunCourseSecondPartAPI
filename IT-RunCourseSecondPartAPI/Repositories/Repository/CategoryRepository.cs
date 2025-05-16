@@ -3,7 +3,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class CategoryRepository : ICategoryRepository
+public class CategoryRepository : IRepository<Category>
 {
     public static readonly List<Category> Categories = [];
 
@@ -19,13 +19,31 @@ public class CategoryRepository : ICategoryRepository
         return Categories;
     }
 
-    public Category Update(Category category)
+    public Category Update(Guid id, Category category)
     {
-        throw new NotImplementedException();
+        var findUser = Categories.FirstOrDefault(x => x.Id == id);
+
+        if (findUser == null)
+        {
+            throw new($"user by id: {id} does not exist!");
+        }
+
+        findUser.Name = category.Name;
+
+        return findUser;
     }
 
-    public bool Delete(Guid categoryId)
+    public Category Delete(Guid categoryId)
     {
-        throw new NotImplementedException();
+        var findUser = Categories.FirstOrDefault(x => x.Id == categoryId);
+
+        if (findUser == null)
+        {
+            throw new($"user by id: {categoryId} does not exist!");
+        }
+
+        Categories.Remove(findUser);
+
+        return findUser;
     }
 }

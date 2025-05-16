@@ -3,7 +3,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class UserRepository : IUserRepository
+public class UserRepository : IRepository<User>
 {
     public static readonly List<User> Users = [];
 
@@ -19,7 +19,7 @@ public class UserRepository : IUserRepository
         return Users;
     }
 
-    public User Update(User user)
+    public User Update(Guid id, User user)
     {
         var findUser = Users.FirstOrDefault(x => x.Id == user.Id);
 
@@ -38,7 +38,7 @@ public class UserRepository : IUserRepository
         return findUser;
     }
 
-    public bool Delete(Guid userId)
+    public User Delete(Guid userId)
     {
         var findUser = Users.FirstOrDefault(x => x.Id == userId);
 
@@ -49,6 +49,6 @@ public class UserRepository : IUserRepository
 
         Users.Remove(findUser);
 
-        return true;
+        return findUser;
     }
 }
