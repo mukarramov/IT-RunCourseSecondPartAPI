@@ -29,12 +29,12 @@ public class CategoryService(IRepository<Category> categoryRepository) : IServic
     public bool Delete(Guid id)
     {
         categoryRepository.Delete(id);
-        
+
         return true;
     }
 
     public Category GetById(Guid id)
     {
-        throw new NotImplementedException();
+        return categoryRepository.Delete(id);
     }
 }

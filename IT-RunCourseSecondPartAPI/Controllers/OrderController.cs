@@ -12,7 +12,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class OrderController(IService<Order> orderService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Create(Order order)
+    public IActionResult Add(Order order)
     {
         orderService.Add(order);
 

@@ -5,7 +5,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderItemService(IRepository<OrderItem> orderItemRepository):IService<OrderItem>
+public class OrderItemService(IRepository<OrderItem> orderItemRepository) : IService<OrderItem>
 {
     public OrderItem Add(OrderItem entity)
     {

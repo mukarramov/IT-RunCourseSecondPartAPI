@@ -12,7 +12,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class CategoryController(IService<Category> categoryService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Create(Category category)
+    public IActionResult Add(Category category)
     {
         categoryService.Add(category);
 

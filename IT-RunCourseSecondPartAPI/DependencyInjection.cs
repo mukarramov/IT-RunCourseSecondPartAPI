@@ -24,7 +24,7 @@ public static class DependencyInjection
         service.AddSingleton<IService<Product>, ProductService>();
         service.AddSingleton<IService<Order>, OrderService>();
         service.AddSingleton<IService<OrderItem>, OrderItemService>();
-        
+
         return service;
     }
 }

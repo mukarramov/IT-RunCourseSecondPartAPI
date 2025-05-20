@@ -12,7 +12,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class ProductController(IService<Product> productService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Create(Product product)
+    public IActionResult Add(Product product)
     {
         productService.Add(product);
 

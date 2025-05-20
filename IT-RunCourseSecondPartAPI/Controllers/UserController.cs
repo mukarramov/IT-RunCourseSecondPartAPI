@@ -12,7 +12,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class UserController(IService<User> userService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult AddUser(User user)
+    public IActionResult Add(User user)
     {
         userService.Add(user);
 
