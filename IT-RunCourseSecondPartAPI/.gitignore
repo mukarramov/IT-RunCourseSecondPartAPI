@@ -351,3 +351,4 @@ csFilesHash.txt
 
 #Docker compose Environment Variables file, We store development variables in this file so no need to push
 *.env
+.IT-RunCourseSecondPartAPI.AssemblyInfoInputs.cache/

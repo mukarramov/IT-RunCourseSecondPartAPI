@@ -53,7 +53,7 @@ public static class Users
         });
 
         // use exceptions in post method (try catch)
-        app.MapPost("api/addUser/useExceptions", (User user, [FromServices] IValidator<User> validator,
+        app.MapPost("api/addUser/useExceptions", (User user,
             [FromServices] IUserRepository userRepository) =>
         {
             try
