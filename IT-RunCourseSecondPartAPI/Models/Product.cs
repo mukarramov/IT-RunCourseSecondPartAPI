@@ -7,5 +7,5 @@ public class Product : IEntity
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
-    public Category Category { get; set; } = new();
+    public Category? Category { get; set; }
 }

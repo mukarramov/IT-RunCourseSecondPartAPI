@@ -2,9 +2,8 @@ using AutoMapper;
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.DTOs;
 using IT_RunCourseSecondPartAPI.Exceptions;
-using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +17,8 @@ public static class Users
     public static void MapUserApis(this WebApplication app)
     {
         app.MapPost("api/create/user",
-            (User user, [FromServices] IRepository<User> repository, [FromServices] IMapper mapper) =>
+            (User user, [FromServices] Repositories.Interface.IRepository<User> repository,
+                [FromServices] IMapper mapper) =>
             {
                 repository.Create(user);
 
@@ -29,7 +29,7 @@ public static class Users
 
         // use validators in post method (FluentValidation)
         app.MapPost("api/addUser/validation", (User user, [FromServices] IValidator<User> validator,
-            [FromServices] IUserRepository userRepository) =>
+            [FromServices] Repositories.Interface.IRepository<User> userRepository) =>
         {
             if (user is null)
             {
@@ -54,7 +54,7 @@ public static class Users
 
         // use exceptions in post method (try catch)
         app.MapPost("api/addUser/useExceptions", (User user,
-            [FromServices] IUserRepository userRepository) =>
+            [FromServices] Repositories.Interface.IRepository<User> userRepository) =>
         {
             try
             {
@@ -74,9 +74,9 @@ public static class Users
         });
 
         app.MapGet("api/getAll/user",
-            ([FromServices] IRepository<User> repository) =>
+            ([FromServices] Repositories.Interface.IRepository<User> repository) =>
             {
-                var usersResponse = Repository<User>.Entities.Adapt<List<UserDto>>();
+                var usersResponse = UserRepository.Users.Adapt<List<UserDto>>();
 
                 return Results.Ok(usersResponse);
             });

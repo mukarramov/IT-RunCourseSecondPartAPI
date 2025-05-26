@@ -36,7 +36,7 @@ public class ProductRepository : IRepository<Product>
 
         if (lookForProduct == null)
         {
-            throw new($"the product with id: {product.Id} does not exist!");
+            throw new Exception($"the product with id: {product.Id} does not exist!");
         }
 
         var categories = CategoryRepository.Categories;
@@ -44,7 +44,7 @@ public class ProductRepository : IRepository<Product>
         var lookForCategory = categories.SingleOrDefault(x => x.Id == product.CategoryId);
         if (lookForCategory == null)
         {
-            throw new($"the product category with id: {product.CategoryId} does not exist!");
+            throw new Exception($"the product category with id: {product.CategoryId} does not exist!");
         }
 
         lookForProduct.Id = product.Id;
@@ -63,7 +63,7 @@ public class ProductRepository : IRepository<Product>
 
         if (lookForProduct == null)
         {
-            throw new($"the product with id: {productId} does not exist!");
+            throw new Exception($"the product with id: {productId} does not exist!");
         }
 
         Products.Remove(lookForProduct);

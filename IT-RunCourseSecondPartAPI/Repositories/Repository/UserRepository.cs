@@ -25,7 +25,7 @@ public class UserRepository : IRepository<User>
 
         if (findUser == null)
         {
-            throw new($"user by id: {user.Id} does not exist!");
+            throw new Exception($"user by id: {user.Id} does not exist!");
         }
 
         findUser.Address = user.Address;
@@ -44,7 +44,7 @@ public class UserRepository : IRepository<User>
 
         if (findUser == null)
         {
-            throw new($"user by id: {userId} does not exist");
+            throw new Exception($"user by id: {userId} does not exist");
         }
 
         Users.Remove(findUser);

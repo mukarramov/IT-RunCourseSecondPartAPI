@@ -2,18 +2,12 @@ using FluentValidation;
 using IT_RunCourseSecondPartAPI;
 using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
-using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.MinimalAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Validations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-
-builder.Services.AddSingleton(typeof(IRepository<>), typeof(Repository<>));
-builder.Services
-    .AddSingleton<IUserRepository, UserRepositoryGenetic>();
 
 builder.Services.DependInjection();
 

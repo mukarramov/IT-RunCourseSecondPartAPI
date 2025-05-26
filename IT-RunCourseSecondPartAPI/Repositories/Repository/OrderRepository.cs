@@ -14,7 +14,7 @@ public class OrderRepository : IRepository<Order>
 
         if (existUser == null)
         {
-            throw new($"the user with id: {existUser} does not exist!");
+            throw new Exception($"the user with id: {existUser} does not exist!");
         }
 
         order.UserId = existUser.Id;

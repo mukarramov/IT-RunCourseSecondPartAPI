@@ -34,7 +34,7 @@ public class CategoryController(IService<Category> categoryService) : Controller
     [HttpPut]
     public IActionResult Update(Guid id, Category category)
     {
-        var categoryResponse = CategoryRepository.Categories.Adapt<List<CategoryDto>>();
+        var categoryResponse = categoryService.Update(id, category);
 
         return Ok(categoryResponse);
     }
