@@ -4,7 +4,7 @@ public class Order : IEntity
 {
     public Guid Id { get; set; }
     public Guid UserId { get; set; }
-    public User User { get; set; } = new();
+    public User? User { get; set; }
     public decimal TotalPrice { get; set; }
     public DateTime OrderDate { get; set; }
 }

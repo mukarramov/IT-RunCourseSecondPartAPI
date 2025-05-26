@@ -25,7 +25,7 @@ public class CategoryRepository : IRepository<Category>
 
         if (findUser == null)
         {
-            throw new($"user by id: {id} does not exist!");
+            throw new Exception($"user by id: {id} does not exist!");
         }
 
         findUser.Name = category.Name;
@@ -39,7 +39,7 @@ public class CategoryRepository : IRepository<Category>
 
         if (findUser == null)
         {
-            throw new($"user by id: {categoryId} does not exist!");
+            throw new Exception($"user by id: {categoryId} does not exist!");
         }
 
         Categories.Remove(findUser);

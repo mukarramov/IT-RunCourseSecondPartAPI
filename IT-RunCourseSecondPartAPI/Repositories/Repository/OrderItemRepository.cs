@@ -15,13 +15,13 @@ public class OrderItemRepository : IRepository<OrderItem>
         var lookForProduct = product.SingleOrDefault(x => x.Id == orderItem.ProductId);
         if (lookForProduct == null)
         {
-            throw new($"the product with id: {orderItem.ProductId} does not exist!");
+            throw new Exception($"the product with id: {orderItem.ProductId} does not exist!");
         }
 
         var lookForOrder = order.SingleOrDefault(x => x.Id == orderItem.OrderId);
         if (lookForOrder == null)
         {
-            throw new($"the order with id: {orderItem.Id} does not exist!");
+            throw new Exception($"the order with id: {orderItem.Id} does not exist!");
         }
 
         orderItem.ProductId = lookForProduct.Id;
