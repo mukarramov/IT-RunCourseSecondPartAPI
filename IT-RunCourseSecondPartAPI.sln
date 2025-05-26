@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IT-RunCourseSecondPartAPI", "IT-RunCourseSecondPartAPI\IT-RunCourseSecondPartAPI.csproj", "{82E092BA-3F80-4CA9-A637-5FB1C7F3D3CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineMarket", "OnlineMarket\OnlineMarket.csproj", "{82E092BA-3F80-4CA9-A637-5FB1C7F3D3CC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
