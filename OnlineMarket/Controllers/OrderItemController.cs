@@ -1,31 +1,40 @@
-using IT_RunCourseSecondPartAPI.DTOs;
-using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
 using IT_RunCourseSecondPartAPI.Services.Interface;
-using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller][action]")]
-public class OrderItemController(IService<OrderItem> orderItemService) : ControllerBase
+public class OrderItemController(IOrderItemService orderItemService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(OrderItem orderItem)
+    public IActionResult Add(OrderItemRequest orderItemRequest)
     {
-        orderItemService.Add(orderItem);
-
-        var orderItemResponse = orderItem.Adapt<OrderItemDto>();
-
-        return Ok(orderItemResponse);
+        return Ok(orderItemService.Add(orderItemRequest));
     }
 
     [HttpGet]
     public IActionResult GetAll()
     {
-        var orderItemResponse = OrderItemRepository.OrderItems.Adapt<List<OrderItemDto>>();
+        return Ok(orderItemService.GetAll());
+    }
 
-        return Ok(orderItemResponse);
+    [HttpGet("{id}")]
+    public IActionResult GetById(Guid id)
+    {
+        return Ok(orderItemService.GetById(id));
+    }
+
+    [HttpPut]
+    public IActionResult Update(Guid id, OrderItemRequest orderItemRequest)
+    {
+        return Ok(orderItemService.Update(id, orderItemRequest));
+    }
+
+    [HttpDelete]
+    public IActionResult Delete(Guid id)
+    {
+        return Ok(orderItemService.Delete(id));
     }
 }

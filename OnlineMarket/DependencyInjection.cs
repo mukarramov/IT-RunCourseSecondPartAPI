@@ -10,17 +10,19 @@ public static class DependencyInjection
 {
     public static IServiceCollection DependInjection(this IServiceCollection service)
     {
-        service.AddSingleton<IRepository<User>, UserRepository>();
-        service.AddSingleton<IRepository<Category>, CategoryRepository>();
-        service.AddSingleton<IRepository<Product>, ProductRepository>();
-        service.AddSingleton<IRepository<Order>, OrderRepository>();
-        service.AddSingleton<IRepository<OrderItem>, OrderItemRepository>();
+        service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-        service.AddSingleton<IService<User>, UserService>();
-        service.AddSingleton<IService<Category>, CategoryService>();
-        service.AddSingleton<IService<Product>, ProductService>();
-        service.AddSingleton<IService<Order>, OrderService>();
-        service.AddSingleton<IService<OrderItem>, OrderItemService>();
+        service.AddScoped<IUserRepository, UserRepository>();
+        service.AddScoped<ICategoryRepository, CategoryRepository>();
+        service.AddScoped<IProductRepository, ProductRepository>();
+        service.AddScoped<IOrderRepository, OrderRepository>();
+        service.AddScoped<IOrderItemRepository, OrderItemRepository>();
+
+        service.AddScoped<IUserService, UserService>();
+        service.AddScoped<ICategoryService, CategoryService>();
+        service.AddScoped<IProductService, ProductService>();
+        service.AddScoped<IOrderService, OrderService>();
+        service.AddScoped<IOrderItemService, OrderItemService>();
 
         return service;
     }

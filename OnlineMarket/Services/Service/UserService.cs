@@ -1,38 +1,62 @@
+using AutoMapper;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class UserService(IRepository<User> userRepository) : IService<User>
+public class UserService(IUserRepository userRepository, IMapper mapper, IServiceProvider service) : IUserService
 {
-    public User Add(User user)
+    public UserResponse Add(UserRequest entity)
     {
-        userRepository.Create(user);
+        if (string.IsNullOrEmpty(entity.Email))
+        {
+            throw new Exception();
+        }
 
-        return user;
+        var user = new User
+        {
+            FullName = entity.FullName,
+            Password = entity.Password,
+            Email = entity.Email,
+            Address = entity.Address,
+        };
+
+        userRepository.Add(user);
+        return mapper.Map<UserResponse>(user);
     }
 
-    public IEnumerable<User> GetAll()
+    public IEnumerable<UserResponse> GetAll()
     {
-        return UserRepository.Users;
+        var users = userRepository.GetAll();
+
+        return mapper.Map<IEnumerable<UserResponse>>(users);
     }
 
-    public bool Update(Guid id, User user)
+    public UserResponse Update(Guid id, UserRequest entity)
     {
-        userRepository.Update(id, user);
-        return true;
+        var user = userRepository.GetById(id);
+
+        var map = mapper.Map(entity, user);
+
+        userRepository.Update(id, map);
+
+        return mapper.Map<UserResponse>(map);
     }
 
-    public bool Delete(Guid id)
+    public UserResponse Delete(Guid id)
     {
-        userRepository.Delete(id);
-        return true;
+        var delete = userRepository.Delete(id);
+
+        return mapper.Map<UserResponse>(delete);
     }
 
-    public User GetById(Guid id)
+    public UserResponse GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var user = userRepository.GetById(id);
+
+        return mapper.Map<UserResponse>(user);
     }
 }

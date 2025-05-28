@@ -1,3 +1,6 @@
+using AutoMapper;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
@@ -5,36 +8,63 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IRepository<Product> productRepository) : IService<Product>
+public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
 {
-    public Product Add(Product product)
+    public ProductResponse Add(ProductRequest productRequest)
     {
-        productRepository.Create(product);
+        if (string.IsNullOrEmpty(productRequest.Name))
+        {
+            throw new Exception();
+        }
 
-        return product;
+        var categoryById = productRepository.GetCategoryById(productRequest.CategoryId);
+
+        var product = new Product
+        {
+            Name = productRequest.Name,
+            Description = productRequest.Description,
+            Price = productRequest.Price,
+            CategoryId = productRequest.CategoryId,
+            Category = categoryById
+        };
+
+        productRepository.Add(product);
+
+        return mapper.Map<ProductResponse>(product);
     }
 
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<ProductResponse> GetAll()
     {
-        return ProductRepository.Products;
+        var products = productRepository.GetProducts();
+
+        return mapper.Map<IEnumerable<ProductResponse>>(products);
     }
 
-    public bool Update(Guid id, Product product)
+    public ProductResponse Update(Guid id, ProductRequest productRequest)
     {
-        productRepository.Update(id, product);
+        var product = productRepository.GetById(id);
 
-        return true;
+        var categoryById = productRepository.GetCategoryById(productRequest.CategoryId);
+
+        var map = mapper.Map(productRequest, product);
+
+        map.CategoryId = categoryById.Id;
+        map.Category = categoryById;
+
+        return mapper.Map<ProductResponse>(map);
     }
 
-    public bool Delete(Guid id)
+    public ProductResponse Delete(Guid id)
     {
-        productRepository.Delete(id);
+        var product = productRepository.Delete(id);
 
-        return true;
+        return mapper.Map<ProductResponse>(product);
     }
 
-    public Product GetById(Guid id)
+    public ProductResponse GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var product = productRepository.GetById(id);
+
+        return mapper.Map<ProductResponse>(product);
     }
 }

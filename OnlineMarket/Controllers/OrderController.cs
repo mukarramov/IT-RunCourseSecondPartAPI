@@ -1,31 +1,40 @@
-using IT_RunCourseSecondPartAPI.DTOs;
-using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
 using IT_RunCourseSecondPartAPI.Services.Interface;
-using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class OrderController(IService<Order> orderService) : ControllerBase
+public class OrderController(IOrderService orderService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(Order order)
+    public IActionResult Add(OrderRequest orderRequest)
     {
-        orderService.Add(order);
-
-        var orderResponse = order.Adapt<OrderDto>();
-
-        return Ok(orderResponse);
+        return Ok(orderService.Add(orderRequest));
     }
 
     [HttpGet]
     public IActionResult GetAll()
     {
-        var orderResponse = OrderRepository.Orders.Adapt<List<OrderDto>>();
+        return Ok(orderService.GetAll());
+    }
 
-        return Ok(orderResponse);
+    [HttpGet("{id}")]
+    public IActionResult GetById(Guid id)
+    {
+        return Ok(orderService.GetById(id));
+    }
+
+    [HttpPut]
+    public IActionResult Update(Guid id, OrderRequest orderRequest)
+    {
+        return Ok(orderService.Update(id, orderRequest));
+    }
+
+    [HttpDelete]
+    public IActionResult Delete(Guid id)
+    {
+        return Ok(orderService.Delete(id));
     }
 }

@@ -1,36 +1,68 @@
+using AutoMapper;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderService(IRepository<Order> orderRepository) : IService<Order>
+public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IOrderService
 {
-    public Order Add(Order entity)
+    public OrderResponse Add(OrderRequest orderRequest)
     {
-        orderRepository.Create(entity);
+        if (orderRequest is null)
+        {
+            throw new Exception();
+        }
 
-        return entity;
+        var userById = orderRepository.GetUserById(orderRequest.UserId);
+
+        var order = new Order
+        {
+            UserId = userById.Id,
+            User = userById,
+            TotalPrice = orderRequest.TotalPrice
+        };
+
+        orderRepository.Add(order);
+
+        return mapper.Map<OrderResponse>(order);
     }
 
-    public IEnumerable<Order> GetAll()
+    public IEnumerable<OrderResponse> GetAll()
     {
-        return OrderRepository.Orders;
+        var orders = orderRepository.GetOrders();
+
+        return mapper.Map<IEnumerable<OrderResponse>>(orders);
     }
 
-    public bool Update(Guid id, Order entity)
+    public OrderResponse Update(Guid id, OrderRequest orderRequest)
     {
-        throw new NotImplementedException();
+        var order = orderRepository.GetById(id);
+
+        var userById = orderRepository.GetUserById(orderRequest.UserId);
+
+        order.UserId = userById.Id;
+        order.User = userById;
+        order.TotalPrice = orderRequest.TotalPrice;
+
+        var update = orderRepository.Update(id, order);
+
+        return mapper.Map<OrderResponse>(update);
     }
 
-    public bool Delete(Guid id)
+    public OrderResponse Delete(Guid id)
     {
-        throw new NotImplementedException();
+        var order = orderRepository.Delete(id);
+
+        return mapper.Map<OrderResponse>(order);
     }
 
-    public Order GetById(Guid id)
+    public OrderResponse GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var order = orderRepository.GetById(id);
+
+        return mapper.Map<OrderResponse>(order);
     }
 }

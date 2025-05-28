@@ -36,7 +36,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapMinimalApis();
+// app.MapMinimalApis();
 
 app.MapControllers();
 

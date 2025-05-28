@@ -1,36 +1,74 @@
+using AutoMapper;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderItemService(IRepository<OrderItem> orderItemRepository) : IService<OrderItem>
+public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper) : IOrderItemService
 {
-    public OrderItem Add(OrderItem entity)
+    public OrderItemResponse Add(OrderItemRequest orderItemRequest)
     {
-        orderItemRepository.Create(entity);
+        if (orderItemRequest is null)
+        {
+            throw new Exception();
+        }
 
-        return entity;
+        var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
+        var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+
+        var orderItem = new OrderItem
+        {
+            ProductId = product.Id,
+            Product = product,
+            OrderId = order.Id,
+            Order = order,
+            Quantity = orderItemRequest.Quantity,
+            Price = orderItemRequest.Price
+        };
+
+        orderItemRepository.Add(orderItem);
+
+        return mapper.Map<OrderItemResponse>(orderItem);
     }
 
-    public IEnumerable<OrderItem> GetAll()
+    public IEnumerable<OrderItemResponse> GetAll()
     {
-        return OrderItemRepository.OrderItems;
+        var orderItems = orderItemRepository.GetOrderItems();
+
+        return mapper.Map<IEnumerable<OrderItemResponse>>(orderItems);
     }
 
-    public bool Update(Guid id, OrderItem entity)
+    public OrderItemResponse Update(Guid id, OrderItemRequest orderItemRequest)
     {
-        throw new NotImplementedException();
+        var orderItem = orderItemRepository.GetById(id);
+
+        var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
+        var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+
+        orderItem.ProductId = product.Id;
+        orderItem.Product = product;
+        orderItem.OrderId = order.Id;
+        orderItem.Order = order;
+
+        orderItemRepository.Update(id, orderItem);
+
+        return mapper.Map<OrderItemResponse>(orderItem);
     }
 
-    public bool Delete(Guid id)
+    public OrderItemResponse Delete(Guid id)
     {
-        throw new NotImplementedException();
+        var orderItem = orderItemRepository.Delete(id);
+
+        return mapper.Map<OrderItemResponse>(orderItem);
     }
 
-    public OrderItem GetById(Guid id)
+    public OrderItemResponse GetById(Guid id)
     {
-        throw new NotImplementedException();
+        var orderItem = orderItemRepository.GetById(id);
+
+        return mapper.Map<OrderItemResponse>(orderItem);
     }
 }

@@ -1,11 +1,9 @@
-namespace IT_RunCourseSecondPartAPI.Models;
+namespace IT_RunCourseSecondPartAPI.DTOs.Requests;
 
-public class Product : IEntity
+public class ProductRequest
 {
-    public Guid Id { get; set; } = Guid.CreateVersion7();
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
     public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
-    public Category? Category { get; set; }
 }

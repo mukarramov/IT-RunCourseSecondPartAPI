@@ -1,40 +1,60 @@
+using AutoMapper;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class CategoryService(IRepository<Category> categoryRepository) : IService<Category>
+public class CategoryService(IRepository<Category> categoryRepository, IMapper mapper) : ICategoryService
 {
-    public Category Add(Category category)
+    public CategoryResponse Add(CategoryRequest entity)
     {
-        categoryRepository.Create(category);
+        if (string.IsNullOrEmpty(entity.Name))
+        {
+            throw new Exception();
+        }
 
-        return category;
+        var category = new Category
+        {
+            Name = entity.Name
+        };
+
+        categoryRepository.Add(category);
+
+        return mapper.Map<CategoryResponse>(category);
     }
 
-    public IEnumerable<Category> GetAll()
+    public IEnumerable<CategoryResponse> GetAll()
     {
-        return CategoryRepository.Categories;
+        var categories = categoryRepository.GetAll();
+
+        return mapper.Map<IEnumerable<CategoryResponse>>(categories);
     }
 
-    public bool Update(Guid id, Category entity)
+    public CategoryResponse Update(Guid id, CategoryRequest entity)
     {
-        categoryRepository.Update(id, entity);
+        var category = categoryRepository.GetById(id);
 
-        return true;
+        var map = mapper.Map(entity, category);
+
+        categoryRepository.Update(id, map);
+
+        return mapper.Map<CategoryResponse>(map);
     }
 
-    public bool Delete(Guid id)
+    public CategoryResponse Delete(Guid id)
     {
-        categoryRepository.Delete(id);
+        var category = categoryRepository.Delete(id);
 
-        return true;
+        return mapper.Map<CategoryResponse>(category);
     }
 
-    public Category GetById(Guid id)
+    public CategoryResponse GetById(Guid id)
     {
-        return categoryRepository.Delete(id);
+        var category = categoryRepository.GetById(id);
+
+        return mapper.Map<CategoryResponse>(category);
     }
 }

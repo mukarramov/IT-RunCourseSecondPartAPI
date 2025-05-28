@@ -1,8 +1,10 @@
-namespace IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Models;
 
-public class OrderItem : IEntity
+namespace IT_RunCourseSecondPartAPI.DTOs.Response;
+
+public class OrderItemResponse
 {
-    public Guid Id { get; set; } = Guid.CreateVersion7();
+    public Guid Id { get; set; }
     public Guid ProductId { get; set; }
     public Product? Product { get; set; }
     public Guid OrderId { get; set; }

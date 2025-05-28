@@ -1,49 +1,40 @@
-using IT_RunCourseSecondPartAPI.DTOs;
-using IT_RunCourseSecondPartAPI.Models;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
+using IT_RunCourseSecondPartAPI.DTOs.Requests;
 using IT_RunCourseSecondPartAPI.Services.Interface;
-using Mapster;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class CategoryController(IService<Category> categoryService) : ControllerBase
+public class CategoryController(ICategoryService categoryService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(Category category)
+    public IActionResult Add(CategoryRequest categoryRequest)
     {
-        categoryService.Add(category);
-
-        var categoryResponse = category.Adapt<CategoryDto>();
-
-        return Ok(categoryResponse);
+        return Ok(categoryService.Add(categoryRequest));
     }
 
     [HttpGet]
     public IActionResult GetAll()
     {
-        categoryService.GetAll();
+        return Ok(categoryService.GetAll());
+    }
 
-        var categoryResponse = CategoryRepository.Categories.Adapt<List<CategoryDto>>();
-
-        return Ok(categoryResponse);
+    [HttpGet("{id}")]
+    public IActionResult GetById(Guid id)
+    {
+        return Ok(categoryService.GetById(id));
     }
 
     [HttpPut]
-    public IActionResult Update(Guid id, Category category)
+    public IActionResult Update(Guid id, CategoryRequest categoryRequest)
     {
-        var categoryResponse = categoryService.Update(id, category);
-
-        return Ok(categoryResponse);
+        return Ok(categoryService.Update(id, categoryRequest));
     }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
     {
-        categoryService.Delete(id);
-
-        return Ok();
+        return Ok(categoryService.Delete(id));
     }
 }

@@ -1,51 +1,45 @@
+using IT_RunCourseSecondPartAPI.Data;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderItemRepository : IRepository<OrderItem>
+public class OrderItemRepository(AppDbContext context) : Repository<OrderItem>(context), IOrderItemRepository
 {
-    public static readonly List<OrderItem> OrderItems = [];
+    private readonly AppDbContext _context = context;
 
-    public OrderItem Create(OrderItem orderItem)
+    public Product GetProductById(Guid id)
     {
-        var product = ProductRepository.Products;
-        var order = OrderRepository.Orders;
-
-        var lookForProduct = product.SingleOrDefault(x => x.Id == orderItem.ProductId);
-        if (lookForProduct == null)
+        var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+        if (product is null)
         {
-            throw new Exception($"the product with id: {orderItem.ProductId} does not exist!");
+            throw new Exception();
         }
 
-        var lookForOrder = order.SingleOrDefault(x => x.Id == orderItem.OrderId);
-        if (lookForOrder == null)
+        return product;
+    }
+
+    public Order GetOrderById(Guid id)
+    {
+        var order = _context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
+        if (order is null)
         {
-            throw new Exception($"the order with id: {orderItem.Id} does not exist!");
+            throw new Exception();
         }
 
-        orderItem.ProductId = lookForProduct.Id;
-        orderItem.Product = lookForProduct;
-        orderItem.OrderId = lookForOrder.Id;
-        orderItem.Order = lookForOrder;
-
-        OrderItems.Add(orderItem);
-
-        return orderItem;
+        return order;
     }
 
-    public IEnumerable<OrderItem> GetAll()
+    public IEnumerable<OrderItem> GetOrderItems()
     {
-        return OrderItems;
-    }
+        var includableQueryable = _context.OrderItems.Include(x => x.Order)
+            .Include(x => x.Product);
+        if (includableQueryable is null)
+        {
+            throw new Exception();
+        }
 
-    public OrderItem Update(Guid id, OrderItem orderItem)
-    {
-        throw new NotImplementedException();
-    }
-
-    public OrderItem Delete(Guid orderItemId)
-    {
-        throw new NotImplementedException();
+        return includableQueryable;
     }
 }

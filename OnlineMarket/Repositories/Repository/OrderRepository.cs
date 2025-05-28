@@ -1,43 +1,33 @@
+using IT_RunCourseSecondPartAPI.Data;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderRepository : IRepository<Order>
+public class OrderRepository(AppDbContext context) : Repository<Order>(context), IOrderRepository
 {
-    public static readonly List<Order> Orders = [];
+    private readonly AppDbContext _context = context;
 
-    public Order Create(Order order)
+    public User GetUserById(Guid id)
     {
-        var listOfUsers = UserRepository.Users;
-        var existUser = listOfUsers.SingleOrDefault(x => x.Id == order.UserId);
-
-        if (existUser == null)
+        var user = _context.Users.FirstOrDefault(x => x.Id == id);
+        if (user is null)
         {
-            throw new Exception($"the user with id: {existUser} does not exist!");
+            throw new Exception();
         }
 
-        order.UserId = existUser.Id;
-        order.User = existUser;
-        order.OrderDate = DateTime.Now;
-
-        Orders.Add(order);
-
-        return order;
+        return user;
     }
 
-    public IEnumerable<Order> GetAll()
+    public IEnumerable<Order> GetOrders()
     {
-        return Orders;
-    }
+        var orders = _context.Orders.Include(x => x.User).ToList();
+        if (orders is null)
+        {
+            throw new Exception();
+        }
 
-    public Order Update(Guid id, Order order)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Order Delete(Guid orderId)
-    {
-        throw new NotImplementedException();
+        return orders;
     }
 }
