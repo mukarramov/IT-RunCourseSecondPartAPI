@@ -9,6 +9,6 @@ public class UserDtoValidation : AbstractValidator<User>
     {
         RuleFor(c => c.Email).NotEmpty().MinimumLength(5).MaximumLength(50).EmailAddress();
 
-        RuleFor(c => c.Password).NotEmpty().NotNull();
+        RuleFor(c => c.Password).NotEmpty().NotNull().MinimumLength(4).MaximumLength(16);
     }
 }

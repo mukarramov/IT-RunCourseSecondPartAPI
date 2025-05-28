@@ -1,13 +1,15 @@
 using AutoMapper;
+using FluentValidation;
 using IT_RunCourseSecondPartAPI.DTOs.Requests;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Services.Interface;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class UserService(IUserRepository userRepository, IMapper mapper, IServiceProvider service) : IUserService
+public class UserService(IUserRepository userRepository, IMapper mapper, IValidator<User> validator) : IUserService
 {
     public UserResponse Add(UserRequest entity)
     {
@@ -23,6 +25,18 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IServic
             Email = entity.Email,
             Address = entity.Address,
         };
+
+        var validationResult = validator.Validate(user);
+        if (!validationResult.IsValid)
+        {
+            var errorValidate = validationResult.Errors.Select(x => new
+            {
+                x.PropertyName,
+                x.ErrorCode,
+                x.ErrorMessage
+            });
+            throw new Exception($"{errorValidate}");
+        }
 
         userRepository.Add(user);
         return mapper.Map<UserResponse>(user);
