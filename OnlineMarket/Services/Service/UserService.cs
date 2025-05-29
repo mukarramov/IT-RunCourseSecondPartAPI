@@ -1,17 +1,16 @@
 using AutoMapper;
 using FluentValidation;
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Services.Interface;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class UserService(IUserRepository userRepository, IMapper mapper, IValidator<User> validator) : IUserService
 {
-    public UserResponse Add(UserRequest entity)
+    public UserResponse Add(UserCreate entity)
     {
         if (string.IsNullOrEmpty(entity.Email))
         {
@@ -49,7 +48,7 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
         return mapper.Map<IEnumerable<UserResponse>>(users);
     }
 
-    public UserResponse Update(Guid id, UserRequest entity)
+    public UserResponse Update(Guid id, UserCreate entity)
     {
         var user = userRepository.GetById(id);
 

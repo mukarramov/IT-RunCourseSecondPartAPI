@@ -1,6 +1,6 @@
-namespace IT_RunCourseSecondPartAPI.DTOs.Requests;
+namespace IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 
-public class UserRequest
+public class UserCreate
 {
     public string FullName { get; set; }
     public string Password { get; set; }

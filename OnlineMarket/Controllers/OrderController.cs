@@ -1,4 +1,4 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +9,9 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class OrderController(IOrderService orderService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(OrderRequest orderRequest)
+    public IActionResult Add(OrderCreate orderCreate)
     {
-        return Ok(orderService.Add(orderRequest));
+        return Ok(orderService.Add(orderCreate));
     }
 
     [HttpGet]
@@ -27,9 +27,9 @@ public class OrderController(IOrderService orderService) : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult Update(Guid id, OrderRequest orderRequest)
+    public IActionResult Update(Guid id, OrderCreate orderCreate)
     {
-        return Ok(orderService.Update(id, orderRequest));
+        return Ok(orderService.Update(id, orderCreate));
     }
 
     [HttpDelete]

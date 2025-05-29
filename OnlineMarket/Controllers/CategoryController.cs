@@ -1,4 +1,4 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +9,9 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class CategoryController(ICategoryService categoryService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(CategoryRequest categoryRequest)
+    public IActionResult Add(CategoryCreate categoryCreate)
     {
-        return Ok(categoryService.Add(categoryRequest));
+        return Ok(categoryService.Add(categoryCreate));
     }
 
     [HttpGet]
@@ -27,9 +27,9 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
     }
 
     [HttpPut]
-    public IActionResult Update(Guid id, CategoryRequest categoryRequest)
+    public IActionResult Update(Guid id, CategoryCreate categoryCreate)
     {
-        return Ok(categoryService.Update(id, categoryRequest));
+        return Ok(categoryService.Update(id, categoryCreate));
     }
 
     [HttpDelete]

@@ -1,13 +1,13 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 
 namespace IT_RunCourseSecondPartAPI.Services.Interface;
 
 public interface IOrderService
 {
-    OrderResponse Add(OrderRequest orderRequest);
+    OrderResponse Add(OrderCreate orderCreate);
     IEnumerable<OrderResponse> GetAll();
-    OrderResponse Update(Guid id, OrderRequest orderRequest);
+    OrderResponse Update(Guid id, OrderCreate orderCreate);
     OrderResponse Delete(Guid id);
 
     OrderResponse GetById(Guid id);

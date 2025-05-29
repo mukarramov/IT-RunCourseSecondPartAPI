@@ -1,5 +1,5 @@
 using AutoMapper;
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
@@ -9,7 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class CategoryService(IRepository<Category> categoryRepository, IMapper mapper) : ICategoryService
 {
-    public CategoryResponse Add(CategoryRequest entity)
+    public CategoryResponse Add(CategoryCreate entity)
     {
         if (string.IsNullOrEmpty(entity.Name))
         {
@@ -33,7 +33,7 @@ public class CategoryService(IRepository<Category> categoryRepository, IMapper m
         return mapper.Map<IEnumerable<CategoryResponse>>(categories);
     }
 
-    public CategoryResponse Update(Guid id, CategoryRequest entity)
+    public CategoryResponse Update(Guid id, CategoryCreate entity)
     {
         var category = categoryRepository.GetById(id);
 

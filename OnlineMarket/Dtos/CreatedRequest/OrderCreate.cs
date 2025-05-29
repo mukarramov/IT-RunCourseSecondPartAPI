@@ -1,6 +1,6 @@
-namespace IT_RunCourseSecondPartAPI.DTOs.Requests;
+namespace IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 
-public class OrderRequest
+public class OrderCreate
 {
     public Guid UserId { get; set; }
     public decimal TotalPrice { get; set; }

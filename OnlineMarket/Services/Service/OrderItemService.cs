@@ -1,5 +1,5 @@
 using AutoMapper;
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
@@ -9,7 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper) : IOrderItemService
 {
-    public OrderItemResponse Add(OrderItemRequest orderItemRequest)
+    public OrderItemResponse Add(OrderItemCreate orderItemRequest)
     {
         if (orderItemRequest is null)
         {
@@ -41,7 +41,7 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
         return mapper.Map<IEnumerable<OrderItemResponse>>(orderItems);
     }
 
-    public OrderItemResponse Update(Guid id, OrderItemRequest orderItemRequest)
+    public OrderItemResponse Update(Guid id, OrderItemCreate orderItemRequest)
     {
         var orderItem = orderItemRepository.GetById(id);
 

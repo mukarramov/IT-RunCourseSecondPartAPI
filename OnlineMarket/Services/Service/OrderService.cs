@@ -1,5 +1,5 @@
 using AutoMapper;
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
@@ -9,20 +9,20 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IOrderService
 {
-    public OrderResponse Add(OrderRequest orderRequest)
+    public OrderResponse Add(OrderCreate orderCreate)
     {
-        if (orderRequest is null)
+        if (orderCreate is null)
         {
             throw new Exception();
         }
 
-        var userById = orderRepository.GetUserById(orderRequest.UserId);
+        var userById = orderRepository.GetUserById(orderCreate.UserId);
 
         var order = new Order
         {
             UserId = userById.Id,
             User = userById,
-            TotalPrice = orderRequest.TotalPrice
+            TotalPrice = orderCreate.TotalPrice
         };
 
         orderRepository.Add(order);
@@ -37,15 +37,15 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
         return mapper.Map<IEnumerable<OrderResponse>>(orders);
     }
 
-    public OrderResponse Update(Guid id, OrderRequest orderRequest)
+    public OrderResponse Update(Guid id, OrderCreate orderCreate)
     {
         var order = orderRepository.GetById(id);
 
-        var userById = orderRepository.GetUserById(orderRequest.UserId);
+        var userById = orderRepository.GetUserById(orderCreate.UserId);
 
         order.UserId = userById.Id;
         order.User = userById;
-        order.TotalPrice = orderRequest.TotalPrice;
+        order.TotalPrice = orderCreate.TotalPrice;
 
         var update = orderRepository.Update(id, order);
 

@@ -1,30 +1,29 @@
 using AutoMapper;
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
-using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
 {
-    public ProductResponse Add(ProductRequest productRequest)
+    public ProductResponse Add(ProductCreate productCreate)
     {
-        if (string.IsNullOrEmpty(productRequest.Name))
+        if (string.IsNullOrEmpty(productCreate.Name))
         {
             throw new Exception();
         }
 
-        var categoryById = productRepository.GetCategoryById(productRequest.CategoryId);
+        var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
 
         var product = new Product
         {
-            Name = productRequest.Name,
-            Description = productRequest.Description,
-            Price = productRequest.Price,
-            CategoryId = productRequest.CategoryId,
+            Name = productCreate.Name,
+            Description = productCreate.Description,
+            Price = productCreate.Price,
+            CategoryId = productCreate.CategoryId,
             Category = categoryById
         };
 
@@ -40,13 +39,13 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
         return mapper.Map<IEnumerable<ProductResponse>>(products);
     }
 
-    public ProductResponse Update(Guid id, ProductRequest productRequest)
+    public ProductResponse Update(Guid id, ProductCreate productCreate)
     {
         var product = productRepository.GetById(id);
 
-        var categoryById = productRepository.GetCategoryById(productRequest.CategoryId);
+        var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
 
-        var map = mapper.Map(productRequest, product);
+        var map = mapper.Map(productCreate, product);
 
         map.CategoryId = categoryById.Id;
         map.Category = categoryById;

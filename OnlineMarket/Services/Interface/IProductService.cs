@@ -1,13 +1,13 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 
 namespace IT_RunCourseSecondPartAPI.Services.Interface;
 
 public interface IProductService
 {
-    ProductResponse Add(ProductRequest productRequest);
+    ProductResponse Add(ProductCreate productCreate);
     IEnumerable<ProductResponse> GetAll();
-    ProductResponse Update(Guid id, ProductRequest productRequest);
+    ProductResponse Update(Guid id, ProductCreate productCreate);
     ProductResponse Delete(Guid id);
 
     ProductResponse GetById(Guid id);

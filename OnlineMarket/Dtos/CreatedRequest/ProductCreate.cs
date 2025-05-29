@@ -1,6 +1,6 @@
-namespace IT_RunCourseSecondPartAPI.DTOs.Requests;
+namespace IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 
-public class ProductRequest
+public class ProductCreate
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;

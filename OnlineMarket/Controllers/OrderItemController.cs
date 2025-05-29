@@ -1,4 +1,4 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class OrderItemController(IOrderItemService orderItemService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(OrderItemRequest orderItemRequest)
+    public IActionResult Add(OrderItemCreate orderItemRequest)
     {
         return Ok(orderItemService.Add(orderItemRequest));
     }
@@ -27,7 +27,7 @@ public class OrderItemController(IOrderItemService orderItemService) : Controlle
     }
 
     [HttpPut]
-    public IActionResult Update(Guid id, OrderItemRequest orderItemRequest)
+    public IActionResult Update(Guid id, OrderItemCreate orderItemRequest)
     {
         return Ok(orderItemService.Update(id, orderItemRequest));
     }

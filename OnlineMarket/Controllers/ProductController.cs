@@ -1,4 +1,4 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,7 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class ProductController(IProductService productService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(ProductRequest product)
+    public IActionResult Add(ProductCreate product)
     {
         return Ok(productService.Add(product));
     }
@@ -21,7 +21,7 @@ public class ProductController(IProductService productService) : ControllerBase
     }
 
     [HttpPut]
-    public IActionResult Update(Guid id, ProductRequest product)
+    public IActionResult Update(Guid id, ProductCreate product)
     {
         return Ok(productService.Update(id, product));
     }

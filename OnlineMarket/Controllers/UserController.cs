@@ -1,4 +1,4 @@
-using IT_RunCourseSecondPartAPI.DTOs.Requests;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,9 +9,9 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 public class UserController(IUserService userService) : ControllerBase
 {
     [HttpPost]
-    public IActionResult Add(UserRequest userRequest)
+    public IActionResult Add(UserCreate userCreate)
     {
-        return Ok(userService.Add(userRequest));
+        return Ok(userService.Add(userCreate));
     }
 
     [HttpGet]
@@ -21,9 +21,9 @@ public class UserController(IUserService userService) : ControllerBase
     }
 
     [HttpPut("[action]")]
-    public IActionResult UpdateUser(Guid id, UserRequest userRequest)
+    public IActionResult UpdateUser(Guid id, UserCreate userCreate)
     {
-        var userResponse = userService.Update(id, userRequest);
+        var userResponse = userService.Update(id, userCreate);
 
         return Ok(userResponse);
     }
