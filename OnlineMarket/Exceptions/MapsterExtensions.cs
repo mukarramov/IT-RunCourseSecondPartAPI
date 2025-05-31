@@ -1,6 +1,6 @@
 using MapsterMapper;
 
-namespace IT_RunCourseSecondPartAPI.MinimalAPI.Extensions;
+namespace IT_RunCourseSecondPartAPI.Exceptions;
 
 public static class MapsterExtensions
 {

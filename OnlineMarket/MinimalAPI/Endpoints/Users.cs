@@ -30,11 +30,6 @@ public static class Users
         app.MapPost("api/addUser/validation", (User user, [FromServices] IValidator<User> validator,
             [FromServices] IUserRepository userRepository) =>
         {
-            if (user is null)
-            {
-                return Results.BadRequest("Client is null");
-            }
-
             var result = validator.Validate(user);
             if (!result.IsValid)
             {

@@ -2,6 +2,7 @@ using AutoMapper;
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
+using IT_RunCourseSecondPartAPI.Exceptions;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Services.Interface;

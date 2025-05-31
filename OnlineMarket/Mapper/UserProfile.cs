@@ -23,11 +23,5 @@ public class UserProfile : Profile
 
         CreateMap<OrderItem, OrderItemCreate>().ReverseMap();
         CreateMap<OrderItem, OrderItemResponse>().ReverseMap();
-
-        // CreateMap<User, UserCreate>().ForMember(x =>
-        //     x.Email, x =>
-        //     x.Ignore()); //ignored the email property (do it null (email: null;))
-        // .ForMember(x => x.Address, x =>
-        // x.MapFrom(x => x.FullName)); //equals address property to fullname property (address=fullname)
     }
 }
