@@ -7,4 +7,5 @@ public class Order : IEntity
     public User? User { get; set; }
     public decimal TotalPrice { get; set; }
     public DateTime OrderDate { get; set; }
+    public bool IsDeleted { get; set; }
 }

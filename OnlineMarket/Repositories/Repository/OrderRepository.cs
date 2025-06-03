@@ -5,13 +5,63 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderRepository(AppDbContext context) : Repository<Order>(context), IOrderRepository
+public class OrderRepository(AppDbContext context) : IOrderRepository
 {
-    private readonly AppDbContext _context = context;
+    public Order Add(Order orderItem)
+    {
+        context.Orders.Add(orderItem);
+        context.SaveChanges();
+
+        return orderItem;
+    }
+
+    public IEnumerable<Order> GetAll()
+    {
+        return context.Orders;
+    }
+
+    public Order Update(Guid id, Order user)
+    {
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        context.Orders.Update(firstOrDefault);
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public Order Delete(Guid id)
+    {
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        firstOrDefault.IsDeleted = true;
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public Order GetById(Guid id)
+    {
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        return firstOrDefault;
+    }
 
     public User GetUserById(Guid id)
     {
-        var user = _context.Users.FirstOrDefault(x => x.Id == id);
+        var user = context.Users.FirstOrDefault(x => x.Id == id);
         if (user is null)
         {
             throw new Exception();
@@ -22,7 +72,7 @@ public class OrderRepository(AppDbContext context) : Repository<Order>(context),
 
     public IEnumerable<Order> GetOrders()
     {
-        var orders = _context.Orders.Include(x => x.User).ToList();
+        var orders = context.Orders.Include(x => x.User).ToList();
         if (orders is null)
         {
             throw new Exception();

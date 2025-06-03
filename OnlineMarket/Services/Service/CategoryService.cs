@@ -7,7 +7,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class CategoryService(IRepository<Category> categoryRepository, IMapper mapper) : ICategoryService
+public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
 {
     public CategoryResponse Add(CategoryCreate entity)
     {

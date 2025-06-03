@@ -2,6 +2,12 @@ using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Interface;
 
-public interface IUserRepository : IRepository<User>
+public interface IUserRepository
 {
+    User Add(User user);
+    IEnumerable<User> GetAll();
+    User Update(Guid id, User user);
+    User Delete(Guid id);
+
+    User GetById(Guid id);
 }

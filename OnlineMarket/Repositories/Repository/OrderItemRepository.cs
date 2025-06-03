@@ -5,13 +5,63 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderItemRepository(AppDbContext context) : Repository<OrderItem>(context), IOrderItemRepository
+public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 {
-    private readonly AppDbContext _context = context;
+    public OrderItem Add(OrderItem orderItem)
+    {
+        context.OrderItems.Add(orderItem);
+        context.SaveChanges();
+
+        return orderItem;
+    }
+
+    public IEnumerable<OrderItem> GetAll()
+    {
+        return context.OrderItems;
+    }
+
+    public OrderItem Update(Guid id, OrderItem orderItem)
+    {
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        context.OrderItems.Update(firstOrDefault);
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public OrderItem Delete(Guid id)
+    {
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        firstOrDefault.IsDeleted = true;
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public OrderItem GetById(Guid id)
+    {
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        return firstOrDefault;
+    }
 
     public Product GetProductById(Guid id)
     {
-        var product = _context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+        var product = context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
         if (product is null)
         {
             throw new Exception();
@@ -22,7 +72,7 @@ public class OrderItemRepository(AppDbContext context) : Repository<OrderItem>(c
 
     public Order GetOrderById(Guid id)
     {
-        var order = _context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
+        var order = context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
         if (order is null)
         {
             throw new Exception();
@@ -33,7 +83,7 @@ public class OrderItemRepository(AppDbContext context) : Repository<OrderItem>(c
 
     public IEnumerable<OrderItem> GetOrderItems()
     {
-        var includableQueryable = _context.OrderItems.Include(x => x.Order)
+        var includableQueryable = context.OrderItems.Include(x => x.Order)
             .Include(x => x.Product);
         if (includableQueryable is null)
         {

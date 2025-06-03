@@ -10,8 +10,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection DependInjection(this IServiceCollection service)
     {
-        service.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
         service.AddScoped<IUserRepository, UserRepository>();
         service.AddScoped<ICategoryRepository, CategoryRepository>();
         service.AddScoped<IProductRepository, ProductRepository>();

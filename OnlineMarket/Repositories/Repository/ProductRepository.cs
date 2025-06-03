@@ -5,13 +5,63 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class ProductRepository(AppDbContext context) : Repository<Product>(context), IProductRepository
+public class ProductRepository(AppDbContext context) : IProductRepository
 {
-    private readonly AppDbContext _context = context;
+    public Product Add(Product product)
+    {
+        context.Products.Add(product);
+        context.SaveChanges();
+
+        return product;
+    }
+
+    public IEnumerable<Product> GetAll()
+    {
+        return context.Products;
+    }
+
+    public Product Update(Guid id, Product user)
+    {
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        context.Products.Update(firstOrDefault);
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public Product Delete(Guid id)
+    {
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        firstOrDefault.IsDeleted = true;
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public Product GetById(Guid id)
+    {
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new Exception();
+        }
+
+        return firstOrDefault;
+    }
 
     public Category GetCategoryById(Guid id)
     {
-        var firstOrDefault = _context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -22,7 +72,7 @@ public class ProductRepository(AppDbContext context) : Repository<Product>(conte
 
     public IEnumerable<Product> GetProducts()
     {
-        var products = _context.Products.Include(x => x.Category).ToList();
+        var products = context.Products.Include(x => x.Category).ToList();
         if (products is null)
         {
             throw new Exception();
