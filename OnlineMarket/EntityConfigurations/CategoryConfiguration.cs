@@ -19,5 +19,7 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
 
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
+
+        builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

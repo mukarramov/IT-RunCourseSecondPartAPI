@@ -23,5 +23,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
+
+        builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

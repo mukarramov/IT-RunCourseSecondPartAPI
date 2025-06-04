@@ -16,12 +16,12 @@ public class UserRepository(AppDbContext context) : IUserRepository
 
     public IEnumerable<User> GetAll()
     {
-        return context.Users.Where(x => x.IsDeleted == false);
+        return context.Users;
     }
 
     public User Update(Guid id, User user)
     {
-        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id && x.IsDeleted==false);
+        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -35,7 +35,7 @@ public class UserRepository(AppDbContext context) : IUserRepository
 
     public User Delete(Guid id)
     {
-        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id && x.IsDeleted==false);
+        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -49,7 +49,7 @@ public class UserRepository(AppDbContext context) : IUserRepository
 
     public User GetById(Guid id)
     {
-        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id && x.IsDeleted==false);
+        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();

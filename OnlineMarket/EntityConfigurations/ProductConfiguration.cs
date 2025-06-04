@@ -30,5 +30,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
 
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
+
+        builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

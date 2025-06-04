@@ -26,5 +26,7 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
             .WithMany(x => x.OrderItems)
             .HasForeignKey(x => x.ProductId)
             .OnDelete(DeleteBehavior.Restrict);
+
+        builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

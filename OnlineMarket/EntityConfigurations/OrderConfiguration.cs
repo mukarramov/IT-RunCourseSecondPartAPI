@@ -20,5 +20,7 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 
         builder.Property(x => x.IsDeleted)
             .HasDefaultValue(false);
+
+        builder.HasQueryFilter(x => !x.IsDeleted);
     }
 }

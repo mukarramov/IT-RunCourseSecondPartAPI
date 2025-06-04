@@ -17,9 +17,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public IEnumerable<Order> GetAll()
     {
-        var orders = context.Orders
-            .Include(x => x.User)
-            .Where(x => x.IsDeleted == false).ToList();
+        var orders = context.Orders.Include(x => x.User).ToList();
 
         if (orders.Count < 1)
         {
@@ -31,7 +29,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public Order Update(Guid id, Order user)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -45,7 +43,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public Order Delete(Guid id)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -59,7 +57,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public Order GetById(Guid id)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -70,7 +68,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public User GetUserById(Guid id)
     {
-        var user = context.Users.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var user = context.Users.FirstOrDefault(x => x.Id == id);
         if (user is null)
         {
             throw new Exception();

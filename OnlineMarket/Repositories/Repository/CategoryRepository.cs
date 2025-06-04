@@ -21,7 +21,7 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
 
     public Category Update(Guid id, Category category)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -35,7 +35,7 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
 
     public Category Delete(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -49,7 +49,7 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
 
     public Category GetById(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();

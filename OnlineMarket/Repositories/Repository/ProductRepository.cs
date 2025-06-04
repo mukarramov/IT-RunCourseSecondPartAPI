@@ -17,9 +17,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public IEnumerable<Product> GetAll()
     {
-        var products = context.Products
-            .Include(x => x.Category)
-            .Where(x => x.IsDeleted == false).ToList();
+        var products = context.Products.Include(x => x.Category).ToList();
 
         if (products.Count < 1)
         {
@@ -31,7 +29,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Product Update(Guid id, Product user)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -45,7 +43,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Product Delete(Guid id)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -59,7 +57,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Product GetById(Guid id)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -70,7 +68,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Category GetCategoryById(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             throw new Exception();
