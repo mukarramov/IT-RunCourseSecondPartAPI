@@ -17,12 +17,21 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public IEnumerable<Product> GetAll()
     {
-        return context.Products;
+        var products = context.Products
+            .Include(x => x.Category)
+            .Where(x => x.IsDeleted == false).ToList();
+
+        if (products.Count < 1)
+        {
+            throw new Exception();
+        }
+
+        return products;
     }
 
     public Product Update(Guid id, Product user)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -36,7 +45,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Product Delete(Guid id)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -50,7 +59,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Product GetById(Guid id)
     {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -61,23 +70,12 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public Category GetCategoryById(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
         }
 
         return firstOrDefault;
-    }
-
-    public IEnumerable<Product> GetProducts()
-    {
-        var products = context.Products.Include(x => x.Category).ToList();
-        if (products is null)
-        {
-            throw new Exception();
-        }
-
-        return products;
     }
 }

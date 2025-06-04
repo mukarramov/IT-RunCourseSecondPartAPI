@@ -31,14 +31,36 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
 
         orderItemRepository.Add(orderItem);
 
-        return mapper.Map<OrderItemResponse>(orderItem);
+        var orderItemResponse = new OrderItemResponse
+        {
+            Id = orderItem.Id,
+            Price = orderItem.Price,
+            Quantity = orderItem.Quantity,
+            ProductId = orderItem.ProductId,
+            Product = orderItem.Product,
+            OrderId = orderItem.OrderId,
+            Order = orderItem.Order
+        };
+
+        return orderItemResponse;
     }
 
     public IEnumerable<OrderItemResponse> GetAll()
     {
-        var orderItems = orderItemRepository.GetOrderItems();
+        var orderItems = orderItemRepository.GetAll();
 
-        return mapper.Map<IEnumerable<OrderItemResponse>>(orderItems);
+        var orderItemResponses = orderItems.Select(orderItem => new OrderItemResponse
+        {
+            Id = orderItem.Id,
+            Price = orderItem.Price,
+            Quantity = orderItem.Quantity,
+            ProductId = orderItem.ProductId,
+            Product = orderItem.Product,
+            OrderId = orderItem.OrderId,
+            Order = orderItem.Order
+        });
+
+        return orderItemResponses;
     }
 
     public OrderItemResponse Update(Guid id, OrderItemCreate orderItemRequest)
@@ -48,6 +70,8 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
         var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
         var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
 
+        orderItem.Price = orderItemRequest.Price;
+        orderItem.Quantity = orderItemRequest.Quantity;
         orderItem.ProductId = product.Id;
         orderItem.Product = product;
         orderItem.OrderId = order.Id;
@@ -55,20 +79,53 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
 
         orderItemRepository.Update(id, orderItem);
 
-        return mapper.Map<OrderItemResponse>(orderItem);
+        var orderItemResponse = new OrderItemResponse
+        {
+            Id = orderItem.Id,
+            Price = orderItem.Price,
+            Quantity = orderItem.Quantity,
+            ProductId = orderItem.ProductId,
+            Product = orderItem.Product,
+            OrderId = orderItem.OrderId,
+            Order = orderItem.Order
+        };
+
+        return orderItemResponse;
     }
 
     public OrderItemResponse Delete(Guid id)
     {
         var orderItem = orderItemRepository.Delete(id);
 
-        return mapper.Map<OrderItemResponse>(orderItem);
+        var orderItemResponse = new OrderItemResponse
+        {
+            Id = orderItem.Id,
+            Price = orderItem.Price,
+            Quantity = orderItem.Quantity,
+            ProductId = orderItem.ProductId,
+            Product = orderItem.Product,
+            OrderId = orderItem.OrderId,
+            Order = orderItem.Order
+        };
+
+        return orderItemResponse;
     }
 
     public OrderItemResponse GetById(Guid id)
     {
         var orderItem = orderItemRepository.GetById(id);
 
-        return mapper.Map<OrderItemResponse>(orderItem);
+        var orderItemResponse = new OrderItemResponse
+        {
+            Id = orderItem.Id,
+            Price = orderItem.Price,
+            Quantity = orderItem.Quantity,
+            ProductId = orderItem.ProductId,
+            Product = orderItem.Product,
+            OrderId = orderItem.OrderId,
+            Order = orderItem.Order
+        };
+
+        return orderItemResponse;
     }
 }

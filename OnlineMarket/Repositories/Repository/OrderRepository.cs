@@ -17,12 +17,21 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public IEnumerable<Order> GetAll()
     {
-        return context.Orders;
+        var orders = context.Orders
+            .Include(x => x.User)
+            .Where(x => x.IsDeleted == false).ToList();
+
+        if (orders.Count < 1)
+        {
+            throw new Exception();
+        }
+
+        return orders;
     }
 
     public Order Update(Guid id, Order user)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -36,7 +45,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public Order Delete(Guid id)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -50,7 +59,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public Order GetById(Guid id)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -61,23 +70,12 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
 
     public User GetUserById(Guid id)
     {
-        var user = context.Users.FirstOrDefault(x => x.Id == id);
+        var user = context.Users.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (user is null)
         {
             throw new Exception();
         }
 
         return user;
-    }
-
-    public IEnumerable<Order> GetOrders()
-    {
-        var orders = context.Orders.Include(x => x.User).ToList();
-        if (orders is null)
-        {
-            throw new Exception();
-        }
-
-        return orders;
     }
 }

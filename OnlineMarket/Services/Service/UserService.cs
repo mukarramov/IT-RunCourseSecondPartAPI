@@ -1,35 +1,34 @@
-using AutoMapper;
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
-using IT_RunCourseSecondPartAPI.Exceptions;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class UserService(IUserRepository userRepository, IMapper mapper, IValidator<User> validator) : IUserService
+public class UserService(IUserRepository userRepository, IValidator<UserCreate> validator)
+    : IUserService
 {
-    public UserResponse Add(UserCreate entity)
+    public UserResponse Add(UserCreate userCreate)
     {
-        if (string.IsNullOrEmpty(entity.Email))
+        if (string.IsNullOrEmpty(userCreate.Email))
         {
             throw new Exception();
         }
 
         var user = new User
         {
-            FullName = entity.FullName,
-            Password = entity.Password,
-            Email = entity.Email,
-            Address = entity.Address,
+            FullName = userCreate.FullName,
+            Password = userCreate.Password,
+            Email = userCreate.Email,
+            Address = userCreate.Address,
         };
 
-        var validationResult = validator.Validate(user);
-        if (!validationResult.IsValid)
+        var result = validator.Validate(userCreate);
+        if (!result.IsValid)
         {
-            var errorValidate = validationResult.Errors.Select(x => new
+            var errorValidate = result.Errors.Select(x => new
             {
                 x.PropertyName,
                 x.ErrorCode,
@@ -39,38 +38,82 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
         }
 
         userRepository.Add(user);
-        return mapper.Map<UserResponse>(user);
+
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Password = user.Password,
+            Address = user.Address
+        };
+
+        return userResponse;
     }
 
     public IEnumerable<UserResponse> GetAll()
     {
         var users = userRepository.GetAll();
 
-        return mapper.Map<IEnumerable<UserResponse>>(users);
+        var userResponses = users.Select(user => new UserResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Password = user.Password,
+            Address = user.Address
+        });
+
+        return userResponses;
     }
 
     public UserResponse Update(Guid id, UserCreate entity)
     {
         var user = userRepository.GetById(id);
 
-        var map = mapper.Map(entity, user);
+        userRepository.Update(id, user);
 
-        userRepository.Update(id, map);
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Password = user.Password,
+            Address = user.Address
+        };
 
-        return mapper.Map<UserResponse>(map);
+        return userResponse;
     }
 
     public UserResponse Delete(Guid id)
     {
-        var delete = userRepository.Delete(id);
+        var user = userRepository.Delete(id);
 
-        return mapper.Map<UserResponse>(delete);
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Password = user.Password,
+            Address = user.Address
+        };
+
+        return userResponse;
     }
 
     public UserResponse GetById(Guid id)
     {
         var user = userRepository.GetById(id);
 
-        return mapper.Map<UserResponse>(user);
+        var userResponse = new UserResponse
+        {
+            Id = user.Id,
+            FullName = user.FullName,
+            Email = user.Email,
+            Password = user.Password,
+            Address = user.Address
+        };
+
+        return userResponse;
     }
 }

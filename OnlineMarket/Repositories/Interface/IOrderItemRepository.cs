@@ -13,5 +13,4 @@ public interface IOrderItemRepository
 
     public Product GetProductById(Guid id);
     public Order GetOrderById(Guid id);
-    public IEnumerable<OrderItem> GetOrderItems();
 }

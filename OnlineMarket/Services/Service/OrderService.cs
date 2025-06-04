@@ -7,7 +7,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IOrderService
+public class OrderService(IOrderRepository orderRepository) : IOrderService
 {
     public OrderResponse Add(OrderCreate orderCreate)
     {
@@ -27,14 +27,32 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
 
         orderRepository.Add(order);
 
-        return mapper.Map<OrderResponse>(order);
+        var orderResponse = new OrderResponse
+        {
+            Id = order.Id,
+            TotalPrice = order.TotalPrice,
+            OrderDate = order.OrderDate,
+            UserId = order.UserId,
+            User = order.User
+        };
+
+        return orderResponse;
     }
 
     public IEnumerable<OrderResponse> GetAll()
     {
-        var orders = orderRepository.GetOrders();
+        var orders = orderRepository.GetAll();
 
-        return mapper.Map<IEnumerable<OrderResponse>>(orders);
+        var orderResponses = orders.Select(order => new OrderResponse
+        {
+            Id = order.Id,
+            TotalPrice = order.TotalPrice,
+            OrderDate = order.OrderDate,
+            UserId = order.UserId,
+            User = order.User
+        });
+
+        return orderResponses;
     }
 
     public OrderResponse Update(Guid id, OrderCreate orderCreate)
@@ -43,26 +61,53 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
 
         var userById = orderRepository.GetUserById(orderCreate.UserId);
 
+        order.TotalPrice = orderCreate.TotalPrice;
         order.UserId = userById.Id;
         order.User = userById;
-        order.TotalPrice = orderCreate.TotalPrice;
 
-        var update = orderRepository.Update(id, order);
+        var orderUpdate = orderRepository.Update(id, order);
 
-        return mapper.Map<OrderResponse>(update);
+        var orderResponse = new OrderResponse
+        {
+            Id = orderUpdate.Id,
+            TotalPrice = orderUpdate.TotalPrice,
+            OrderDate = orderUpdate.OrderDate,
+            UserId = orderUpdate.UserId,
+            User = orderUpdate.User
+        };
+
+        return orderResponse;
     }
 
     public OrderResponse Delete(Guid id)
     {
         var order = orderRepository.Delete(id);
 
-        return mapper.Map<OrderResponse>(order);
+        var orderResponse = new OrderResponse
+        {
+            Id = order.Id,
+            TotalPrice = order.TotalPrice,
+            OrderDate = order.OrderDate,
+            UserId = order.UserId,
+            User = order.User
+        };
+
+        return orderResponse;
     }
 
     public OrderResponse GetById(Guid id)
     {
         var order = orderRepository.GetById(id);
 
-        return mapper.Map<OrderResponse>(order);
+        var orderResponse = new OrderResponse
+        {
+            Id = order.Id,
+            TotalPrice = order.TotalPrice,
+            OrderDate = order.OrderDate,
+            UserId = order.UserId,
+            User = order.User
+        };
+
+        return orderResponse;
     }
 }

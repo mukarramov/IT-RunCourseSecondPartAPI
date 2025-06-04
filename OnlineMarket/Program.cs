@@ -2,8 +2,6 @@ using FluentValidation;
 using IT_RunCourseSecondPartAPI;
 using IT_RunCourseSecondPartAPI.Data;
 using IT_RunCourseSecondPartAPI.Exceptions;
-using IT_RunCourseSecondPartAPI.Mapper;
-using IT_RunCourseSecondPartAPI.MinimalAPI.Endpoints;
 using IT_RunCourseSecondPartAPI.Validations;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,8 +16,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 builder.Services.DependInjection();
 
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddAutoMapper(x => { x.AddMaps(typeof(UserProfile).Assembly); });
 
 builder.Services.AddMapster();
 builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidation>();
@@ -36,8 +32,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.MapUserApis();
 
 app.MapControllers();
 

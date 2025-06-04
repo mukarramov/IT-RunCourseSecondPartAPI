@@ -1,4 +1,3 @@
-using AutoMapper;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
@@ -7,7 +6,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
+public class ProductService(IProductRepository productRepository) : IProductService
 {
     public ProductResponse Add(ProductCreate productCreate)
     {
@@ -29,14 +28,34 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
 
         productRepository.Add(product);
 
-        return mapper.Map<ProductResponse>(product);
+        var productResponse = new ProductResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        };
+
+        return productResponse;
     }
 
     public IEnumerable<ProductResponse> GetAll()
     {
-        var products = productRepository.GetProducts();
+        var products = productRepository.GetAll();
 
-        return mapper.Map<IEnumerable<ProductResponse>>(products);
+        var productResponse = products.Select(product => new ProductResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        });
+
+        return productResponse;
     }
 
     public ProductResponse Update(Guid id, ProductCreate productCreate)
@@ -45,25 +64,56 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
 
         var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
 
-        var map = mapper.Map(productCreate, product);
+        product.Name = productCreate.Name;
+        product.Description = productCreate.Description;
+        product.Price = productCreate.Price;
+        product.CategoryId = categoryById.Id;
+        product.Category = categoryById;
 
-        map.CategoryId = categoryById.Id;
-        map.Category = categoryById;
+        var productResponse = new ProductResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        };
 
-        return mapper.Map<ProductResponse>(map);
+        return productResponse;
     }
 
     public ProductResponse Delete(Guid id)
     {
         var product = productRepository.Delete(id);
 
-        return mapper.Map<ProductResponse>(product);
+        var productResponse = new ProductResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        };
+
+        return productResponse;
     }
 
     public ProductResponse GetById(Guid id)
     {
         var product = productRepository.GetById(id);
 
-        return mapper.Map<ProductResponse>(product);
+        var productResponse = new ProductResponse
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Price = product.Price,
+            Description = product.Description,
+            CategoryId = product.CategoryId,
+            Category = product.Category
+        };
+
+        return productResponse;
     }
 }

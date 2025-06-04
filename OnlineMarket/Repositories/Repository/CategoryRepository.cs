@@ -4,9 +4,8 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class CategoryRepository(AppDbContext context):ICategoryRepository
+public class CategoryRepository(AppDbContext context) : ICategoryRepository
 {
-    
     public Category Add(Category category)
     {
         context.Categories.Add(category);
@@ -22,7 +21,7 @@ public class CategoryRepository(AppDbContext context):ICategoryRepository
 
     public Category Update(Guid id, Category category)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -36,7 +35,7 @@ public class CategoryRepository(AppDbContext context):ICategoryRepository
 
     public Category Delete(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -50,7 +49,7 @@ public class CategoryRepository(AppDbContext context):ICategoryRepository
 
     public Category GetById(Guid id)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();

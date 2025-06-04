@@ -12,5 +12,4 @@ public interface IOrderRepository
     Order GetById(Guid id);
 
     public User GetUserById(Guid id);
-    public IEnumerable<Order> GetOrders();
 }

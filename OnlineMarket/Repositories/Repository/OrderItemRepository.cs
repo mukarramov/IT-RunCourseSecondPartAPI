@@ -17,12 +17,23 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public IEnumerable<OrderItem> GetAll()
     {
-        return context.OrderItems;
+        var includableQueryable = context.OrderItems
+            .Include(x => x.Order)
+            .Where(x => x.IsDeleted == false)
+            .Include(x => x.Product)
+            .Where(x => x.IsDeleted == false);
+
+        if (includableQueryable is null)
+        {
+            throw new Exception();
+        }
+
+        return includableQueryable;
     }
 
     public OrderItem Update(Guid id, OrderItem orderItem)
     {
-        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -36,7 +47,7 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public OrderItem Delete(Guid id)
     {
-        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -50,7 +61,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public OrderItem GetById(Guid id)
     {
-        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.OrderItems
+            .FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (firstOrDefault is null)
         {
             throw new Exception();
@@ -61,7 +73,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public Product GetProductById(Guid id)
     {
-        var product = context.Products.Include(x => x.Category).FirstOrDefault(x => x.Id == id);
+        var product = context.Products.Include(x => x.Category)
+            .FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (product is null)
         {
             throw new Exception();
@@ -72,24 +85,13 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public Order GetOrderById(Guid id)
     {
-        var order = context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
+        var order = context.Orders.Include(x => x.User)
+            .FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
         if (order is null)
         {
             throw new Exception();
         }
 
         return order;
-    }
-
-    public IEnumerable<OrderItem> GetOrderItems()
-    {
-        var includableQueryable = context.OrderItems.Include(x => x.Order)
-            .Include(x => x.Product);
-        if (includableQueryable is null)
-        {
-            throw new Exception();
-        }
-
-        return includableQueryable;
     }
 }
