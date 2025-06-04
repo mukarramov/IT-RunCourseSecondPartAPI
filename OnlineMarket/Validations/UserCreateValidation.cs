@@ -1,11 +1,12 @@
 using FluentValidation;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.Validations;
 
-public class UserDtoValidation : AbstractValidator<User>
+public class UserCreateValidation : AbstractValidator<UserCreate>
 {
-    public UserDtoValidation()
+    public UserCreateValidation()
     {
         RuleFor(c => c.Email).NotEmpty().MinimumLength(5).MaximumLength(50).EmailAddress();
 

@@ -12,4 +12,5 @@ public class User : IEntity
     public Roule Roule { get; set; } = Roule.Client;
     public DateTime RegisteredAt { get; set; } = DateTime.UtcNow;
     public bool IsDeleted { get; set; }
+    public List<Order>? Orders { get; set; }
 }

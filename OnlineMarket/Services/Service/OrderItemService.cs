@@ -1,4 +1,3 @@
-using AutoMapper;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
@@ -7,7 +6,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper) : IOrderItemService
+public class OrderItemService(IOrderItemRepository orderItemRepository) : IOrderItemService
 {
     public OrderItemResponse Add(OrderItemCreate orderItemRequest)
     {

@@ -1,7 +1,6 @@
 using FluentValidation;
 using IT_RunCourseSecondPartAPI;
 using IT_RunCourseSecondPartAPI.Data;
-using IT_RunCourseSecondPartAPI.Exceptions;
 using IT_RunCourseSecondPartAPI.Validations;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,8 +16,7 @@ builder.Services.DependInjection();
 
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddMapster();
-builder.Services.AddValidatorsFromAssemblyContaining<UserDtoValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<UserCreateValidation>();
 
 var app = builder.Build();
 

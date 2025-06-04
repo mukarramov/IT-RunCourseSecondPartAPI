@@ -8,4 +8,5 @@ public class Order : IEntity
     public decimal TotalPrice { get; set; }
     public DateTime OrderDate { get; set; }
     public bool IsDeleted { get; set; }
+    public List<OrderItem>? OrderItems { get; set; }
 }

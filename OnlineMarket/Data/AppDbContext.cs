@@ -1,3 +1,4 @@
+using IT_RunCourseSecondPartAPI.EntityConfigurations;
 using IT_RunCourseSecondPartAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,4 +11,10 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
     public DbSet<Product> Products { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderItem> OrderItems { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserConfiguration).Assembly);
+        base.OnModelCreating(modelBuilder);
+    }
 }
