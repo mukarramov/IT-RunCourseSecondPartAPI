@@ -41,7 +41,7 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
             throw new Exception();
         }
 
-        firstOrDefault.IsDeleted = true;
+        context.Remove(firstOrDefault);
         context.SaveChanges();
 
         return firstOrDefault;

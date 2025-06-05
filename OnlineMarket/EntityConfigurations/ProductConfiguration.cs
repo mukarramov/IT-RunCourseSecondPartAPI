@@ -23,7 +23,7 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
         builder.HasOne(x => x.Category)
             .WithMany(x => x.Products)
             .HasForeignKey(x => x.CategoryId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasIndex(x => x.Name)
             .IsUnique();

@@ -49,7 +49,7 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
             throw new Exception();
         }
 
-        firstOrDefault.IsDeleted = true;
+        context.Remove(firstOrDefault);
         context.SaveChanges();
 
         return firstOrDefault;

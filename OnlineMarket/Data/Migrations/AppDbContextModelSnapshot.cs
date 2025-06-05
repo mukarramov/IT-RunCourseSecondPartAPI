@@ -201,13 +201,13 @@ namespace IT_RunCourseSecondPartAPI.Migrations
                     b.HasOne("IT_RunCourseSecondPartAPI.Models.Order", "Order")
                         .WithMany("OrderItems")
                         .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("IT_RunCourseSecondPartAPI.Models.Product", "Product")
                         .WithMany("OrderItems")
                         .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Order");
@@ -220,7 +220,7 @@ namespace IT_RunCourseSecondPartAPI.Migrations
                     b.HasOne("IT_RunCourseSecondPartAPI.Models.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Category");

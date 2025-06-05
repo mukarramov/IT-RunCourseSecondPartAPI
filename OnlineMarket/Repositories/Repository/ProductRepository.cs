@@ -49,7 +49,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
             throw new Exception();
         }
 
-        firstOrDefault.IsDeleted = true;
+        context.Remove(firstOrDefault);
         context.SaveChanges();
 
         return firstOrDefault;

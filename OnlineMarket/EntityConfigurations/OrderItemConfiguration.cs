@@ -20,12 +20,12 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
         builder.HasOne(x => x.Order)
             .WithMany(x => x.OrderItems)
             .HasForeignKey(x => x.OrderId)
-            .OnDelete(DeleteBehavior.Cascade);
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasOne(x => x.Product)
             .WithMany(x => x.OrderItems)
             .HasForeignKey(x => x.ProductId)
-            .OnDelete(DeleteBehavior.Restrict);
+            .OnDelete(DeleteBehavior.NoAction);
 
         builder.HasQueryFilter(x => !x.IsDeleted);
     }

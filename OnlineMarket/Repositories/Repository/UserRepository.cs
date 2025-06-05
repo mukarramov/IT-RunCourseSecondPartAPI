@@ -41,7 +41,7 @@ public class UserRepository(AppDbContext context) : IUserRepository
             throw new Exception();
         }
 
-        firstOrDefault.IsDeleted = true;
+        context.Users.Remove(firstOrDefault);
         context.SaveChanges();
 
         return firstOrDefault;

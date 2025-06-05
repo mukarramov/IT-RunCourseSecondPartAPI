@@ -1,4 +1,5 @@
 using FluentValidation;
+using IT_RunCourseSecondPartAPI.Interceptors;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
@@ -13,6 +14,8 @@ public static class DependencyInjection
     public static IServiceCollection DependInjection(this IServiceCollection service)
     {
         service.AddValidatorsFromAssemblyContaining<UserCreateValidation>();
+
+        service.AddScoped<DeletingUserInterceptor>();
 
         service.AddScoped<IUserRepository, UserRepository>();
         service.AddScoped<ICategoryRepository, CategoryRepository>();
