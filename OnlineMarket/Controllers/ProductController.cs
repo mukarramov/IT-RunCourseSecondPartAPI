@@ -29,6 +29,6 @@ public class ProductController(IProductService productService) : ControllerBase
     [HttpDelete]
     public IActionResult Delete(Guid productId)
     {
-        return Ok(productId);
+        return Ok(productService.Delete(productId));
     }
 }

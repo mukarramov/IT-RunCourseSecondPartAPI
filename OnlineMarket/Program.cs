@@ -7,7 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddNewtonsoftJson(options =>
+    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+);
+
 builder.Services.AddOpenApi();
 
 var databaseConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -20,7 +23,7 @@ builder.Services.AddDbContext<AppDbContext>((sp, options) =>
 {
     options.UseNpgsql(databaseConnectionString)
         .LogTo(Console.WriteLine, LogLevel.Information)
-        .AddInterceptors(sp.GetRequiredService<DeletingUserInterceptor>());
+        .AddInterceptors(sp.GetRequiredService<DeletingInterceptor>());
 });
 
 builder.Services.DependInjection();

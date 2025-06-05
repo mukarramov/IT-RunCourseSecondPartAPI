@@ -4,22 +4,22 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace IT_RunCourseSecondPartAPI.Interceptors;
 
-public class DeletingUserInterceptor : SaveChangesInterceptor
+public class DeletingInterceptor : SaveChangesInterceptor
 {
     public override InterceptionResult<int>
         SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
     {
         if (eventData.Context is not null)
         {
-            UpdateEntities(eventData.Context);
+            DeleteEntities(eventData.Context);
         }
 
         return base.SavingChanges(eventData, result);
     }
 
-    private static void UpdateEntities(DbContext context)
+    private static void DeleteEntities(DbContext context)
     {
-        var entityEntries = context.ChangeTracker.Entries<User>().ToList();
+        var entityEntries = context.ChangeTracker.Entries<IEntity>().ToList();
 
         foreach (var entry in entityEntries.Where(entry => entry.State == EntityState.Deleted))
         {

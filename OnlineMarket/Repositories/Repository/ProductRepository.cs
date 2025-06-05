@@ -17,14 +17,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
 
     public IEnumerable<Product> GetAll()
     {
-        var products = context.Products.Include(x => x.Category).ToList();
-
-        if (products.Count < 1)
-        {
-            throw new Exception();
-        }
-
-        return products;
+        return context.Products.Include(x => x.Category);
     }
 
     public Product Update(Guid id, Product user)
