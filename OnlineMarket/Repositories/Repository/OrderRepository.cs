@@ -19,11 +19,6 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
     {
         var orders = context.Orders.Include(x => x.User).ToList();
 
-        if (orders.Count < 1)
-        {
-            throw new Exception();
-        }
-
         return orders;
     }
 

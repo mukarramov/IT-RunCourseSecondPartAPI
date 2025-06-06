@@ -23,7 +23,7 @@ builder.Services.AddDbContext<AppDbContext>((sp, options) =>
 {
     options.UseNpgsql(databaseConnectionString)
         .LogTo(Console.WriteLine, LogLevel.Information)
-        .AddInterceptors(sp.GetRequiredService<DeletingInterceptor>());
+        .AddInterceptors(sp.GetRequiredService<SaveChangeInterceptor>());
 });
 
 builder.Services.DependInjection();

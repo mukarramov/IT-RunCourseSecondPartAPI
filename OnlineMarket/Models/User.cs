@@ -10,7 +10,8 @@ public class User : IEntity
     public string Email { get; set; } = string.Empty;
     public string Address { get; set; } = string.Empty;
     public Roule Roule { get; set; } = Roule.Client;
-    public DateTime RegisteredAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreateAt { get; set; }
+    public DateTime UpdateAt { get; set; }
     public bool IsDeleted { get; set; }
     public List<Order>? Orders { get; set; }
 }

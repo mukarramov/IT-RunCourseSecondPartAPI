@@ -15,7 +15,7 @@ public static class DependencyInjection
     {
         service.AddValidatorsFromAssemblyContaining<UserCreateValidation>();
 
-        service.AddScoped<DeletingInterceptor>();
+        service.AddScoped<SaveChangeInterceptor>();
 
         service.AddScoped<IUserRepository, UserRepository>();
         service.AddScoped<ICategoryRepository, CategoryRepository>();

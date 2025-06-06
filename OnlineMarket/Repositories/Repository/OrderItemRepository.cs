@@ -17,14 +17,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
 
     public IEnumerable<OrderItem> GetAll()
     {
-        var includableQueryable = context.OrderItems.Include(x => x.Order)
+        return context.OrderItems.Include(x => x.Order)
             .Include(x => x.Product);
-        if (includableQueryable is null)
-        {
-            throw new Exception();
-        }
-
-        return includableQueryable;
     }
 
     public OrderItem Update(Guid id, OrderItem orderItem)
