@@ -51,7 +51,7 @@ public class UserService(IUserRepository userRepository, IValidator<UserCreate> 
         return userResponse;
     }
 
-    public IEnumerable<UserResponse> GetAll()
+    public IQueryable<UserResponse> GetAll()
     {
         var users = userRepository.GetAll();
 

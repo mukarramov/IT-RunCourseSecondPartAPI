@@ -41,7 +41,7 @@ public class ProductService(IProductRepository productRepository) : IProductServ
         return productResponse;
     }
 
-    public IEnumerable<ProductResponse> GetAll()
+    public IQueryable<ProductResponse> GetAll()
     {
         var products = productRepository.GetAll();
 

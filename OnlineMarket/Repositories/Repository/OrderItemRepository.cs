@@ -15,7 +15,7 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
         return orderItem;
     }
 
-    public IEnumerable<OrderItem> GetAll()
+    public IQueryable<OrderItem> GetAll()
     {
         return context.OrderItems.Include(x => x.Order)
             .Include(x => x.Product);

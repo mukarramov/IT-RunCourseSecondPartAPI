@@ -14,7 +14,7 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
         return category;
     }
 
-    public IEnumerable<Category> GetAll()
+    public IQueryable<Category> GetAll()
     {
         return context.Categories;
     }

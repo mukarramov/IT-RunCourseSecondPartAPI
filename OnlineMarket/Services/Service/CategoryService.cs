@@ -31,14 +31,15 @@ public class CategoryService(ICategoryRepository categoryRepository) : ICategory
         return categoryResponse;
     }
 
-    public IEnumerable<CategoryResponse> GetAll()
+    public IQueryable<CategoryResponse> GetAll()
     {
         var categories = categoryRepository.GetAll();
 
         var categoryResponses = categories.Select(category => new CategoryResponse
         {
             Id = category.Id,
-            Name = category.Name
+            Name = category.Name,
+            Products = category.Products
         });
 
         return categoryResponses;

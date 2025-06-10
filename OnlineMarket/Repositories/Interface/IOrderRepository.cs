@@ -5,7 +5,7 @@ namespace IT_RunCourseSecondPartAPI.Repositories.Interface;
 public interface IOrderRepository
 {
     Order Add(Order order);
-    IEnumerable<Order> GetAll();
+    IQueryable<Order> GetAll();
     Order Update(Guid id, Order order);
     Order Delete(Guid id);
 

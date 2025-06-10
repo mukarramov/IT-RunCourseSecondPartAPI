@@ -6,7 +6,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Interface;
 public interface IUserService
 {
     UserResponse Add(UserCreate userCreate);
-    IEnumerable<UserResponse> GetAll();
+    IQueryable<UserResponse> GetAll();
     UserResponse Update(Guid id, UserCreate userCreate);
     UserResponse Delete(Guid id);
 

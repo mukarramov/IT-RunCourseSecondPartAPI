@@ -44,7 +44,7 @@ public class OrderItemService(IOrderItemRepository orderItemRepository) : IOrder
         return orderItemResponse;
     }
 
-    public IEnumerable<OrderItemResponse> GetAll()
+    public IQueryable<OrderItemResponse> GetAll()
     {
         var orderItems = orderItemRepository.GetAll();
 

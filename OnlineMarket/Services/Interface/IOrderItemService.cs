@@ -6,7 +6,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Interface;
 public interface IOrderItemService
 {
     OrderItemResponse Add(OrderItemCreate orderItemRequest);
-    IEnumerable<OrderItemResponse> GetAll();
+    IQueryable<OrderItemResponse> GetAll();
     OrderItemResponse Update(Guid id, OrderItemCreate orderItemRequest);
     OrderItemResponse Delete(Guid id);
 
