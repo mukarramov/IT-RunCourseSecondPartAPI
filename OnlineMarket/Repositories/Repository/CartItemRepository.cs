@@ -20,7 +20,7 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
     public IQueryable<CartItem> GetAll()
     {
         return context.CartItems.Include(x => x.Product).ThenInclude(x => x!.Category)
-            .Include(x => x.ShoppingCart).ThenInclude(x => x!.Products);
+            .Include(x => x.ShoppingCart);
     }
 
     public CartItem Update(Guid id, CartItem cartItem)

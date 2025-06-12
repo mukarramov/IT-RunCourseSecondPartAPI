@@ -10,14 +10,14 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
     public ShoppingCart Add(ShoppingCart shoppingCart)
     {
         context.ShoppingCarts.Add(shoppingCart);
+        context.SaveChanges();
 
         return shoppingCart;
     }
 
     public IQueryable<ShoppingCart> GetAll()
     {
-        var includableQueryable = context.ShoppingCarts.Include(x => x.Products)
-            .Include(x => x.User);
+        var includableQueryable = context.ShoppingCarts.Include(x => x.User);
 
         return includableQueryable;
     }
