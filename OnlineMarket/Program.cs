@@ -2,6 +2,7 @@ using FluentValidation;
 using IT_RunCourseSecondPartAPI;
 using IT_RunCourseSecondPartAPI.Data;
 using IT_RunCourseSecondPartAPI.Interceptors;
+using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.Validations;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,6 +30,8 @@ builder.Services.AddDbContext<AppDbContext>((sp, options) =>
 builder.Services.DependInjection();
 
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddAutoMapper(x => { x.AddMaps(typeof(MapperProfile).Assembly); });
 
 builder.Services.AddValidatorsFromAssemblyContaining<UserCreateValidation>();
 

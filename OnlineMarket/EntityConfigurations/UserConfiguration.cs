@@ -1,4 +1,5 @@
 using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Models.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -16,6 +17,14 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasIndex(x => x.Email)
             .IsUnique();
+
+        builder.Property(x => x.Email)
+            .HasMaxLength(20)
+            .IsRequired();
+
+        builder.Property(x => x.Address)
+            .HasMaxLength(20)
+            .IsRequired();
 
         builder.Property(x => x.Password)
             .HasMaxLength(16)

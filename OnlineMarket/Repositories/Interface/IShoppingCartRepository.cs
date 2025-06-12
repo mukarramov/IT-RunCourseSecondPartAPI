@@ -1,0 +1,14 @@
+using IT_RunCourseSecondPartAPI.Models;
+
+namespace IT_RunCourseSecondPartAPI.Repositories.Interface;
+
+public interface IShoppingCartRepository
+{
+    ShoppingCart Add(ShoppingCart shoppingCart);
+    IQueryable<ShoppingCart> GetAll();
+    ShoppingCart Update(Guid id, ShoppingCart shoppingCart);
+    ShoppingCart Delete(Guid id);
+    ShoppingCart GetById(Guid id);
+
+    public User GetUserById(Guid id);
+}

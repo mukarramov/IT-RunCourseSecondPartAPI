@@ -6,7 +6,7 @@ public interface IProductRepository
 {
     Product Add(Product product);
     IQueryable<Product> GetAll();
-    Product Update(Guid id, Product product);
+    Product Update(Guid id);
     Product Delete(Guid id);
     Product GetById(Guid id);
 

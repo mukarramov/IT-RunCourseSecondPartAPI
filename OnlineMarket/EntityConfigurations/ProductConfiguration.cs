@@ -25,6 +25,10 @@ public class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasForeignKey(x => x.CategoryId)
             .OnDelete(DeleteBehavior.NoAction);
 
+        builder.HasOne(x => x.ShoppingCart)
+            .WithMany(x => x.Products)
+            .HasForeignKey(x => x.ShoppingCartId);
+
         builder.HasIndex(x => x.Name)
             .IsUnique();
 

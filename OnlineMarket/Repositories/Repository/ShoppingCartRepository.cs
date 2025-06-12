@@ -1,0 +1,68 @@
+using IT_RunCourseSecondPartAPI.Data;
+using IT_RunCourseSecondPartAPI.Models;
+using IT_RunCourseSecondPartAPI.Repositories.Interface;
+using Microsoft.EntityFrameworkCore;
+
+namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
+
+public class ShoppingCartRepository(AppDbContext context) : IShoppingCartRepository
+{
+    public ShoppingCart Add(ShoppingCart shoppingCart)
+    {
+        context.ShoppingCarts.Add(shoppingCart);
+
+        return shoppingCart;
+    }
+
+    public IQueryable<ShoppingCart> GetAll()
+    {
+        var includableQueryable = context.ShoppingCarts.Include(x => x.Products)
+            .Include(x => x.User);
+
+        return includableQueryable;
+    }
+
+    public ShoppingCart Update(Guid id, ShoppingCart shoppingCart)
+    {
+        context.ShoppingCarts.Update(shoppingCart);
+        context.SaveChanges();
+
+        return shoppingCart;
+    }
+
+    public ShoppingCart Delete(Guid id)
+    {
+        var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new NullReferenceException();
+        }
+
+        context.ShoppingCarts.Remove(firstOrDefault);
+        context.SaveChanges();
+
+        return firstOrDefault;
+    }
+
+    public ShoppingCart GetById(Guid id)
+    {
+        var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new NullReferenceException();
+        }
+
+        return firstOrDefault;
+    }
+
+    public User GetUserById(Guid id)
+    {
+        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
+        if (firstOrDefault is null)
+        {
+            throw new NullReferenceException();
+        }
+
+        return firstOrDefault;
+    }
+}

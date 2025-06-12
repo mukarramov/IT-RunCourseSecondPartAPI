@@ -8,8 +8,11 @@ public class Product : IEntity
     public decimal Price { get; set; }
     public Guid CategoryId { get; set; }
     public Category? Category { get; set; }
+    public Guid ShoppingCartId { get; set; }
+    public ShoppingCart? ShoppingCart { get; set; }
     public DateTime CreateAt { get; set; }
     public DateTime UpdateAt { get; set; }
     public bool IsDeleted { get; set; }
+    public List<CartItem>? CartItems { get; set; }
     public List<OrderItem>? OrderItems { get; set; }
 }

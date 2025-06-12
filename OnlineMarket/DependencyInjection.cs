@@ -22,12 +22,16 @@ public static class DependencyInjection
         service.AddScoped<IProductRepository, ProductRepository>();
         service.AddScoped<IOrderRepository, OrderRepository>();
         service.AddScoped<IOrderItemRepository, OrderItemRepository>();
+        service.AddScoped<ICartItemRepository, CartItemRepository>();
+        service.AddScoped<IShoppingCartRepository, ShoppingCartRepository>();
 
         service.AddScoped<IUserService, UserService>();
         service.AddScoped<ICategoryService, CategoryService>();
         service.AddScoped<IProductService, ProductService>();
         service.AddScoped<IOrderService, OrderService>();
         service.AddScoped<IOrderItemService, OrderItemService>();
+        service.AddScoped<ICartItemService, CartItemService>();
+        service.AddScoped<IShoppingCartService, ShoppingCartService>();
 
         return service;
     }

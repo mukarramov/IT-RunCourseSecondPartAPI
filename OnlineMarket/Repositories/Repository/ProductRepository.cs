@@ -20,7 +20,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         return context.Products.Include(x => x.Category);
     }
 
-    public Product Update(Guid id, Product user)
+    public Product Update(Guid id)
     {
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)

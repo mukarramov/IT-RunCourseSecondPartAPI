@@ -14,4 +14,5 @@ public class User : IEntity
     public DateTime UpdateAt { get; set; }
     public bool IsDeleted { get; set; }
     public List<Order>? Orders { get; set; }
+    public List<ShoppingCart>? ShoppingCarts { get; set; }
 }
