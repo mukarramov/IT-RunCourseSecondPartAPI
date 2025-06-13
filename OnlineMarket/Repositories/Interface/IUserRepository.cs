@@ -6,7 +6,7 @@ public interface IUserRepository
 {
     User Add(User user);
     IEnumerable<User> GetAll();
-    User Update(Guid id, User user);
+    User Update(User user);
     User Delete(Guid id);
 
     User GetById(Guid id);

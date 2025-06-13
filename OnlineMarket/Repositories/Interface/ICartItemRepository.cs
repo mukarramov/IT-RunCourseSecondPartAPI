@@ -6,7 +6,7 @@ public interface ICartItemRepository
 {
     CartItem Add(CartItem cartItem);
     IEnumerable<CartItem> GetAll();
-    CartItem Update(Guid id, CartItem cartItem);
+    CartItem Update(CartItem cartItem);
     CartItem Delete(Guid id);
 
     CartItem GetById(Guid id);

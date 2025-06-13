@@ -42,10 +42,11 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
 
         var map = mapper.Map(productCreate, product);
 
+        map.Id = id;
         map.CategoryId = categoryById.Id;
         map.Category = categoryById;
 
-        productRepository.Update(id, map);
+        productRepository.Update(map);
 
         return mapper.Map<ProductResponse>(map);
     }

@@ -40,11 +40,12 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
 
         var userById = orderRepository.GetUserById(orderCreate.UserId);
 
+        order.Id = id;
         order.TotalPrice = orderCreate.TotalPrice;
         order.UserId = userById.Id;
         order.User = userById;
 
-        orderRepository.Update(id, order);
+        orderRepository.Update(order);
 
         return mapper.Map<OrderResponse>(order);
     }

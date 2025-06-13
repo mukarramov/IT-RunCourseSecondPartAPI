@@ -23,9 +23,9 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
             .Include(x => x.ShoppingCart);
     }
 
-    public CartItem Update(Guid id, CartItem cartItem)
+    public CartItem Update(CartItem cartItem)
     {
-        var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == cartItem.Id);
         if (firstOrDefault is null)
         {
             throw new NullReferenceException();

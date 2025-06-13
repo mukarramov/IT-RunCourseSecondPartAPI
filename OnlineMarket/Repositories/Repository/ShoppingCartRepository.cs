@@ -22,8 +22,14 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         return includableQueryable;
     }
 
-    public ShoppingCart Update(Guid id, ShoppingCart shoppingCart)
+    public ShoppingCart Update(ShoppingCart shoppingCart)
     {
+        var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == shoppingCart.Id);
+        if (firstOrDefault is null)
+        {
+            throw new NullReferenceException();
+        }
+
         context.ShoppingCarts.Update(shoppingCart);
         context.SaveChanges();
 

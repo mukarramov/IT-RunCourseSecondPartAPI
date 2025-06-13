@@ -22,9 +22,9 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
         return orders;
     }
 
-    public Order Update(Guid id, Order user)
+    public Order Update(Order user)
     {
-        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
             throw new Exception();

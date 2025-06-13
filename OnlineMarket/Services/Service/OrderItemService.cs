@@ -46,12 +46,13 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
 
         var map = mapper.Map<OrderItem>(orderItemRequest);
 
+        map.Id = id;
         map.ProductId = product.Id;
         map.Product = product;
         map.OrderId = order.Id;
         map.Order = order;
 
-        orderItemRepository.Update(id, orderItem);
+        orderItemRepository.Update(orderItem);
 
         return mapper.Map<OrderItemResponse>(map);
     }

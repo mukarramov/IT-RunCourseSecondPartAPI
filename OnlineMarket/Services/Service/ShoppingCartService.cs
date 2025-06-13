@@ -32,10 +32,11 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
 
         var user = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
 
+        shoppingCart.Id = id;
         shoppingCart.UserId = user.Id;
         shoppingCart.User = user;
 
-        shoppingCartRepository.Update(id, shoppingCart);
+        shoppingCartRepository.Update(shoppingCart);
 
         return mapper.Map<ShoppingCartResponse>(shoppingCart);
     }

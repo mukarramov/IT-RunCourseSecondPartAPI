@@ -33,9 +33,10 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
     {
         var category = categoryRepository.GetById(id);
 
+        category.Id = id;
         category.Name = entity.Name;
 
-        categoryRepository.Update(id, category);
+        categoryRepository.Update(category);
 
         return mapper.Map<CategoryResponse>(category);
     }

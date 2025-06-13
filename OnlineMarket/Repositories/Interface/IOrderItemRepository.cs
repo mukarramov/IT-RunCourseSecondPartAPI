@@ -6,7 +6,7 @@ public interface IOrderItemRepository
 {
     OrderItem Add(OrderItem orderItem);
     IEnumerable<OrderItem> GetAll();
-    OrderItem Update(Guid id, OrderItem orderItem);
+    OrderItem Update(OrderItem orderItem);
     OrderItem Delete(Guid id);
 
     OrderItem GetById(Guid id);

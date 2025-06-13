@@ -21,9 +21,9 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
             .Include(x => x.Product);
     }
 
-    public OrderItem Update(Guid id, OrderItem orderItem)
+    public OrderItem Update(OrderItem orderItem)
     {
-        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == orderItem.Id);
         if (firstOrDefault is null)
         {
             throw new Exception();
