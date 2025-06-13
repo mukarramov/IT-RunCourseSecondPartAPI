@@ -1,3 +1,4 @@
+using AutoMapper;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
 using IT_RunCourseSecondPartAPI.Models;
@@ -6,7 +7,7 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IProductRepository productRepository) : IProductService
+public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
 {
     public ProductResponse Add(ProductCreate productCreate)
     {
@@ -17,45 +18,20 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
         var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
 
-        var product = new Product
-        {
-            Name = productCreate.Name,
-            Description = productCreate.Description,
-            Price = productCreate.Price,
-            CategoryId = productCreate.CategoryId,
-            Category = categoryById
-        };
+        var product = mapper.Map<Product>(productCreate);
+
+        product.CategoryId = categoryById.Id;
+        product.Category = categoryById;
 
         productRepository.Add(product);
 
-        var productResponse = new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Category = product.Category
-        };
-
-        return productResponse;
+        return mapper.Map<ProductResponse>(product);
     }
 
     public IEnumerable<ProductResponse> GetAll()
     {
-        var products = productRepository.GetAll();
-
-        var productResponse = products.Select(product => new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Category = product.Category
-        });
-
-        return productResponse;
+        return productRepository.GetAll().ToList()
+            .Select(x => mapper.Map<ProductResponse>(x));
     }
 
     public ProductResponse Update(Guid id, ProductCreate productCreate)
@@ -64,56 +40,23 @@ public class ProductService(IProductRepository productRepository) : IProductServ
 
         var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
 
-        product.Name = productCreate.Name;
-        product.Description = productCreate.Description;
-        product.Price = productCreate.Price;
-        product.CategoryId = categoryById.Id;
-        product.Category = categoryById;
+        var map = mapper.Map(productCreate, product);
 
-        var productResponse = new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Category = product.Category
-        };
+        map.CategoryId = categoryById.Id;
+        map.Category = categoryById;
 
-        return productResponse;
+        productRepository.Update(id, map);
+
+        return mapper.Map<ProductResponse>(map);
     }
 
     public ProductResponse Delete(Guid id)
     {
-        var product = productRepository.Delete(id);
-
-        var productResponse = new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Category = product.Category
-        };
-
-        return productResponse;
+        return mapper.Map<ProductResponse>(productRepository.Delete(id));
     }
 
     public ProductResponse GetById(Guid id)
     {
-        var product = productRepository.GetById(id);
-
-        var productResponse = new ProductResponse
-        {
-            Id = product.Id,
-            Name = product.Name,
-            Price = product.Price,
-            Description = product.Description,
-            CategoryId = product.CategoryId,
-            Category = product.Category
-        };
-
-        return productResponse;
+        return mapper.Map<ProductResponse>(productRepository.GetById(id));
     }
 }

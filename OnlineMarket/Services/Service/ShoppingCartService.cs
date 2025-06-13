@@ -30,38 +30,25 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
     {
         var shoppingCart = shoppingCartRepository.GetById(id);
 
-        shoppingCart.User = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
+        var user = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
+
+        shoppingCart.UserId = user.Id;
+        shoppingCart.User = user;
 
         shoppingCartRepository.Update(id, shoppingCart);
 
-        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
-
-        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
-
-        shoppingCartResponse.CreateAt = timeFromUtc;
-
-        return shoppingCartResponse;
+        return mapper.Map<ShoppingCartResponse>(shoppingCart);
     }
 
     public ShoppingCartResponse Delete(Guid id)
     {
-        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
-
-        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
-
-        shoppingCartResponse.CreateAt = timeFromUtc;
-
-        return shoppingCartResponse;
+        return mapper.Map<ShoppingCartResponse>
+            (shoppingCartRepository.GetById(id));
     }
 
     public ShoppingCartResponse GetById(Guid id)
     {
-        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
-
-        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
-
-        shoppingCartResponse.CreateAt = timeFromUtc;
-
-        return shoppingCartResponse;
+        return mapper.Map<ShoppingCartResponse>
+            (shoppingCartRepository.GetById(id));
     }
 }

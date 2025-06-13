@@ -1,4 +1,5 @@
 using IT_RunCourseSecondPartAPI.Data;
+using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +21,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         return context.Products.Include(x => x.Category);
     }
 
-    public Product Update(Guid id)
+    public Product Update(Guid id, Product productCreate)
     {
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
