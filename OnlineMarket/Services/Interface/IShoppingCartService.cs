@@ -7,10 +7,8 @@ namespace IT_RunCourseSecondPartAPI.Services.Interface;
 public interface IShoppingCartService
 {
     ShoppingCartResponse Add(ShoppingCartCreate shoppingCartCreate);
-    IQueryable<ShoppingCartResponse> GetAll();
+    IEnumerable<ShoppingCartResponse> GetAll();
     ShoppingCartResponse Update(Guid id, ShoppingCartCreate shoppingCartCreate);
     ShoppingCartResponse Delete(Guid id);
     ShoppingCartResponse GetById(Guid id);
-
-    User GetUserById(Guid id);
 }

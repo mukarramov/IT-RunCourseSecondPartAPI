@@ -1,6 +1,5 @@
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
-using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.Validations;
 

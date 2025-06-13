@@ -24,7 +24,7 @@ public class CartItemService(ICartItemRepository cartItemRepository, IMapper map
         return mapper.Map<CartItemResponse>(cartItem);
     }
 
-    public IQueryable<CartItemResponse> GetAll()
+    public IEnumerable<CartItemResponse> GetAll()
     {
         var cartItems = cartItemRepository.GetAll();
 

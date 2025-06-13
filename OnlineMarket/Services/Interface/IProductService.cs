@@ -6,7 +6,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Interface;
 public interface IProductService
 {
     ProductResponse Add(ProductCreate productCreate);
-    IQueryable<ProductResponse> GetAll();
+    IEnumerable<ProductResponse> GetAll();
     ProductResponse Update(Guid id, ProductCreate productCreate);
     ProductResponse Delete(Guid id);
 

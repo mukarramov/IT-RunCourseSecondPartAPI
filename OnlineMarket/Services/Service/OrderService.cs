@@ -30,7 +30,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         {
             Id = order.Id,
             TotalPrice = order.TotalPrice,
-            OrderDate = order.OrderDate,
+            CreateAt = order.CreateAt,
             UserId = order.UserId,
             User = order.User
         };
@@ -38,7 +38,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         return orderResponse;
     }
 
-    public IQueryable<OrderResponse> GetAll()
+    public IEnumerable<OrderResponse> GetAll()
     {
         var orders = orderRepository.GetAll();
 
@@ -46,7 +46,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         {
             Id = order.Id,
             TotalPrice = order.TotalPrice,
-            OrderDate = order.OrderDate,
+            CreateAt = order.CreateAt,
             UserId = order.UserId,
             User = order.User
         });
@@ -70,7 +70,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         {
             Id = orderUpdate.Id,
             TotalPrice = orderUpdate.TotalPrice,
-            OrderDate = orderUpdate.OrderDate,
+            CreateAt = order.CreateAt,
             UserId = orderUpdate.UserId,
             User = orderUpdate.User
         };
@@ -86,7 +86,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         {
             Id = order.Id,
             TotalPrice = order.TotalPrice,
-            OrderDate = order.OrderDate,
+            CreateAt = order.CreateAt,
             UserId = order.UserId,
             User = order.User
         };
@@ -102,7 +102,7 @@ public class OrderService(IOrderRepository orderRepository) : IOrderService
         {
             Id = order.Id,
             TotalPrice = order.TotalPrice,
-            OrderDate = order.OrderDate,
+            CreateAt = order.CreateAt,
             UserId = order.UserId,
             User = order.User
         };

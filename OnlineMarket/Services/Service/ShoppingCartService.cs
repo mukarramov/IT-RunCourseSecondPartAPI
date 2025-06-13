@@ -20,12 +20,10 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
         return mapper.Map<ShoppingCartResponse>(shoppingCart);
     }
 
-    public IQueryable<ShoppingCartResponse> GetAll()
+    public IEnumerable<ShoppingCartResponse> GetAll()
     {
-        var shoppingCartResponses = shoppingCartRepository.GetAll()
+        return shoppingCartRepository.GetAll().ToList()
             .Select(x => mapper.Map<ShoppingCartResponse>(x));
-
-        return shoppingCartResponses;
     }
 
     public ShoppingCartResponse Update(Guid id, ShoppingCartCreate shoppingCartCreate)
@@ -36,21 +34,34 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
 
         shoppingCartRepository.Update(id, shoppingCart);
 
-        return mapper.Map<ShoppingCartResponse>(shoppingCart);
+        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
+
+        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
+
+        shoppingCartResponse.CreateAt = timeFromUtc;
+
+        return shoppingCartResponse;
     }
 
     public ShoppingCartResponse Delete(Guid id)
     {
-        return mapper.Map<ShoppingCartResponse>(shoppingCartRepository.Delete(id));
+        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
+
+        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
+
+        shoppingCartResponse.CreateAt = timeFromUtc;
+
+        return shoppingCartResponse;
     }
 
     public ShoppingCartResponse GetById(Guid id)
     {
-        return mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
-    }
+        var shoppingCartResponse = mapper.Map<ShoppingCartResponse>(shoppingCartRepository.GetById(id));
 
-    public User GetUserById(Guid id)
-    {
-        return shoppingCartRepository.GetUserById(id);
+        var timeFromUtc = TimeZoneInfo.ConvertTimeFromUtc(shoppingCartResponse.CreateAt, TimeZoneInfo.Local);
+
+        shoppingCartResponse.CreateAt = timeFromUtc;
+
+        return shoppingCartResponse;
     }
 }

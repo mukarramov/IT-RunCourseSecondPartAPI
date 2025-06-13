@@ -5,7 +5,7 @@ namespace IT_RunCourseSecondPartAPI.Repositories.Interface;
 public interface ICategoryRepository
 {
     Category Add(Category category);
-    IQueryable<Category> GetAll();
+    IEnumerable<Category> GetAll();
     Category Update(Guid id, Category category);
     Category Delete(Guid id);
 

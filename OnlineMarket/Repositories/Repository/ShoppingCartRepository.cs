@@ -15,7 +15,7 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         return shoppingCart;
     }
 
-    public IQueryable<ShoppingCart> GetAll()
+    public IEnumerable<ShoppingCart> GetAll()
     {
         var includableQueryable = context.ShoppingCarts.Include(x => x.User);
 

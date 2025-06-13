@@ -15,7 +15,7 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         return product;
     }
 
-    public IQueryable<Product> GetAll()
+    public IEnumerable<Product> GetAll()
     {
         return context.Products.Include(x => x.Category);
     }

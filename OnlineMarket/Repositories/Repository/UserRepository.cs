@@ -14,7 +14,7 @@ public class UserRepository(AppDbContext context) : IUserRepository
         return user;
     }
 
-    public IQueryable<User> GetAll()
+    public IEnumerable<User> GetAll()
     {
         return context.Users;
     }

@@ -5,7 +5,7 @@ namespace IT_RunCourseSecondPartAPI.Repositories.Interface;
 public interface ICartItemRepository
 {
     CartItem Add(CartItem cartItem);
-    IQueryable<CartItem> GetAll();
+    IEnumerable<CartItem> GetAll();
     CartItem Update(Guid id, CartItem cartItem);
     CartItem Delete(Guid id);
 

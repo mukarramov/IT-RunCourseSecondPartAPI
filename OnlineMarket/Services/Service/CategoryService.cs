@@ -31,7 +31,7 @@ public class CategoryService(ICategoryRepository categoryRepository) : ICategory
         return categoryResponse;
     }
 
-    public IQueryable<CategoryResponse> GetAll()
+    public IEnumerable<CategoryResponse> GetAll()
     {
         var categories = categoryRepository.GetAll();
 

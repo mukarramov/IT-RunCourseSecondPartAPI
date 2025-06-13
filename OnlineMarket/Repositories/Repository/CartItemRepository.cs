@@ -17,7 +17,7 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         return cartItem;
     }
 
-    public IQueryable<CartItem> GetAll()
+    public IEnumerable<CartItem> GetAll()
     {
         return context.CartItems.Include(x => x.Product).ThenInclude(x => x!.Category)
             .Include(x => x.ShoppingCart);
