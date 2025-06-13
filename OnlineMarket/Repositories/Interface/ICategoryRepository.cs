@@ -6,7 +6,7 @@ public interface ICategoryRepository
 {
     Category Add(Category category);
     IEnumerable<Category> GetAll();
-    Category Update(Guid id, Category category);
+    Category Update(Category category);
     Category Delete(Guid id);
 
     Category GetById(Guid id);

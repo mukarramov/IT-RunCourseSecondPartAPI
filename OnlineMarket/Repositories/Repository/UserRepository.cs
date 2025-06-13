@@ -19,9 +19,9 @@ public class UserRepository(AppDbContext context) : IUserRepository
         return context.Users;
     }
 
-    public User Update(Guid id, User user)
+    public User Update(User user)
     {
-        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
             throw new Exception();

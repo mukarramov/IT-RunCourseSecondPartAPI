@@ -19,9 +19,9 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
         return context.Categories;
     }
 
-    public Category Update(Guid id, Category category)
+    public Category Update(Category category)
     {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
+        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == category.Id);
         if (firstOrDefault is null)
         {
             throw new Exception();

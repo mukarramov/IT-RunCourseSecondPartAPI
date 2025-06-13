@@ -6,7 +6,7 @@ public interface IShoppingCartRepository
 {
     ShoppingCart Add(ShoppingCart shoppingCart);
     IEnumerable<ShoppingCart> GetAll();
-    ShoppingCart Update(Guid id, ShoppingCart shoppingCart);
+    ShoppingCart Update(ShoppingCart shoppingCart);
     ShoppingCart Delete(Guid id);
     ShoppingCart GetById(Guid id);
 

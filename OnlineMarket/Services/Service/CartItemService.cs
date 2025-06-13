@@ -38,10 +38,11 @@ public class CartItemService(ICartItemRepository cartItemRepository, IMapper map
         var productById = cartItemRepository.GetProductById(cartItemCreate.ProductId);
         var shoppingCartById = cartItemRepository.GetShoppingCartById(cartItemCreate.ShoppingCartId);
 
+        cartItem.Id = id;
         cartItem.Product = productById;
         cartItem.ShoppingCart = shoppingCartById;
 
-        cartItemRepository.Update(id, cartItem);
+        cartItemRepository.Update(cartItem);
 
         return mapper.Map<CartItemResponse>(mapper.Map(cartItemCreate, cartItem));
     }

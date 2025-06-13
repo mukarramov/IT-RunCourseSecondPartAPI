@@ -46,10 +46,14 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
     public UserResponse Update(Guid id, UserCreate userCreate)
     {
         var user = userRepository.GetById(id);
+        
+        user.Id = id;
+        
+        var map = mapper.Map(userCreate, user);
 
-        userRepository.Update(id, user);
+        userRepository.Update(map);
 
-        return mapper.Map<UserResponse>(user);
+        return mapper.Map<UserResponse>(map);
     }
 
     public UserResponse Delete(Guid id)
@@ -61,6 +65,6 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
     public UserResponse GetById(Guid id)
     {
         return mapper.Map<UserResponse>
-            (userRepository.Delete(id));
+            (userRepository.GetById(id));
     }
 }

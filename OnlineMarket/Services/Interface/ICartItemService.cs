@@ -1,6 +1,5 @@
 using IT_RunCourseSecondPartAPI.Dtos.CreatedRequest;
 using IT_RunCourseSecondPartAPI.DTOs.Response;
-using IT_RunCourseSecondPartAPI.Models;
 
 namespace IT_RunCourseSecondPartAPI.Services.Interface;
 
