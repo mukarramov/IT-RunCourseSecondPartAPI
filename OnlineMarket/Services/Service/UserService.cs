@@ -40,7 +40,7 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
     public IEnumerable<UserResponse> GetAll()
     {
         return userRepository.GetAll().ToList()
-            .Select(x => mapper.Map<UserResponse>(x));
+            .Select(mapper.Map<UserResponse>);
     }
 
     public UserResponse Update(Guid id, UserCreate userCreate)
