@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
+public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger) : IOrderItemRepository
 {
     public OrderItem Add(OrderItem orderItem)
     {
@@ -26,6 +26,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == orderItem.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {orderItem}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -40,6 +42,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {orderItem}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -54,6 +58,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {orderItem}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -66,6 +72,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
             .FirstOrDefault(x => x.Id == id);
         if (product is null)
         {
+            logger.LogError("can not found the {product}", product);
+
             throw new Exception();
         }
 
@@ -77,6 +85,8 @@ public class OrderItemRepository(AppDbContext context) : IOrderItemRepository
         var order = context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
         if (order is null)
         {
+            logger.LogError("can not found the {order}", order);
+
             throw new Exception();
         }
 

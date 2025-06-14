@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class ShoppingCartRepository(AppDbContext context) : IShoppingCartRepository
+public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> logger) : IShoppingCartRepository
 {
     public ShoppingCart Add(ShoppingCart shoppingCart)
     {
@@ -27,6 +27,8 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == shoppingCart.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {shoppingCart}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -41,6 +43,8 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {shoppingCart}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -55,6 +59,8 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {shoppingCart}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -66,6 +72,8 @@ public class ShoppingCartRepository(AppDbContext context) : IShoppingCartReposit
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {user}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 

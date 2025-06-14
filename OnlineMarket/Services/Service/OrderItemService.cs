@@ -7,7 +7,8 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper) : IOrderItemService
+public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper, ILogger<OrderItem> logger)
+    : IOrderItemService
 {
     public OrderItemResponse Add(OrderItemCreate orderItemRequest)
     {
@@ -53,6 +54,8 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
         map.Order = order;
 
         orderItemRepository.Update(orderItem);
+        
+        logger.LogInformation("update {orderItem} successfully passed", orderItem);
 
         return mapper.Map<OrderItemResponse>(map);
     }

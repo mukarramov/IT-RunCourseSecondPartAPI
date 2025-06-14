@@ -4,7 +4,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class CategoryRepository(AppDbContext context) : ICategoryRepository
+public class CategoryRepository(AppDbContext context, ILogger<Category> logger) : ICategoryRepository
 {
     public Category Add(Category category)
     {
@@ -24,6 +24,8 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == category.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {category}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -38,6 +40,8 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {category}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -52,6 +56,8 @@ public class CategoryRepository(AppDbContext context) : ICategoryRepository
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {category}", firstOrDefault);
+
             throw new Exception();
         }
 

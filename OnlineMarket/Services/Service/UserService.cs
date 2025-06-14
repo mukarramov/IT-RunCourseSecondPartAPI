@@ -8,8 +8,11 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class UserService(IUserRepository userRepository, IMapper mapper, IValidator<UserCreate> validator)
-    : IUserService
+public class UserService(
+    IUserRepository userRepository,
+    IMapper mapper,
+    IValidator<UserCreate> validator,
+    ILogger<User> logger) : IUserService
 {
     public UserResponse Add(UserCreate userCreate)
     {
@@ -29,10 +32,16 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
                 x.ErrorCode,
                 x.ErrorMessage
             });
+
+            logger.LogError("the {email} or {password} can not passed the validation", userCreate.Email,
+                userCreate.Password);
+
             throw new Exception($"{errorValidate}");
         }
 
         userRepository.Add(user);
+        
+        logger.LogInformation("the {user} successfully added to db", user);
 
         return mapper.Map<UserResponse>(user);
     }
@@ -52,6 +61,8 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
         var map = mapper.Map(userCreate, user);
 
         userRepository.Update(map);
+        
+        logger.LogInformation("update {user} successfully passed", user);
 
         return mapper.Map<UserResponse>(map);
     }

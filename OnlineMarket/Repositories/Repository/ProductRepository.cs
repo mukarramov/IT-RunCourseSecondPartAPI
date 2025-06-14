@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class ProductRepository(AppDbContext context) : IProductRepository
+public class ProductRepository(AppDbContext context, ILogger<Product> logger) : IProductRepository
 {
     public Product Add(Product product)
     {
@@ -26,6 +26,8 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == productCreate.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {product}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -40,6 +42,8 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {product}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -54,6 +58,8 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {product}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -65,6 +71,8 @@ public class ProductRepository(AppDbContext context) : IProductRepository
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {category}", firstOrDefault);
+
             throw new Exception();
         }
 

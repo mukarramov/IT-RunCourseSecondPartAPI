@@ -7,7 +7,8 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class CartItemService(ICartItemRepository cartItemRepository, IMapper mapper) : ICartItemService
+public class CartItemService(ICartItemRepository cartItemRepository, IMapper mapper, ILogger<CartItem> logger)
+    : ICartItemService
 {
     public CartItemResponse Add(CartItemCreate cartItemCreate)
     {
@@ -43,6 +44,8 @@ public class CartItemService(ICartItemRepository cartItemRepository, IMapper map
         cartItem.ShoppingCart = shoppingCartById;
 
         cartItemRepository.Update(cartItem);
+
+        logger.LogInformation("update {cartItem} successfully passed", cartItem);
 
         return mapper.Map<CartItemResponse>(mapper.Map(cartItemCreate, cartItem));
     }

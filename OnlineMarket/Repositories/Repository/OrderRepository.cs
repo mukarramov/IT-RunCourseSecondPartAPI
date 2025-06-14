@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class OrderRepository(AppDbContext context) : IOrderRepository
+public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrderRepository
 {
     public Order Add(Order orderItem)
     {
@@ -27,6 +27,8 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {order}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -41,6 +43,8 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {order}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -55,6 +59,8 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {order}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -66,6 +72,8 @@ public class OrderRepository(AppDbContext context) : IOrderRepository
         var user = context.Users.FirstOrDefault(x => x.Id == id);
         if (user is null)
         {
+            logger.LogError("can not found the {user}", user);
+
             throw new Exception();
         }
 

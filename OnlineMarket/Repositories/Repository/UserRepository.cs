@@ -4,7 +4,7 @@ using IT_RunCourseSecondPartAPI.Repositories.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class UserRepository(AppDbContext context) : IUserRepository
+public class UserRepository(AppDbContext context, ILogger<User> logger) : IUserRepository
 {
     public User Add(User user)
     {
@@ -24,6 +24,8 @@ public class UserRepository(AppDbContext context) : IUserRepository
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {user}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -38,6 +40,8 @@ public class UserRepository(AppDbContext context) : IUserRepository
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {user}", firstOrDefault);
+
             throw new Exception();
         }
 
@@ -52,6 +56,8 @@ public class UserRepository(AppDbContext context) : IUserRepository
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {user}", firstOrDefault);
+
             throw new Exception();
         }
 

@@ -7,7 +7,8 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper) : ICategoryService
+public class CategoryService(ICategoryRepository categoryRepository, IMapper mapper, ILogger<Category> logger)
+    : ICategoryService
 {
     public CategoryResponse Add(CategoryCreate categoryCreate)
     {
@@ -37,6 +38,8 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
         category.Name = entity.Name;
 
         categoryRepository.Update(category);
+        
+        logger.LogInformation("update {category} successfully passed", category);
 
         return mapper.Map<CategoryResponse>(category);
     }

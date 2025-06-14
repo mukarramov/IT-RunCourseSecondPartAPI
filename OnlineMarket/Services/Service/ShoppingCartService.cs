@@ -7,7 +7,10 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IMapper mapper) : IShoppingCartService
+public class ShoppingCartService(
+    IShoppingCartRepository shoppingCartRepository,
+    IMapper mapper,
+    ILogger<ShoppingCart> logger) : IShoppingCartService
 {
     public ShoppingCartResponse Add(ShoppingCartCreate shoppingCartCreate)
     {
@@ -37,6 +40,8 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
         shoppingCart.User = user;
 
         shoppingCartRepository.Update(shoppingCart);
+
+        logger.LogInformation("update {shoppingCart} successfully passed", shoppingCart);
 
         return mapper.Map<ShoppingCartResponse>(shoppingCart);
     }

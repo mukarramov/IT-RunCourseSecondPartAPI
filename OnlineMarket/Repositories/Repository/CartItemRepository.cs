@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IT_RunCourseSecondPartAPI.Repositories.Repository;
 
-public class CartItemRepository(AppDbContext context) : ICartItemRepository
+public class CartItemRepository(AppDbContext context, ILogger<CartItem> logger) : ICartItemRepository
 {
     public CartItem Add(CartItem cartItem)
     {
@@ -28,6 +28,8 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == cartItem.Id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {cartItem}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -42,6 +44,8 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {cartItem}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -56,6 +60,8 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {cartItem}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -67,6 +73,8 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {product}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 
@@ -78,6 +86,8 @@ public class CartItemRepository(AppDbContext context) : ICartItemRepository
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
+            logger.LogError("can not found the {shoppingCart}", firstOrDefault);
+
             throw new NullReferenceException();
         }
 

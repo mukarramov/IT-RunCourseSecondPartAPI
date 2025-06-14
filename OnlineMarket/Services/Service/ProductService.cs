@@ -7,7 +7,8 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IProductRepository productRepository, IMapper mapper) : IProductService
+public class ProductService(IProductRepository productRepository, IMapper mapper, ILogger<Product> logger)
+    : IProductService
 {
     public ProductResponse Add(ProductCreate productCreate)
     {
@@ -47,6 +48,8 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
         map.Category = categoryById;
 
         productRepository.Update(map);
+
+        logger.LogInformation("update {product} successfully passed", product);
 
         return mapper.Map<ProductResponse>(map);
     }
