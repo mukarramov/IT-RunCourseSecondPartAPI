@@ -34,7 +34,7 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
     public IEnumerable<OrderItemResponse> GetAll()
     {
         return orderItemRepository.GetAll().ToList()
-            .Select(x => mapper.Map<OrderItemResponse>(x));
+            .Select(mapper.Map<OrderItemResponse>);
     }
 
     public OrderItemResponse Update(Guid id, OrderItemCreate orderItemRequest)

@@ -26,7 +26,7 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
     public IEnumerable<CategoryResponse> GetAll()
     {
         return categoryRepository.GetAll().ToList()
-            .Select(x => mapper.Map<CategoryResponse>(x));
+            .Select(mapper.Map<CategoryResponse>);
     }
 
     public CategoryResponse Update(Guid id, CategoryCreate entity)

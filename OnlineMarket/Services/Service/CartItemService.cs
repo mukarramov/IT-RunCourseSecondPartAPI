@@ -28,7 +28,7 @@ public class CartItemService(ICartItemRepository cartItemRepository, IMapper map
     {
         var cartItems = cartItemRepository.GetAll();
 
-        return cartItems.Select(x => mapper.Map<CartItemResponse>(x));
+        return cartItems.Select(mapper.Map<CartItemResponse>);
     }
 
     public CartItemResponse Update(Guid id, CartItemCreate cartItemCreate)

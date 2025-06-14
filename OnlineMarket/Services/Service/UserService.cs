@@ -46,9 +46,9 @@ public class UserService(IUserRepository userRepository, IMapper mapper, IValida
     public UserResponse Update(Guid id, UserCreate userCreate)
     {
         var user = userRepository.GetById(id);
-        
+
         user.Id = id;
-        
+
         var map = mapper.Map(userCreate, user);
 
         userRepository.Update(map);

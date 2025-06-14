@@ -31,7 +31,7 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper) : IO
     public IEnumerable<OrderResponse> GetAll()
     {
         return orderRepository.GetAll().ToList()
-            .Select(x => mapper.Map<OrderResponse>(x));
+            .Select(mapper.Map<OrderResponse>);
     }
 
     public OrderResponse Update(Guid id, OrderCreate orderCreate)

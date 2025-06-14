@@ -31,7 +31,7 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
     public IEnumerable<ProductResponse> GetAll()
     {
         return productRepository.GetAll().ToList()
-            .Select(x => mapper.Map<ProductResponse>(x));
+            .Select(mapper.Map<ProductResponse>);
     }
 
     public ProductResponse Update(Guid id, ProductCreate productCreate)

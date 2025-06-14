@@ -23,7 +23,7 @@ public class ShoppingCartService(IShoppingCartRepository shoppingCartRepository,
     public IEnumerable<ShoppingCartResponse> GetAll()
     {
         return shoppingCartRepository.GetAll().ToList()
-            .Select(x => mapper.Map<ShoppingCartResponse>(x));
+            .Select(mapper.Map<ShoppingCartResponse>);
     }
 
     public ShoppingCartResponse Update(Guid id, ShoppingCartCreate shoppingCartCreate)
