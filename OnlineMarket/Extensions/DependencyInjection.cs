@@ -1,13 +1,12 @@
 using FluentValidation;
 using IT_RunCourseSecondPartAPI.Interceptors;
-using IT_RunCourseSecondPartAPI.Models;
 using IT_RunCourseSecondPartAPI.Repositories.Interface;
 using IT_RunCourseSecondPartAPI.Repositories.Repository;
 using IT_RunCourseSecondPartAPI.Services.Interface;
 using IT_RunCourseSecondPartAPI.Services.Service;
 using IT_RunCourseSecondPartAPI.Validations;
 
-namespace IT_RunCourseSecondPartAPI;
+namespace IT_RunCourseSecondPartAPI.Extensions;
 
 public static class DependencyInjection
 {
