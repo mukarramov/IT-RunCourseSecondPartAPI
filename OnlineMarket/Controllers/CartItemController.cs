@@ -23,18 +23,39 @@ public class CartItemController(ICartItemService cartItemService) : ControllerBa
     [HttpPut]
     public IActionResult Update(Guid id, CartItemCreate cartItemCreate)
     {
-        return Ok(cartItemService.Update(id, cartItemCreate));
+        var cartItemResponse = cartItemService.Update(id, cartItemCreate);
+
+        if (cartItemResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(cartItemResponse);
     }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
     {
-        return Ok(cartItemService.Delete(id));
+        var cartItemResponse = cartItemService.Delete(id);
+
+        if (cartItemResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(cartItemResponse);
     }
 
     [HttpGet]
     public IActionResult GetById(Guid id)
     {
-        return Ok(cartItemService.GetById(id));
+        var cartItemResponse = cartItemService.GetById(id);
+
+        if (cartItemResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(cartItemResponse);
     }
 }

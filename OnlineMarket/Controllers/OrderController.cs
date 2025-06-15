@@ -20,21 +20,42 @@ public class OrderController(IOrderService orderService) : ControllerBase
         return Ok(orderService.GetAll());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetById(Guid id)
-    {
-        return Ok(orderService.GetById(id));
-    }
-
     [HttpPut]
     public IActionResult Update(Guid id, OrderCreate orderCreate)
     {
-        return Ok(orderService.Update(id, orderCreate));
+        var orderResponse = orderService.Update(id, orderCreate);
+
+        if (orderResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(orderResponse);
     }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
     {
-        return Ok(orderService.Delete(id));
+        var orderResponse = orderService.Delete(id);
+
+        if (orderResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(orderResponse);
+    }
+
+    [HttpGet]
+    public IActionResult GetById(Guid id)
+    {
+        var orderResponse = orderService.GetById(id);
+
+        if (orderResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(orderResponse);
     }
 }

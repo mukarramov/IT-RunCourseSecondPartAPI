@@ -23,18 +23,39 @@ public class ShoppingCartController(IShoppingCartService shoppingCartService) : 
     [HttpPut]
     public IActionResult Update(Guid id, ShoppingCartCreate shoppingCartCreate)
     {
-        return Ok(shoppingCartService.Update(id, shoppingCartCreate));
+        var shoppingCartResponse = shoppingCartService.Update(id, shoppingCartCreate);
+
+        if (shoppingCartResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(shoppingCartResponse);
     }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
     {
-        return Ok(shoppingCartService.Delete(id));
+        var shoppingCartResponse = shoppingCartService.Delete(id);
+
+        if (shoppingCartResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(shoppingCartResponse);
     }
 
     [HttpGet]
     public IActionResult GetById(Guid id)
     {
-        return Ok(shoppingCartService.GetById(id));
+        var shoppingCartResponse = shoppingCartService.GetById(id);
+
+        if (shoppingCartResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(shoppingCartResponse);
     }
 }

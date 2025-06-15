@@ -20,21 +20,39 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
         return Ok(categoryService.GetAll());
     }
 
-    [HttpGet("{id}")]
-    public IActionResult GetById(Guid id)
-    {
-        return Ok(categoryService.GetById(id));
-    }
-
     [HttpPut]
     public IActionResult Update(Guid id, CategoryCreate categoryCreate)
     {
-        return Ok(categoryService.Update(id, categoryCreate));
-    }
+        var categoryResponse = categoryService.Update(id, categoryCreate);
+
+        if (categoryResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(categoryResponse);    }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
     {
-        return Ok(categoryService.Delete(id));
-    }
+        var categoryResponse = categoryService.Delete(id);
+
+        if (categoryResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(categoryResponse);    }
+
+    [HttpGet]
+    public IActionResult GetById(Guid id)
+    {
+        var categoryResponse = categoryService.GetById(id);
+
+        if (categoryResponse is null)
+        {
+            return NotFound();
+        }
+
+        return Ok(categoryResponse);    }
 }

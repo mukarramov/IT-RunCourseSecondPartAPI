@@ -20,10 +20,15 @@ public class UserController(IUserService userService) : ControllerBase
         return Ok(userService.GetAll());
     }
 
-    [HttpPut("[action]")]
+    [HttpPut]
     public IActionResult UpdateUser(Guid id, UserCreate userCreate)
     {
         var userResponse = userService.Update(id, userCreate);
+
+        if (userResponse is null)
+        {
+            return NotFound();
+        }
 
         return Ok(userResponse);
     }
@@ -33,13 +38,23 @@ public class UserController(IUserService userService) : ControllerBase
     {
         var userResponse = userService.Delete(userId);
 
+        if (userResponse is null)
+        {
+            return NotFound();
+        }
+
         return Ok(userResponse);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet]
     public IActionResult GetById(Guid id)
     {
         var userResponse = userService.GetById(id);
+
+        if (userResponse is null)
+        {
+            return NotFound();
+        }
 
         return Ok(userResponse);
     }
