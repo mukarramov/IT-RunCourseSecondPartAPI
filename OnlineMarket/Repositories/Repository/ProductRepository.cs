@@ -18,17 +18,17 @@ public class ProductRepository(AppDbContext context, ILogger<Product> logger) : 
 
     public IEnumerable<Product> GetAll()
     {
-        return context.Products.Include(x => x.Category);
+        return context.Products.Include(x => x.Category).ToList();
     }
 
-    public Product Update(Product productCreate)
+    public Product? Update(Product productCreate)
     {
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == productCreate.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {product}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Products.Update(firstOrDefault);
@@ -37,14 +37,14 @@ public class ProductRepository(AppDbContext context, ILogger<Product> logger) : 
         return firstOrDefault;
     }
 
-    public Product Delete(Guid id)
+    public Product? Delete(Guid id)
     {
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {product}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Remove(firstOrDefault);
@@ -53,27 +53,27 @@ public class ProductRepository(AppDbContext context, ILogger<Product> logger) : 
         return firstOrDefault;
     }
 
-    public Product GetById(Guid id)
+    public Product? GetById(Guid id)
     {
         var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {product}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;
     }
 
-    public Category GetCategoryById(Guid id)
+    public Category? GetCategoryById(Guid id)
     {
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {category}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;

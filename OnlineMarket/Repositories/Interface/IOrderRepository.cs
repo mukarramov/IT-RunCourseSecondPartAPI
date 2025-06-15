@@ -6,10 +6,10 @@ public interface IOrderRepository
 {
     Order Add(Order order);
     IEnumerable<Order> GetAll();
-    Order Update(Order order);
-    Order Delete(Guid id);
+    Order? Update(Order order);
+    Order? Delete(Guid id);
 
-    Order GetById(Guid id);
+    Order? GetById(Guid id);
 
-    public User GetUserById(Guid id);
+    User? GetUserById(Guid id);
 }

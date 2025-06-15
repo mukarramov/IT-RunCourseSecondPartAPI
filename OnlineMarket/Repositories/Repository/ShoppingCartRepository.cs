@@ -17,19 +17,20 @@ public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> 
 
     public IEnumerable<ShoppingCart> GetAll()
     {
-        var includableQueryable = context.ShoppingCarts.Include(x => x.User);
+        var shoppingCarts = context.ShoppingCarts
+            .Include(x => x.User).ToList();
 
-        return includableQueryable;
+        return shoppingCarts;
     }
 
-    public ShoppingCart Update(ShoppingCart shoppingCart)
+    public ShoppingCart? Update(ShoppingCart shoppingCart)
     {
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == shoppingCart.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {shoppingCart}", firstOrDefault);
 
-            throw new NullReferenceException();
+            return null;
         }
 
         context.ShoppingCarts.Update(shoppingCart);
@@ -38,14 +39,14 @@ public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> 
         return shoppingCart;
     }
 
-    public ShoppingCart Delete(Guid id)
+    public ShoppingCart? Delete(Guid id)
     {
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {shoppingCart}", firstOrDefault);
 
-            throw new NullReferenceException();
+            return null;
         }
 
         context.ShoppingCarts.Remove(firstOrDefault);
@@ -54,27 +55,27 @@ public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> 
         return firstOrDefault;
     }
 
-    public ShoppingCart GetById(Guid id)
+    public ShoppingCart? GetById(Guid id)
     {
         var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {shoppingCart}", firstOrDefault);
 
-            throw new NullReferenceException();
+            return null;
         }
 
         return firstOrDefault;
     }
 
-    public User GetUserById(Guid id)
+    public User? GetUserById(Guid id)
     {
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {user}", firstOrDefault);
 
-            throw new NullReferenceException();
+            return null;
         }
 
         return firstOrDefault;

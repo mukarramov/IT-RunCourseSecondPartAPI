@@ -18,17 +18,17 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
     public IEnumerable<OrderItem> GetAll()
     {
         return context.OrderItems.Include(x => x.Order)
-            .Include(x => x.Product);
+            .Include(x => x.Product).ToList();
     }
 
-    public OrderItem Update(OrderItem orderItem)
+    public OrderItem? Update(OrderItem orderItem)
     {
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == orderItem.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {orderItem}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.OrderItems.Update(firstOrDefault);
@@ -37,14 +37,14 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
         return firstOrDefault;
     }
 
-    public OrderItem Delete(Guid id)
+    public OrderItem? Delete(Guid id)
     {
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {orderItem}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Remove(firstOrDefault);
@@ -53,20 +53,20 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
         return firstOrDefault;
     }
 
-    public OrderItem GetById(Guid id)
+    public OrderItem? GetById(Guid id)
     {
         var firstOrDefault = context.OrderItems.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {orderItem}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;
     }
 
-    public Product GetProductById(Guid id)
+    public Product? GetProductById(Guid id)
     {
         var product = context.Products.Include(x => x.Category)
             .FirstOrDefault(x => x.Id == id);
@@ -74,20 +74,20 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
         {
             logger.LogError("can not found the {product}", product);
 
-            throw new Exception();
+            return null;
         }
 
         return product;
     }
 
-    public Order GetOrderById(Guid id)
+    public Order? GetOrderById(Guid id)
     {
         var order = context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
         if (order is null)
         {
             logger.LogError("can not found the {order}", order);
 
-            throw new Exception();
+            return null;
         }
 
         return order;

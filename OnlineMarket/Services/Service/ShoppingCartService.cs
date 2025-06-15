@@ -12,11 +12,18 @@ public class ShoppingCartService(
     IMapper mapper,
     ILogger<ShoppingCart> logger) : IShoppingCartService
 {
-    public ShoppingCartResponse Add(ShoppingCartCreate shoppingCartCreate)
+    public ShoppingCartResponse? Add(ShoppingCartCreate shoppingCartCreate)
     {
         var shoppingCart = mapper.Map<ShoppingCart>(shoppingCartCreate);
 
-        shoppingCart.User = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
+        var userById = shoppingCartRepository.GetUserById(shoppingCart.UserId);
+        if (userById is null)
+        {
+            return null;
+        }
+
+        shoppingCart.UserId = userById.Id;
+        shoppingCart.User = userById;
 
         shoppingCartRepository.Add(shoppingCart);
 
@@ -25,15 +32,25 @@ public class ShoppingCartService(
 
     public IEnumerable<ShoppingCartResponse> GetAll()
     {
-        return shoppingCartRepository.GetAll().ToList()
+        return shoppingCartRepository.GetAll()
             .Select(mapper.Map<ShoppingCartResponse>);
     }
 
-    public ShoppingCartResponse Update(Guid id, ShoppingCartCreate shoppingCartCreate)
+    public ShoppingCartResponse? Update(Guid id, ShoppingCartCreate shoppingCartCreate)
     {
         var shoppingCart = shoppingCartRepository.GetById(id);
 
+        if (shoppingCart is null)
+        {
+            return null;
+        }
+
         var user = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
+
+        if (user is null)
+        {
+            return null;
+        }
 
         shoppingCart.Id = id;
         shoppingCart.UserId = user.Id;
@@ -46,15 +63,17 @@ public class ShoppingCartService(
         return mapper.Map<ShoppingCartResponse>(shoppingCart);
     }
 
-    public ShoppingCartResponse Delete(Guid id)
+    public ShoppingCartResponse? Delete(Guid id)
     {
-        return mapper.Map<ShoppingCartResponse>
-            (shoppingCartRepository.GetById(id));
+        var shoppingCart = shoppingCartRepository.Delete(id);
+
+        return shoppingCart is null ? null : mapper.Map<ShoppingCartResponse>(shoppingCart);
     }
 
-    public ShoppingCartResponse GetById(Guid id)
+    public ShoppingCartResponse? GetById(Guid id)
     {
-        return mapper.Map<ShoppingCartResponse>
-            (shoppingCartRepository.GetById(id));
+        var shoppingCart = shoppingCartRepository.GetById(id);
+
+        return shoppingCart is null ? null : mapper.Map<ShoppingCartResponse>(shoppingCart);
     }
 }

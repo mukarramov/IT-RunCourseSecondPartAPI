@@ -6,9 +6,9 @@ public interface IProductRepository
 {
     Product Add(Product product);
     IEnumerable<Product> GetAll();
-    Product Update(Product product);
-    Product Delete(Guid id);
-    Product GetById(Guid id);
+    Product? Update(Product product);
+    Product? Delete(Guid id);
+    Product? GetById(Guid id);
 
-    public Category GetCategoryById(Guid id);
+    Category? GetCategoryById(Guid id);
 }

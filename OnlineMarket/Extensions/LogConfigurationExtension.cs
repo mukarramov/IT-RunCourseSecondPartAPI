@@ -11,7 +11,7 @@ public static class LogConfigurationExtension
         {
             lc.WriteTo.Console();
             lc.WriteTo.Seq("http://localhost:5341");
-            lc.WriteTo.File(new JsonFormatter(), "log.txt");
+            lc.WriteTo.File("log.txt");
         });
     }
 }

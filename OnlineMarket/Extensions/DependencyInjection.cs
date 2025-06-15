@@ -10,7 +10,7 @@ namespace IT_RunCourseSecondPartAPI.Extensions;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection DependInjection(this IServiceCollection service)
+    public static void DependInjection(this IServiceCollection service)
     {
         service.AddValidatorsFromAssemblyContaining<UserCreateValidation>();
 
@@ -31,7 +31,5 @@ public static class DependencyInjection
         service.AddScoped<IOrderItemService, OrderItemService>();
         service.AddScoped<ICartItemService, CartItemService>();
         service.AddScoped<IShoppingCartService, ShoppingCartService>();
-
-        return service;
     }
 }

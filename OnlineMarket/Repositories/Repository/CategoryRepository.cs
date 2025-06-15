@@ -16,17 +16,17 @@ public class CategoryRepository(AppDbContext context, ILogger<Category> logger) 
 
     public IEnumerable<Category> GetAll()
     {
-        return context.Categories;
+        return context.Categories.ToList();
     }
 
-    public Category Update(Category category)
+    public Category? Update(Category category)
     {
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == category.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {category}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Categories.Update(firstOrDefault);
@@ -35,14 +35,14 @@ public class CategoryRepository(AppDbContext context, ILogger<Category> logger) 
         return firstOrDefault;
     }
 
-    public Category Delete(Guid id)
+    public Category? Delete(Guid id)
     {
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {category}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Remove(firstOrDefault);
@@ -51,14 +51,14 @@ public class CategoryRepository(AppDbContext context, ILogger<Category> logger) 
         return firstOrDefault;
     }
 
-    public Category GetById(Guid id)
+    public Category? GetById(Guid id)
     {
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {category}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;

@@ -9,7 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILogger<Order> logger) : IOrderService
 {
-    public OrderResponse Add(OrderCreate orderCreate)
+    public OrderResponse? Add(OrderCreate orderCreate)
     {
         if (orderCreate is null)
         {
@@ -17,6 +17,10 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILog
         }
 
         var userById = orderRepository.GetUserById(orderCreate.UserId);
+        if (userById is null)
+        {
+            return null;
+        }
 
         var order = mapper.Map<Order>(orderCreate);
 
@@ -30,15 +34,23 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILog
 
     public IEnumerable<OrderResponse> GetAll()
     {
-        return orderRepository.GetAll().ToList()
+        return orderRepository.GetAll()
             .Select(mapper.Map<OrderResponse>);
     }
 
-    public OrderResponse Update(Guid id, OrderCreate orderCreate)
+    public OrderResponse? Update(Guid id, OrderCreate orderCreate)
     {
         var order = orderRepository.GetById(id);
+        if (order is null)
+        {
+            return null;
+        }
 
         var userById = orderRepository.GetUserById(orderCreate.UserId);
+        if (userById is null)
+        {
+            return null;
+        }
 
         order.Id = id;
         order.TotalPrice = orderCreate.TotalPrice;
@@ -46,21 +58,23 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILog
         order.User = userById;
 
         orderRepository.Update(order);
-        
+
         logger.LogInformation("update {order} successfully passed", order);
 
         return mapper.Map<OrderResponse>(order);
     }
 
-    public OrderResponse Delete(Guid id)
+    public OrderResponse? Delete(Guid id)
     {
-        return mapper.Map<OrderResponse>
-            (orderRepository.Delete(id));
+        var order = orderRepository.Delete(id);
+
+        return order is null ? null : mapper.Map<OrderResponse>(order);
     }
 
-    public OrderResponse GetById(Guid id)
+    public OrderResponse? GetById(Guid id)
     {
-        return mapper.Map<OrderResponse>
-            (orderRepository.GetById(id));
+        var order = orderRepository.GetById(id);
+
+        return order is null ? null : mapper.Map<OrderResponse>(order);
     }
 }

@@ -17,19 +17,20 @@ public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrd
 
     public IEnumerable<Order> GetAll()
     {
-        var orders = context.Orders.Include(x => x.User);
+        var orders = context.Orders
+            .Include(x => x.User).ToList();
 
         return orders;
     }
 
-    public Order Update(Order user)
+    public Order? Update(Order user)
     {
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {order}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Orders.Update(firstOrDefault);
@@ -38,14 +39,14 @@ public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrd
         return firstOrDefault;
     }
 
-    public Order Delete(Guid id)
+    public Order? Delete(Guid id)
     {
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {order}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Remove(firstOrDefault);
@@ -54,27 +55,27 @@ public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrd
         return firstOrDefault;
     }
 
-    public Order GetById(Guid id)
+    public Order? GetById(Guid id)
     {
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {order}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;
     }
 
-    public User GetUserById(Guid id)
+    public User? GetUserById(Guid id)
     {
         var user = context.Users.FirstOrDefault(x => x.Id == id);
         if (user is null)
         {
             logger.LogError("can not found the {user}", user);
 
-            throw new Exception();
+            return null;
         }
 
         return user;

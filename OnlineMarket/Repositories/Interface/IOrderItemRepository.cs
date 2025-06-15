@@ -6,11 +6,11 @@ public interface IOrderItemRepository
 {
     OrderItem Add(OrderItem orderItem);
     IEnumerable<OrderItem> GetAll();
-    OrderItem Update(OrderItem orderItem);
-    OrderItem Delete(Guid id);
+    OrderItem? Update(OrderItem orderItem);
+    OrderItem? Delete(Guid id);
 
-    OrderItem GetById(Guid id);
+    OrderItem? GetById(Guid id);
 
-    public Product GetProductById(Guid id);
-    public Order GetOrderById(Guid id);
+    Product? GetProductById(Guid id);
+    Order? GetOrderById(Guid id);
 }

@@ -16,17 +16,17 @@ public class UserRepository(AppDbContext context, ILogger<User> logger) : IUserR
 
     public IEnumerable<User> GetAll()
     {
-        return context.Users;
+        return context.Users.ToList();
     }
 
-    public User Update(User user)
+    public User? Update(User user)
     {
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == user.Id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {user}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Users.Update(firstOrDefault);
@@ -35,14 +35,14 @@ public class UserRepository(AppDbContext context, ILogger<User> logger) : IUserR
         return firstOrDefault;
     }
 
-    public User Delete(Guid id)
+    public User? Delete(Guid id)
     {
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {user}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         context.Users.Remove(firstOrDefault);
@@ -51,14 +51,14 @@ public class UserRepository(AppDbContext context, ILogger<User> logger) : IUserR
         return firstOrDefault;
     }
 
-    public User GetById(Guid id)
+    public User? GetById(Guid id)
     {
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
         if (firstOrDefault is null)
         {
             logger.LogError("can not found the {user}", firstOrDefault);
 
-            throw new Exception();
+            return null;
         }
 
         return firstOrDefault;

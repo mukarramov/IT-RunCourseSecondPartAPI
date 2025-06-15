@@ -10,7 +10,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper, ILogger<OrderItem> logger)
     : IOrderItemService
 {
-    public OrderItemResponse Add(OrderItemCreate orderItemRequest)
+    public OrderItemResponse? Add(OrderItemCreate orderItemRequest)
     {
         if (orderItemRequest is null)
         {
@@ -19,6 +19,11 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
 
         var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
         var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+
+        if (product is null || order is null)
+        {
+            return null;
+        }
 
         var orderItem = mapper.Map<OrderItem>(orderItemRequest);
 
@@ -34,16 +39,20 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
 
     public IEnumerable<OrderItemResponse> GetAll()
     {
-        return orderItemRepository.GetAll().ToList()
+        return orderItemRepository.GetAll()
             .Select(mapper.Map<OrderItemResponse>);
     }
 
-    public OrderItemResponse Update(Guid id, OrderItemCreate orderItemRequest)
+    public OrderItemResponse? Update(Guid id, OrderItemCreate orderItemRequest)
     {
         var orderItem = orderItemRepository.GetById(id);
-
         var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
         var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+
+        if (orderItem is null || product is null || order is null)
+        {
+            return null;
+        }
 
         var map = mapper.Map<OrderItem>(orderItemRequest);
 
@@ -54,19 +63,23 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
         map.Order = order;
 
         orderItemRepository.Update(orderItem);
-        
+
         logger.LogInformation("update {orderItem} successfully passed", orderItem);
 
         return mapper.Map<OrderItemResponse>(map);
     }
 
-    public OrderItemResponse Delete(Guid id)
+    public OrderItemResponse? Delete(Guid id)
     {
-        return mapper.Map<OrderItemResponse>(orderItemRepository.Delete(id));
+        var orderItem = orderItemRepository.Delete(id);
+
+        return orderItem is null ? null : mapper.Map<OrderItemResponse>(orderItem);
     }
 
-    public OrderItemResponse GetById(Guid id)
+    public OrderItemResponse? GetById(Guid id)
     {
-        return mapper.Map<OrderItemResponse>(orderItemRepository.GetById(id));
+        var orderItem = orderItemRepository.GetById(id);
+
+        return orderItem is null ? null : mapper.Map<OrderItemResponse>(orderItem);
     }
 }

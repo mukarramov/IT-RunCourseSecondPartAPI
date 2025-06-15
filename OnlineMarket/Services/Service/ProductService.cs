@@ -10,14 +10,18 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 public class ProductService(IProductRepository productRepository, IMapper mapper, ILogger<Product> logger)
     : IProductService
 {
-    public ProductResponse Add(ProductCreate productCreate)
+    public ProductResponse? Add(ProductCreate productCreate)
     {
         if (string.IsNullOrEmpty(productCreate.Name))
         {
             throw new Exception();
         }
-
+        
         var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
+        if (categoryById is null)
+        {
+            return null;
+        }
 
         var product = mapper.Map<Product>(productCreate);
 
@@ -31,15 +35,23 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
 
     public IEnumerable<ProductResponse> GetAll()
     {
-        return productRepository.GetAll().ToList()
+        return productRepository.GetAll()
             .Select(mapper.Map<ProductResponse>);
     }
 
-    public ProductResponse Update(Guid id, ProductCreate productCreate)
+    public ProductResponse? Update(Guid id, ProductCreate productCreate)
     {
         var product = productRepository.GetById(id);
+        if (product is null)
+        {
+            return null;
+        }
 
         var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
+        if (categoryById is null)
+        {
+            return null;
+        }
 
         var map = mapper.Map(productCreate, product);
 
@@ -54,13 +66,17 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
         return mapper.Map<ProductResponse>(map);
     }
 
-    public ProductResponse Delete(Guid id)
+    public ProductResponse? Delete(Guid id)
     {
-        return mapper.Map<ProductResponse>(productRepository.Delete(id));
+        var product = productRepository.Delete(id);
+
+        return product is null ? null : mapper.Map<ProductResponse>(product);
     }
 
-    public ProductResponse GetById(Guid id)
+    public ProductResponse? GetById(Guid id)
     {
-        return mapper.Map<ProductResponse>(productRepository.GetById(id));
+        var product = productRepository.GetById(id);
+
+        return product is null ? null : mapper.Map<ProductResponse>(product);
     }
 }

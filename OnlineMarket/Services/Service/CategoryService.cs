@@ -26,33 +26,39 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
 
     public IEnumerable<CategoryResponse> GetAll()
     {
-        return categoryRepository.GetAll().ToList()
+        return categoryRepository.GetAll()
             .Select(mapper.Map<CategoryResponse>);
     }
 
-    public CategoryResponse Update(Guid id, CategoryCreate entity)
+    public CategoryResponse? Update(Guid id, CategoryCreate entity)
     {
         var category = categoryRepository.GetById(id);
+        if (category is null)
+        {
+            return null;
+        }
 
         category.Id = id;
         category.Name = entity.Name;
 
         categoryRepository.Update(category);
-        
+
         logger.LogInformation("update {category} successfully passed", category);
 
         return mapper.Map<CategoryResponse>(category);
     }
 
-    public CategoryResponse Delete(Guid id)
+    public CategoryResponse? Delete(Guid id)
     {
-        return mapper.Map<CategoryResponse>
-            (categoryRepository.Delete(id));
+        var category = categoryRepository.Delete(id);
+
+        return category is null ? null : mapper.Map<CategoryResponse>(category);
     }
 
-    public CategoryResponse GetById(Guid id)
+    public CategoryResponse? GetById(Guid id)
     {
-        return mapper.Map<CategoryResponse>
-            (categoryRepository.GetById(id));
+        var category = categoryRepository.Delete(id);
+
+        return category is null ? null : mapper.Map<CategoryResponse>(category);
     }
 }
