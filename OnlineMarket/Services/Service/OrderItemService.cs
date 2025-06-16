@@ -7,7 +7,12 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper mapper, ILogger<OrderItem> logger)
+public class OrderItemService(
+    IOrderItemRepository orderItemRepository,
+    IProductRepository productRepository,
+    IOrderRepository orderRepository,
+    IMapper mapper,
+    ILogger<OrderItem> logger)
     : IOrderItemService
 {
     public OrderItemResponse? Add(OrderItemCreate orderItemRequest)
@@ -17,8 +22,8 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
             throw new Exception();
         }
 
-        var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
-        var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+        var product = productRepository.GetById(orderItemRequest.ProductId);
+        var order = orderRepository.GetById(orderItemRequest.OrderId);
 
         if (product is null || order is null)
         {
@@ -46,8 +51,8 @@ public class OrderItemService(IOrderItemRepository orderItemRepository, IMapper 
     public OrderItemResponse? Update(Guid id, OrderItemCreate orderItemRequest)
     {
         var orderItem = orderItemRepository.GetById(id);
-        var product = orderItemRepository.GetProductById(orderItemRequest.ProductId);
-        var order = orderItemRepository.GetOrderById(orderItemRequest.OrderId);
+        var product = productRepository.GetById(orderItemRequest.ProductId);
+        var order = orderRepository.GetById(orderItemRequest.OrderId);
 
         if (orderItem is null || product is null || order is null)
         {

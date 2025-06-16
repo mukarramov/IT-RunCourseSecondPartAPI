@@ -10,6 +10,4 @@ public interface IOrderRepository
     Order? Delete(Guid id);
 
     Order? GetById(Guid id);
-
-    User? GetUserById(Guid id);
 }

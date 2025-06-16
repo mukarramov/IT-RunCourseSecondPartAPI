@@ -65,17 +65,4 @@ public class ProductRepository(AppDbContext context, ILogger<Product> logger) : 
 
         return firstOrDefault;
     }
-
-    public Category? GetCategoryById(Guid id)
-    {
-        var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == id);
-        if (firstOrDefault is null)
-        {
-            logger.LogError("can not found the {category}", firstOrDefault);
-
-            return null;
-        }
-
-        return firstOrDefault;
-    }
 }

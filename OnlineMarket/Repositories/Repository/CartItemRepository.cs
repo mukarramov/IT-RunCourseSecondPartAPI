@@ -67,30 +67,4 @@ public class CartItemRepository(AppDbContext context, ILogger<CartItem> logger) 
 
         return firstOrDefault;
     }
-
-    public Product? GetProductById(Guid id)
-    {
-        var firstOrDefault = context.Products.FirstOrDefault(x => x.Id == id);
-        if (firstOrDefault is null)
-        {
-            logger.LogError("can not found the {product}", firstOrDefault);
-
-            return null;
-        }
-
-        return firstOrDefault;
-    }
-
-    public ShoppingCart? GetShoppingCartById(Guid id)
-    {
-        var firstOrDefault = context.ShoppingCarts.FirstOrDefault(x => x.Id == id);
-        if (firstOrDefault is null)
-        {
-            logger.LogError("can not found the {shoppingCart}", firstOrDefault);
-
-            return null;
-        }
-
-        return firstOrDefault;
-    }
 }

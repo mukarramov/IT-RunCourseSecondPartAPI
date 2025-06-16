@@ -7,13 +7,18 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class CartItemService(ICartItemRepository cartItemRepository, IMapper mapper, ILogger<CartItem> logger)
+public class CartItemService(
+    ICartItemRepository cartItemRepository,
+    IProductRepository productRepository,
+    IShoppingCartRepository shoppingCartRepository,
+    IMapper mapper,
+    ILogger<CartItem> logger)
     : ICartItemService
 {
     public CartItemResponse? Add(CartItemCreate cartItemCreate)
     {
-        var productById = cartItemRepository.GetProductById(cartItemCreate.ProductId);
-        var shoppingCartById = cartItemRepository.GetShoppingCartById(cartItemCreate.ShoppingCartId);
+        var productById = productRepository.GetById(cartItemCreate.ProductId);
+        var shoppingCartById = shoppingCartRepository.GetById(cartItemCreate.ShoppingCartId);
         if (productById is null || shoppingCartById is null)
         {
             return null;
@@ -41,8 +46,8 @@ public class CartItemService(ICartItemRepository cartItemRepository, IMapper map
     public CartItemResponse? Update(Guid id, CartItemCreate cartItemCreate)
     {
         var cartItem = cartItemRepository.GetById(id);
-        var productById = cartItemRepository.GetProductById(cartItemCreate.ProductId);
-        var shoppingCartById = cartItemRepository.GetShoppingCartById(cartItemCreate.ShoppingCartId);
+        var productById = productRepository.GetById(cartItemCreate.ProductId);
+        var shoppingCartById = shoppingCartRepository.GetById(cartItemCreate.ShoppingCartId);
 
         if (cartItem is null || productById is null || shoppingCartById is null)
         {

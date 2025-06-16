@@ -8,7 +8,6 @@ public interface IProductRepository
     IEnumerable<Product> GetAll();
     Product? Update(Product product);
     Product? Delete(Guid id);
-    Product? GetById(Guid id);
 
-    Category? GetCategoryById(Guid id);
+    Product? GetById(Guid id);
 }

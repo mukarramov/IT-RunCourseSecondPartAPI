@@ -65,31 +65,4 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
 
         return firstOrDefault;
     }
-
-    public Product? GetProductById(Guid id)
-    {
-        var product = context.Products.Include(x => x.Category)
-            .FirstOrDefault(x => x.Id == id);
-        if (product is null)
-        {
-            logger.LogError("can not found the {product}", product);
-
-            return null;
-        }
-
-        return product;
-    }
-
-    public Order? GetOrderById(Guid id)
-    {
-        var order = context.Orders.Include(x => x.User).FirstOrDefault(x => x.Id == id);
-        if (order is null)
-        {
-            logger.LogError("can not found the {order}", order);
-
-            return null;
-        }
-
-        return order;
-    }
 }

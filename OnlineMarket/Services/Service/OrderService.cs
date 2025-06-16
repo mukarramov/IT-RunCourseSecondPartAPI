@@ -7,7 +7,11 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILogger<Order> logger) : IOrderService
+public class OrderService(
+    IOrderRepository orderRepository,
+    IUserRepository userRepository,
+    IMapper mapper,
+    ILogger<Order> logger) : IOrderService
 {
     public OrderResponse? Add(OrderCreate orderCreate)
     {
@@ -16,7 +20,7 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILog
             throw new Exception();
         }
 
-        var userById = orderRepository.GetUserById(orderCreate.UserId);
+        var userById = userRepository.GetById(orderCreate.UserId);
         if (userById is null)
         {
             return null;
@@ -41,19 +45,14 @@ public class OrderService(IOrderRepository orderRepository, IMapper mapper, ILog
     public OrderResponse? Update(Guid id, OrderCreate orderCreate)
     {
         var order = orderRepository.GetById(id);
-        if (order is null)
-        {
-            return null;
-        }
+        var userById = userRepository.GetById(orderCreate.UserId);
 
-        var userById = orderRepository.GetUserById(orderCreate.UserId);
-        if (userById is null)
+        if (order is null || userById is null)
         {
             return null;
         }
 
         order.Id = id;
-        order.TotalPrice = orderCreate.TotalPrice;
         order.UserId = userById.Id;
         order.User = userById;
 

@@ -10,7 +10,4 @@ public interface ICartItemRepository
     CartItem? Delete(Guid id);
 
     CartItem? GetById(Guid id);
-
-    Product? GetProductById(Guid id);
-    ShoppingCart? GetShoppingCartById(Guid id);
 }

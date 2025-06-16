@@ -67,17 +67,4 @@ public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> 
 
         return firstOrDefault;
     }
-
-    public User? GetUserById(Guid id)
-    {
-        var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == id);
-        if (firstOrDefault is null)
-        {
-            logger.LogError("can not found the {user}", firstOrDefault);
-
-            return null;
-        }
-
-        return firstOrDefault;
-    }
 }

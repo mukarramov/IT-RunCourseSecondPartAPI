@@ -8,7 +8,6 @@ public interface IShoppingCartRepository
     IEnumerable<ShoppingCart> GetAll();
     ShoppingCart? Update(ShoppingCart shoppingCart);
     ShoppingCart? Delete(Guid id);
-    ShoppingCart? GetById(Guid id);
 
-    User? GetUserById(Guid id);
+    ShoppingCart? GetById(Guid id);
 }

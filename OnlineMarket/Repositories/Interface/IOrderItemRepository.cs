@@ -10,7 +10,4 @@ public interface IOrderItemRepository
     OrderItem? Delete(Guid id);
 
     OrderItem? GetById(Guid id);
-
-    Product? GetProductById(Guid id);
-    Order? GetOrderById(Guid id);
 }

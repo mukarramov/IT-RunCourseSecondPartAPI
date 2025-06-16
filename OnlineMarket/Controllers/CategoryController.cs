@@ -30,7 +30,8 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
             return NotFound();
         }
 
-        return Ok(categoryResponse);    }
+        return Ok(categoryResponse);
+    }
 
     [HttpDelete]
     public IActionResult Delete(Guid id)
@@ -42,7 +43,8 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
             return NotFound();
         }
 
-        return Ok(categoryResponse);    }
+        return Ok(categoryResponse);
+    }
 
     [HttpGet]
     public IActionResult GetById(Guid id)
@@ -54,5 +56,6 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
             return NotFound();
         }
 
-        return Ok(categoryResponse);    }
+        return Ok(categoryResponse);
+    }
 }

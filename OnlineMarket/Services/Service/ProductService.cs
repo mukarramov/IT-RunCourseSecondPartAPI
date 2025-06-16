@@ -7,7 +7,11 @@ using IT_RunCourseSecondPartAPI.Services.Interface;
 
 namespace IT_RunCourseSecondPartAPI.Services.Service;
 
-public class ProductService(IProductRepository productRepository, IMapper mapper, ILogger<Product> logger)
+public class ProductService(
+    IProductRepository productRepository,
+    ICategoryRepository categoryRepository,
+    IMapper mapper,
+    ILogger<Product> logger)
     : IProductService
 {
     public ProductResponse? Add(ProductCreate productCreate)
@@ -16,8 +20,8 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
         {
             throw new Exception();
         }
-        
-        var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
+
+        var categoryById = categoryRepository.GetById(productCreate.CategoryId);
         if (categoryById is null)
         {
             return null;
@@ -47,7 +51,7 @@ public class ProductService(IProductRepository productRepository, IMapper mapper
             return null;
         }
 
-        var categoryById = productRepository.GetCategoryById(productCreate.CategoryId);
+        var categoryById = categoryRepository.GetById(productCreate.CategoryId);
         if (categoryById is null)
         {
             return null;

@@ -9,6 +9,7 @@ namespace IT_RunCourseSecondPartAPI.Services.Service;
 
 public class ShoppingCartService(
     IShoppingCartRepository shoppingCartRepository,
+    IUserRepository userRepository,
     IMapper mapper,
     ILogger<ShoppingCart> logger) : IShoppingCartService
 {
@@ -16,7 +17,7 @@ public class ShoppingCartService(
     {
         var shoppingCart = mapper.Map<ShoppingCart>(shoppingCartCreate);
 
-        var userById = shoppingCartRepository.GetUserById(shoppingCart.UserId);
+        var userById = userRepository.GetById(shoppingCart.UserId);
         if (userById is null)
         {
             return null;
@@ -45,7 +46,7 @@ public class ShoppingCartService(
             return null;
         }
 
-        var user = shoppingCartRepository.GetUserById(shoppingCartCreate.UserId);
+        var user = userRepository.GetById(shoppingCartCreate.UserId);
 
         if (user is null)
         {

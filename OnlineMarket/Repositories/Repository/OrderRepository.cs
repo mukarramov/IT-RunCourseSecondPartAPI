@@ -67,17 +67,4 @@ public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrd
 
         return firstOrDefault;
     }
-
-    public User? GetUserById(Guid id)
-    {
-        var user = context.Users.FirstOrDefault(x => x.Id == id);
-        if (user is null)
-        {
-            logger.LogError("can not found the {user}", user);
-
-            return null;
-        }
-
-        return user;
-    }
 }
