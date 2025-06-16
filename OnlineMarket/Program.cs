@@ -1,7 +1,7 @@
 using FluentValidation;
 using IT_RunCourseSecondPartAPI;
-using IT_RunCourseSecondPartAPI.Data;
 using IT_RunCourseSecondPartAPI.Extensions;
+using IT_RunCourseSecondPartAPI.Infrastructure.Data;
 using IT_RunCourseSecondPartAPI.Interceptors;
 using IT_RunCourseSecondPartAPI.Mapper;
 using IT_RunCourseSecondPartAPI.Validations;
