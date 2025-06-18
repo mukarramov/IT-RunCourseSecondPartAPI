@@ -10,9 +10,6 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     {
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.Price)
-            .IsRequired();
-
         builder.Property(x => x.Quantity)
             .IsRequired()
             .HasDefaultValue(1);

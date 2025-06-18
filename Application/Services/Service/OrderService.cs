@@ -11,17 +11,13 @@ namespace Application.Services.Service;
 public class OrderService(
     IOrderRepository orderRepository,
     IUserRepository userRepository,
-    ICartItemRepository cartItemRepository,
+    IOrderItemRepository orderItemRepository,
+    IShoppingCartRepository shoppingCartRepository,
     IMapper mapper,
     ILogger<Order> logger) : IOrderService
 {
     public OrderResponse? Add(OrderCreate orderCreate)
     {
-        if (orderCreate is null)
-        {
-            throw new Exception();
-        }
-
         var userById = userRepository.GetById(orderCreate.UserId);
         if (userById is null)
         {
@@ -30,16 +26,35 @@ public class OrderService(
 
         var order = mapper.Map<Order>(orderCreate);
 
-        order.UserId = userById.Id;
-        order.User = userById;
+        var shoppingCart = shoppingCartRepository.GetByUserId(orderCreate.UserId);
+        if (shoppingCart?.CartItems is null)
+        {
+            return null;
+        }
 
-        var cartItems = cartItemRepository.GetAll();
-
-        var sum = cartItems.Sum(x => x.TotalPrice);
-
-        order.TotalPrice = sum;
+        order.UserId = shoppingCart.UserId;
+        order.User = shoppingCart.User;
+        var select = shoppingCart.CartItems.Select(x => new OrderItem
+        {
+            ProductId = x.ProductId,
+            Product = x.Product,
+            Quantity = x.Quantity,
+            TotalPrice = x.TotalPrice,
+            OrderId = order.Id,
+            Order = order,
+            CreateAt = x.CreateAt,
+            UpdateAt = x.UpdateAt,
+            IsDeleted = x.IsDeleted
+        }).ToList();
+        order.OrderItems = select;
+        order.TotalPrice = shoppingCart.TotalPrice;
+        order.CreateAt = shoppingCart.CreateAt;
+        order.UpdateAt = shoppingCart.UpdateAt;
+        order.IsDeleted = shoppingCart.IsDeleted;
 
         orderRepository.Add(order);
+
+        select.Select(orderItemRepository.Add);
 
         return mapper.Map<OrderResponse>(order);
     }

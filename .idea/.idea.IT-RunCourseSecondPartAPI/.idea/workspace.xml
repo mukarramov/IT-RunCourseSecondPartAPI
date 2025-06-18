@@ -9,35 +9,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/sqlDataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Application/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Domain/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Infrastructure/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dictionaries/project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Repositories/Interface/IShoppingCartRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Repositories/Interface/IShoppingCartRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Service/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Service/OrderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/Models/OrderItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Models/OrderItem.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/EntityConfigurations/OrderItemConfiguration.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/EntityConfigurations/OrderItemConfiguration.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/OnlineMarket/Infrastructure/Data/AppDbContext.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Extensions/LogConfigurationExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Extensions/LogConfigurationExtension.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +70,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/39/1468749d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/57/c84fdf81/StackFrameIterator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b21fc3f8a3abb5d25f06c622276fbec0fd3932f169cc6af520bf5abc6a46b4/DbSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0b45f29f34f594814a7b1fbc25fe5ef3c18257956ed4f4fbfa68717db58/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e236b3163462f9f3c28dda0a52bc1f5ad052312cec3f621b92f8699fcd6243/EntityGraphAttacher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e9881a453a581134c1a18331ac1f8f1201a5382a685bf2a40777fa22619/DbContextOptions`.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/EntityConfigurations/CartItemConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
@@ -201,7 +192,7 @@
       <workItem from="1750136358450" duration="1795000" />
       <workItem from="1750152139731" duration="11287000" />
       <workItem from="1750190870472" duration="246000" />
-      <workItem from="1750191133703" duration="11799000" />
+      <workItem from="1750191133703" duration="15650000" />
     </task>
     <task id="LOCAL-00001" summary="fix update method in CategoryRepository.cs&#10;fix properties in entities(models)&#10;update .gitignore">
       <option name="closed" value="true" />
@@ -515,7 +506,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750171106437</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="added sum to cartItem and total sum to shoppingCartItem">
+      <option name="closed" value="true" />
+      <created>1750220087490</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1750220087490</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -537,7 +536,6 @@
   <component name="VcsManagerConfiguration">
     <option name="SHELVE_DETAILS_PREVIEW_SHOWN" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="added configuration for all entities" />
     <MESSAGE value="added HasQueryFilter in configurations for IsDeleted property" />
     <MESSAGE value="changed configurations, added remove method into delete(crud), added DeletingUserInterceptor for user(delete)" />
     <MESSAGE value="added DeletingUserInterceptor for all entities" />
@@ -562,7 +560,8 @@
     <MESSAGE value="added some others files" />
     <MESSAGE value="added clear architecture" />
     <MESSAGE value="removed unnecessary NuGet pockets" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary NuGet pockets" />
+    <MESSAGE value="added sum to cartItem and total sum to shoppingCartItem" />
+    <option name="LAST_COMMIT_MESSAGE" value="added sum to cartItem and total sum to shoppingCartItem" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -941,6 +940,58 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
+          <line>19</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Application\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="592" />
+            </startOffsets>
+            <endOffsets>
+              <option value="593" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs</url>
+          <line>72</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\ShoppingCartRepository.cs" containingFunctionPresentation="Method 'GetByUserId'">
+            <startOffsets>
+              <option value="1958" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1959" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/OrderRepository.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\OrderRepository.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="368" />
+            </startOffsets>
+            <endOffsets>
+              <option value="369" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="120" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/OrderItemRepository.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\OrderItemRepository.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="388" />
+            </startOffsets>
+            <endOffsets>
+              <option value="389" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="121" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

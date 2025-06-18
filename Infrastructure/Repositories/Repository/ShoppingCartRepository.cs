@@ -68,4 +68,17 @@ public class ShoppingCartRepository(AppDbContext context, ILogger<ShoppingCart> 
 
         return firstOrDefault;
     }
+
+    public ShoppingCart? GetByUserId(Guid id)
+    {
+        var firstOrDefault = context.ShoppingCarts
+            .Include(x => x.CartItems)
+            .FirstOrDefault(x => x.UserId == id);
+        if (firstOrDefault is null)
+        {
+            return null;
+        }
+
+        return firstOrDefault;
+    }
 }

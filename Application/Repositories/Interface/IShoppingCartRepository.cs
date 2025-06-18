@@ -10,4 +10,5 @@ public interface IShoppingCartRepository
     ShoppingCart? Delete(Guid id);
 
     ShoppingCart? GetById(Guid id);
+    ShoppingCart? GetByUserId(Guid id);
 }
