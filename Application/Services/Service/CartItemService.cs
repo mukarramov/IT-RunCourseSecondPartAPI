@@ -27,18 +27,39 @@ public class CartItemService(
 
         var cartItem = mapper.Map<CartItem>(cartItemCreate);
 
+        var item = cartItemRepository.GetAll().FirstOrDefault(x =>
+            x.ProductId == cartItemCreate.ProductId && x.ShoppingCartId == cartItemCreate.ShoppingCartId);
+
+        var map = mapper.Map(item, cartItem);
+        if (item is not null)
+        {
+            if (map.Product != null)
+            {
+                map.Quantity++;
+                var sum = map.Quantity * map.Product.Price;
+                map.TotalPrice = sum;
+            }
+
+            cartItemRepository.Update(map);
+            shoppingCartById.TotalPrice += map.TotalPrice;
+            shoppingCartById.CartItems?.Add(map);
+            shoppingCartRepository.Update(shoppingCartById);
+
+            return mapper.Map<CartItemResponse>(cartItem);
+        }
+
         cartItem.ProductId = productById.Id;
         cartItem.Product = productById;
         cartItem.ShoppingCartId = shoppingCartById.Id;
         cartItem.ShoppingCart = shoppingCartById;
 
-        var sum = cartItem.Quantity * cartItem.Product.Price;
+        shoppingCartById.TotalPrice += cartItem.TotalPrice;
+        shoppingCartById.CartItems?.Add(cartItem);
 
-        cartItem.TotalPrice = sum;
+        cartItemRepository.Add(map);
+        shoppingCartRepository.Update(shoppingCartById);
 
-        cartItemRepository.Add(cartItem);
-
-        return mapper.Map<CartItemResponse>(cartItem);
+        return mapper.Map<CartItemResponse>(map);
     }
 
     public IEnumerable<CartItemResponse> GetAll()

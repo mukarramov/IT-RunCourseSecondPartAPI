@@ -9,37 +9,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/information_schema.FNRwLQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/pg_catalog.0S1ZNQ.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/OnlineMarket.j0CsQw/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dataSources/64587553-0e11-4c96-8fd1-6c73d828eeec/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/sqlDataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/sqlDataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Application.csproj.nuget.g.targets" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/Domain.csproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.targets" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Domain.csproj.nuget.g.targets" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Infrastructure.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Infrastructure.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/project.nuget.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/OnlineMarket/Infrastructure/Data/AppDbContext.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebApi/Extensions/LogConfigurationExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Extensions/LogConfigurationExtension.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +79,19 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/39/1468749d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/57/c84fdf81/StackFrameIterator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b21fc3f8a3abb5d25f06c622276fbec0fd3932f169cc6af520bf5abc6a46b4/DbSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e236b3163462f9f3c28dda0a52bc1f5ad052312cec3f621b92f8699fcd6243/EntityGraphAttacher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e9881a453a581134c1a18331ac1f8f1201a5382a685bf2a40777fa22619/DbContextOptions`.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityConfigurations/CartItemConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityConfigurations/CategoryConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityConfigurations/OrderItemConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/EntityConfigurations/ProductConfiguration.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="Toolset" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -193,7 +199,9 @@
       <workItem from="1750072866928" duration="8758000" />
       <workItem from="1750091432092" duration="1025000" />
       <workItem from="1750136358450" duration="1795000" />
-      <workItem from="1750152139731" duration="6574000" />
+      <workItem from="1750152139731" duration="11287000" />
+      <workItem from="1750190870472" duration="246000" />
+      <workItem from="1750191133703" duration="11799000" />
     </task>
     <task id="LOCAL-00001" summary="fix update method in CategoryRepository.cs&#10;fix properties in entities(models)&#10;update .gitignore">
       <option name="closed" value="true" />
@@ -499,7 +507,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750157211589</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="removed unnecessary NuGet pockets">
+      <option name="closed" value="true" />
+      <created>1750171106437</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1750171106437</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,7 +537,6 @@
   <component name="VcsManagerConfiguration">
     <option name="SHELVE_DETAILS_PREVIEW_SHOWN" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="deleted automapper and fixed mistakes in IsDeleted property" />
     <MESSAGE value="added configuration for all entities" />
     <MESSAGE value="added HasQueryFilter in configurations for IsDeleted property" />
     <MESSAGE value="changed configurations, added remove method into delete(crud), added DeletingUserInterceptor for user(delete)" />
@@ -546,7 +561,8 @@
     <MESSAGE value="added configuration (just replaced)" />
     <MESSAGE value="added some others files" />
     <MESSAGE value="added clear architecture" />
-    <option name="LAST_COMMIT_MESSAGE" value="added clear architecture" />
+    <MESSAGE value="removed unnecessary NuGet pockets" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unnecessary NuGet pockets" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -711,36 +727,6 @@
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
-          <line>80</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'GetById'" />
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
-          <line>73</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'Delete'" />
-          <option name="timeStamp" value="52" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
-          <line>52</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'Update'" />
-          <option name="timeStamp" value="53" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
-          <line>46</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'GetAll'" />
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/OrderService.cs</url>
-          <line>17</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\OrderService.cs" containingFunctionPresentation="Method 'Add'" />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Services/Service/ProductService.cs</url>
           <line>17</line>
           <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\ProductService.cs" containingFunctionPresentation="Method 'Add'" />
@@ -866,22 +852,95 @@
           <option name="timeStamp" value="97" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Repositories\Repository\ShoppingCartRepository.cs" containingFunctionPresentation="Method 'GetAll'" />
-          <option name="timeStamp" value="103" />
+          <url>file://$PROJECT_DIR$/Application/Services/Service/CartItemService.cs</url>
+          <line>19</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Application\Services\Service\CartItemService.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="580" />
+            </startOffsets>
+            <endOffsets>
+              <option value="581" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="108" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Application/Services/Service/ShoppingCartService.cs</url>
-          <line>16</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\ShoppingCartService.cs" containingFunctionPresentation="Method 'Add'" />
-          <option name="timeStamp" value="106" />
+          <line>17</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Application\Services\Service\ShoppingCartService.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="550" />
+            </startOffsets>
+            <endOffsets>
+              <option value="551" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Application/Services/Service/CartItemService.cs</url>
-          <line>18</line>
-          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\OnlineMarket\Services\Service\CartItemService.cs" containingFunctionPresentation="Method 'Add'" />
-          <option name="timeStamp" value="107" />
+          <url>file://$PROJECT_DIR$/Application/Services/Service/ShoppingCartService.cs</url>
+          <line>41</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Application\Services\Service\ShoppingCartService.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="1234" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1235" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="110" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\ShoppingCartRepository.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="406" />
+            </startOffsets>
+            <endOffsets>
+              <option value="407" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="111" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs</url>
+          <line>27</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\ShoppingCartRepository.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="772" />
+            </startOffsets>
+            <endOffsets>
+              <option value="773" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs</url>
+          <line>25</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\CartItemRepository.cs" containingFunctionPresentation="Method 'Update'">
+            <startOffsets>
+              <option value="734" />
+            </startOffsets>
+            <endOffsets>
+              <option value="735" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="114" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\Infrastructure\Repositories\Repository\CartItemRepository.cs" containingFunctionPresentation="Method 'Add'">
+            <startOffsets>
+              <option value="382" />
+            </startOffsets>
+            <endOffsets>
+              <option value="383" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="116" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

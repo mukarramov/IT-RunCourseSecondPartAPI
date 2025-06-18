@@ -24,18 +24,10 @@ public class CartItemRepository(AppDbContext context, ILogger<CartItem> logger) 
 
     public CartItem? Update(CartItem cartItem)
     {
-        var firstOrDefault = context.CartItems.FirstOrDefault(x => x.Id == cartItem.Id);
-        if (firstOrDefault is null)
-        {
-            logger.LogError("can not found the {cartItem}", firstOrDefault);
-
-            return null;
-        }
-
-        context.CartItems.Update(firstOrDefault);
+        context.CartItems.Update(cartItem);
         context.SaveChanges();
 
-        return firstOrDefault;
+        return cartItem;
     }
 
     public CartItem? Delete(Guid id)

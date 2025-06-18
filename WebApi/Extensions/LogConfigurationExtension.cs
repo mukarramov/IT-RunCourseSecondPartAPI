@@ -10,7 +10,7 @@ public static class LogConfigurationExtension
         {
             lc.WriteTo.Console();
             lc.WriteTo.Seq(serverUrl: "http://localhost:5341");
-            lc.WriteTo.File(path: "log.txt", rollingInterval: RollingInterval.Hour);
+            lc.WriteTo.File(path: "log.txt", rollingInterval: RollingInterval.Day);
         });
     }
 }
