@@ -22,6 +22,8 @@ builder.Services.AddControllers().AddNewtonsoftJson(options =>
 
 builder.Services.AddOpenApi();
 
+builder.AddServiceDefaults();
+
 var databaseConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<AppDbContext>((sp, options) =>

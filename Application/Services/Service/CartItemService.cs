@@ -27,25 +27,18 @@ public class CartItemService(
 
         var cartItem = mapper.Map<CartItem>(cartItemCreate);
 
-        var item = cartItemRepository.GetAll().FirstOrDefault(x =>
-            x.ProductId == cartItemCreate.ProductId && x.ShoppingCartId == cartItemCreate.ShoppingCartId);
+        var item = cartItemRepository.GetByProductAndShoppingCartId(cartItemCreate.ProductId,
+            cartItemCreate.ShoppingCartId);
 
-        var map = mapper.Map(item, cartItem);
         if (item is not null)
         {
-            if (map.Product != null)
+            mapper.Map(item, cartItem);
+            cartItem.Product = item.Product;
+
+            if (cartItem.Product != null)
             {
-                map.Quantity++;
-                var sum = map.Quantity * map.Product.Price;
-                map.TotalPrice = sum;
+                cartItem.Quantity++;
             }
-
-            cartItemRepository.Update(map);
-            shoppingCartById.TotalPrice += map.TotalPrice;
-            shoppingCartById.CartItems?.Add(map);
-            shoppingCartRepository.Update(shoppingCartById);
-
-            return mapper.Map<CartItemResponse>(cartItem);
         }
 
         cartItem.ProductId = productById.Id;
@@ -53,13 +46,25 @@ public class CartItemService(
         cartItem.ShoppingCartId = shoppingCartById.Id;
         cartItem.ShoppingCart = shoppingCartById;
 
+        if (cartItem.Product != null)
+        {
+            var sum = cartItem.Quantity * cartItem.Product.Price;
+            cartItem.TotalPrice = sum;
+        }
+
         shoppingCartById.TotalPrice += cartItem.TotalPrice;
-        shoppingCartById.CartItems?.Add(cartItem);
 
-        cartItemRepository.Add(map);
-        shoppingCartRepository.Update(shoppingCartById);
+        if (cartItemCreate.ProductId != item?.ProductId)
+        {
+            cartItemRepository.Add(cartItem);
+        }
 
-        return mapper.Map<CartItemResponse>(map);
+        if (cartItemCreate.ProductId == item?.ProductId)
+        {
+            cartItemRepository.Update(cartItem);
+        }
+        
+        return mapper.Map<CartItemResponse>(cartItem);
     }
 
     public IEnumerable<CartItemResponse> GetAll()

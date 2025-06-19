@@ -10,4 +10,5 @@ public interface ICartItemRepository
     CartItem? Delete(Guid id);
 
     CartItem? GetById(Guid id);
+    CartItem? GetByProductAndShoppingCartId(Guid productId, Guid shoppingCartId);
 }

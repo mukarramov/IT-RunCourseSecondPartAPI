@@ -6,7 +6,7 @@ namespace IT_RunCourseSecondPartAPI.Controllers;
 
 [ApiController]
 [Route("[controller]/[action]")]
-public class CartItemController(ICartItemService cartItemService) : ControllerBase
+public class CartItemController(ICartItemService cartItemService, ILogger<CartItemController> logger) : ControllerBase
 {
     [HttpPost]
     public IActionResult Add(CartItemCreate cartItemCreate)
@@ -17,6 +17,7 @@ public class CartItemController(ICartItemService cartItemService) : ControllerBa
     [HttpGet]
     public IActionResult GetAll()
     {
+        logger.LogInformation("test {test}", "ferert");
         return Ok(cartItemService.GetAll());
     }
 

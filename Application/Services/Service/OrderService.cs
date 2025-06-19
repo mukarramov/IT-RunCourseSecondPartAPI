@@ -13,6 +13,7 @@ public class OrderService(
     IUserRepository userRepository,
     IOrderItemRepository orderItemRepository,
     IShoppingCartRepository shoppingCartRepository,
+    ICartItemRepository cartItemRepository,
     IMapper mapper,
     ILogger<Order> logger) : IOrderService
 {
@@ -46,6 +47,7 @@ public class OrderService(
             UpdateAt = x.UpdateAt,
             IsDeleted = x.IsDeleted
         }).ToList();
+
         order.OrderItems = select;
         order.TotalPrice = shoppingCart.TotalPrice;
         order.CreateAt = shoppingCart.CreateAt;
@@ -55,6 +57,13 @@ public class OrderService(
         orderRepository.Add(order);
 
         select.Select(orderItemRepository.Add);
+
+        var cartItems = cartItemRepository.GetAll()
+            .Where(x => x.ShoppingCartId == shoppingCart.Id);
+
+        cartItems.Select(x => cartItemRepository.Delete(x.Id));
+
+        shoppingCartRepository.Delete(shoppingCart.Id);
 
         return mapper.Map<OrderResponse>(order);
     }
@@ -80,8 +89,6 @@ public class OrderService(
         order.User = userById;
 
         orderRepository.Update(order);
-
-        logger.LogInformation("update {order} successfully passed", order);
 
         return mapper.Map<OrderResponse>(order);
     }

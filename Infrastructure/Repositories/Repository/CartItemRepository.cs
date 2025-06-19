@@ -58,4 +58,16 @@ public class CartItemRepository(AppDbContext context, ILogger<CartItem> logger) 
 
         return firstOrDefault;
     }
+
+    public CartItem? GetByProductAndShoppingCartId(Guid productId, Guid shoppingCartId)
+    {
+        var cartItem = context.CartItems.FirstOrDefault(x => x.ProductId == productId
+                                                             && x.ShoppingCartId == shoppingCartId);
+        if (cartItem is null)
+        {
+            return null;
+        }
+
+        return cartItem;
+    }
 }
