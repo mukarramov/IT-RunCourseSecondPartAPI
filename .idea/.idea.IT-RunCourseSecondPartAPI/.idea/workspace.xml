@@ -10,32 +10,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebApi/ExtensionClass.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/global.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Repositories/Interface/ICartItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Repositories/Interface/ICartItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Service/CartItemService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/Services/Service/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/Services/Service/OrderService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Controllers/CartItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Controllers/CartItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/WebApi.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/WebApi.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebApi/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WebApi/appsettings.json" afterDir="false" />
-    </list>
+    <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -255,7 +230,7 @@
       <workItem from="1750152139731" duration="11287000" />
       <workItem from="1750190870472" duration="246000" />
       <workItem from="1750191133703" duration="28031000" />
-      <workItem from="1750327750312" duration="13216000" />
+      <workItem from="1750327750312" duration="13982000" />
     </task>
     <task id="LOCAL-00001" summary="fix update method in CategoryRepository.cs&#10;fix properties in entities(models)&#10;update .gitignore">
       <option name="closed" value="true" />
@@ -585,7 +560,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750227235528</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="added aspire project">
+      <option name="closed" value="true" />
+      <created>1750359933739</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1750359933739</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -607,7 +590,6 @@
   <component name="VcsManagerConfiguration">
     <option name="SHELVE_DETAILS_PREVIEW_SHOWN" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="changed configurations, added remove method into delete(crud), added DeletingUserInterceptor for user(delete)" />
     <MESSAGE value="added DeletingUserInterceptor for all entities" />
     <MESSAGE value="added CreateTime and UpdateTime property, added AddEntity, UpdateEntity method in SaveChangesInterceptor" />
     <MESSAGE value="updated UserCreate and UserResponse properties" />
@@ -632,7 +614,8 @@
     <MESSAGE value="removed unnecessary NuGet pockets" />
     <MESSAGE value="added sum to cartItem and total sum to shoppingCartItem" />
     <MESSAGE value="added sum to OrderItem and total sum to Order" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sum to OrderItem and total sum to Order" />
+    <MESSAGE value="added aspire project" />
+    <option name="LAST_COMMIT_MESSAGE" value="added aspire project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
