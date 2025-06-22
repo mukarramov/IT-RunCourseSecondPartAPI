@@ -12,6 +12,10 @@
 .idea.Pharmacy/.idea/vcs.xml
 .idea.Pharmacy/.idea/workspace.xml
 .idea/.idea.Pharmacy/.idea
+!.idea/*.iml
+!.idea/modules.xml
+!.idea/vcs.xml
+!.idea/runConfigurations/
 
 # Output and build folders
 [Bb]in/
