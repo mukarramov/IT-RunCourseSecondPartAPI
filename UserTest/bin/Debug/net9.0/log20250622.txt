@@ -1,0 +1,14 @@
+2025-06-22 08:53:23.195 +05:00 [INF] Request starting HTTP/1.1 GET http://localhost/User/GetAllUser - null null
+2025-06-22 08:53:23.437 +05:00 [WRN] Failed to determine the https port for redirect.
+2025-06-22 08:53:23.452 +05:00 [INF] Executing endpoint 'IT_RunCourseSecondPartAPI.Controllers.UserController.GetAllUser (WebApi)'
+2025-06-22 08:53:23.494 +05:00 [INF] Route matched with {action = "GetAllUser", controller = "User"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult GetAllUser() on controller IT_RunCourseSecondPartAPI.Controllers.UserController (WebApi).
+2025-06-22 08:53:24.077 +05:00 [INF] Executing action method IT_RunCourseSecondPartAPI.Controllers.UserController.GetAllUser (WebApi) - Validation state: "Valid"
+2025-06-22 08:53:26.387 +05:00 [INF] Executed DbCommand (61ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT u."Id", u."Address", u."CreateAt", u."Email", u."FullName", u."IsDeleted", u."Password", u."Roule", u."UpdateAt"
+FROM "Users" AS u
+WHERE NOT (u."IsDeleted")
+2025-06-22 08:53:26.560 +05:00 [INF] Executed action method IT_RunCourseSecondPartAPI.Controllers.UserController.GetAllUser (WebApi), returned result Microsoft.AspNetCore.Mvc.OkObjectResult in 2476.2785ms.
+2025-06-22 08:53:26.577 +05:00 [INF] Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+ListSelectIterator`2[[Domain.Models.User, Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[Application.Dtos.Response.UserResponse, Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-06-22 08:53:26.790 +05:00 [INF] Executed action IT_RunCourseSecondPartAPI.Controllers.UserController.GetAllUser (WebApi) in 3288.4609ms
+2025-06-22 08:53:26.790 +05:00 [INF] Executed endpoint 'IT_RunCourseSecondPartAPI.Controllers.UserController.GetAllUser (WebApi)'
+2025-06-22 08:53:26.812 +05:00 [INF] Request finished HTTP/1.1 GET http://localhost/User/GetAllUser - 200 205 application/json; charset=utf-8 3671.5244ms

@@ -10,7 +10,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="" />
+    <list default="true" id="376a50b4-fdb7-4f90-b3b9-07ceb19844c9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UserTest/UnitTest1.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/UserTest/UserTest.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dictionaries/project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/dictionaries/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.IT-RunCourseSecondPartAPI/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppHost/obj/Debug/net9.0/AppHost.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/AppHost/obj/Debug/net9.0/AppHost.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppHost/obj/Debug/net9.0/AppHost.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/AppHost/obj/Debug/net9.0/AppHost.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppHost/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/AppHost/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppHost/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/AppHost/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppHost/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/AppHost/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/Debug/net9.0/Application.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Application/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Domain/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln" beforeDir="false" afterPath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/IT-RunCourseSecondPartAPI.sln.DotSettings.user" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/Debug/net9.0/Infrastructure.AssemblyInfoInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/Infrastructure/obj/rider.project.restore.info" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +75,9 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/39/1468749d/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/57/c84fdf81/StackFrameIterator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/bb06f64c178142b0b2d10172f56d4911e8e928/69/6994f671/ExceptionDispatchInfo.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4b21fc3f8a3abb5d25f06c622276fbec0fd3932f169cc6af520bf5abc6a46b4/DbSet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/5e14a4e27990972fa4ae94975603bd298aaf328ee083c03b10569ee4724d57/TestInvoker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0b45f29f34f594814a7b1fbc25fe5ef3c18257956ed4f4fbfa68717db58/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e236b3163462f9f3c28dda0a52bc1f5ad052312cec3f621b92f8699fcd6243/EntityGraphAttacher.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e9881a453a581134c1a18331ac1f8f1201a5382a685bf2a40777fa22619/DbContextOptions`.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,10 +88,10 @@
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/CartItemRepository.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Infrastructure/Repositories/Repository/ShoppingCartRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="KubernetesApiPersistence"><![CDATA[{}]]></component>
-  <component name="KubernetesApiProvider"><![CDATA[{
-  "isMigrated": true
-}]]></component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -81,6 +107,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     ".NET Launch Settings Profile.IT-RunCourseSecondPartAPI: http.executor": "Run",
+    "7f4136f2-b390-4d5a-a388-de5b9810f643.executor": "Debug",
     "Aspire Host.AppHost: http.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -230,7 +257,9 @@
       <workItem from="1750152139731" duration="11287000" />
       <workItem from="1750190870472" duration="246000" />
       <workItem from="1750191133703" duration="28031000" />
-      <workItem from="1750327750312" duration="13982000" />
+      <workItem from="1750327750312" duration="15233000" />
+      <workItem from="1750509467582" duration="737000" />
+      <workItem from="1750510255907" duration="4608000" />
     </task>
     <task id="LOCAL-00001" summary="fix update method in CategoryRepository.cs&#10;fix properties in entities(models)&#10;update .gitignore">
       <option name="closed" value="true" />
@@ -568,7 +597,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750359933739</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="added xml file">
+      <option name="closed" value="true" />
+      <created>1750360375385</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1750360375385</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +627,6 @@
   <component name="VcsManagerConfiguration">
     <option name="SHELVE_DETAILS_PREVIEW_SHOWN" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="added DeletingUserInterceptor for all entities" />
     <MESSAGE value="added CreateTime and UpdateTime property, added AddEntity, UpdateEntity method in SaveChangesInterceptor" />
     <MESSAGE value="updated UserCreate and UserResponse properties" />
     <MESSAGE value="convert all IEnumerable to IQueryable in service and repository interfaces" />
@@ -615,7 +651,8 @@
     <MESSAGE value="added sum to cartItem and total sum to shoppingCartItem" />
     <MESSAGE value="added sum to OrderItem and total sum to Order" />
     <MESSAGE value="added aspire project" />
-    <option name="LAST_COMMIT_MESSAGE" value="added aspire project" />
+    <MESSAGE value="added xml file" />
+    <option name="LAST_COMMIT_MESSAGE" value="added xml file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -929,6 +966,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/UserTest/UnitTest1.cs</url>
+          <line>11</line>
+          <properties documentPath="C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\UnitTest1.cs" containingFunctionPresentation="Method 'CallingUserController'">
+            <startOffsets>
+              <option value="240" />
+            </startOffsets>
+            <endOffsets>
+              <option value="241" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="124" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
