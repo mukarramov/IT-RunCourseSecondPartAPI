@@ -35,5 +35,9 @@
       <ProjectReference Include="..\Application\Application.csproj" />
       <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <InternalsVisibleto Include="UserTest" />
+    </ItemGroup>
 
 </Project>
