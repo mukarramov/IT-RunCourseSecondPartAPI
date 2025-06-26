@@ -1,4 +1,5 @@
 using Infrastructure.ApplicationDbContext;
+using IT_RunCourseSecondPartAPI;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;

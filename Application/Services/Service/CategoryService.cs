@@ -30,6 +30,13 @@ public class CategoryService(ICategoryRepository categoryRepository, IMapper map
         return categoryRepository.GetAll()
             .Select(mapper.Map<CategoryResponse>);
     }
+    
+    public IEnumerable<CategoryResponse> GetCategoryByPagination(int page, int pageSize)
+    {
+        var categoryByPagination = categoryRepository.GetCategoryByPagination(page, pageSize);
+
+        return categoryByPagination.Select(mapper.Map<CategoryResponse>);
+    }
 
     public CategoryResponse? Update(Guid id, CategoryCreate entity)
     {

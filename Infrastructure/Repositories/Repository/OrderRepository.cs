@@ -24,6 +24,17 @@ public class OrderRepository(AppDbContext context, ILogger<Order> logger) : IOrd
         return orders;
     }
 
+    public IEnumerable<Order> GetOrderByPagination(int page, int pageSize)
+    {
+        var users = context.Orders.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        if (users.Count <= 0)
+        {
+            return null;
+        }
+
+        return users;
+    }
+
     public Order? Update(Order user)
     {
         var firstOrDefault = context.Orders.FirstOrDefault(x => x.Id == user.Id);

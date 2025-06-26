@@ -20,6 +20,17 @@ public class ProductRepository(AppDbContext context, ILogger<Product> logger) : 
     {
         return context.Products.Include(x => x.Category).ToList();
     }
+    
+    public IEnumerable<Product> GetProductByPagination(int page, int pageSize)
+    {
+        var users = context.Products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        if (users.Count <= 0)
+        {
+            return null;
+        }
+
+        return users;
+    }
 
     public Product? Update(Product productCreate)
     {

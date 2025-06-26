@@ -19,6 +19,12 @@ public class OrderController(IOrderService orderService) : ControllerBase
     {
         return Ok(orderService.GetAll());
     }
+    
+    [HttpGet]
+    public IActionResult GetOrderByPagination(int page, int pageSize)
+    {
+        return Ok(orderService.GetOrderByPagination(page, pageSize));
+    }
 
     [HttpPut]
     public IActionResult Update(Guid id, OrderCreate orderCreate)

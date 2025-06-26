@@ -43,6 +43,13 @@ public class ProductService(
         return productRepository.GetAll()
             .Select(mapper.Map<ProductResponse>);
     }
+    
+    public IEnumerable<ProductResponse> GetProductByPagination(int page, int pageSize)
+    {
+        var productByPagination = productRepository.GetProductByPagination(page, pageSize);
+
+        return productByPagination.Select(mapper.Map<ProductResponse>);
+    }
 
     public ProductResponse? Update(Guid id, ProductCreate productCreate)
     {

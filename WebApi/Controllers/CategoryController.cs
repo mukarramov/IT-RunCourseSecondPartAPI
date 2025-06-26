@@ -20,6 +20,12 @@ public class CategoryController(ICategoryService categoryService) : ControllerBa
         return Ok(categoryService.GetAll());
     }
 
+    [HttpGet]
+    public IActionResult GetCategoryByPagination(int page, int pageSize)
+    {
+        return Ok(categoryService.GetCategoryByPagination(page, pageSize));
+    }
+
     [HttpPut]
     public IActionResult Update(Guid id, CategoryCreate categoryCreate)
     {

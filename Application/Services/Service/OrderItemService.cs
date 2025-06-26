@@ -48,6 +48,13 @@ public class OrderItemService(
         return orderItemRepository.GetAll()
             .Select(mapper.Map<OrderItemResponse>);
     }
+    
+    public IEnumerable<OrderItemResponse> GetOrderItemByPagination(int page, int pageSize)
+    {
+        var orderItemByPagination = orderItemRepository.GetOrderItemByPagination(page, pageSize);
+
+        return orderItemByPagination.Select(mapper.Map<OrderItemResponse>);
+    }
 
     public OrderItemResponse? Update(Guid id, OrderItemCreate orderItemRequest)
     {

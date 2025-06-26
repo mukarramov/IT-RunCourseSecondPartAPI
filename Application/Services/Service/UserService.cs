@@ -53,6 +53,13 @@ public class UserService(
             .Select(mapper.Map<UserResponse>);
     }
 
+    public IEnumerable<UserResponse> GetUserByPagination(int page, int pageSize)
+    {
+        var userByPagination = userRepository.GetUserByPagination(page, pageSize);
+
+        return userByPagination.Select(mapper.Map<UserResponse>);
+    }
+
     public UserResponse? Update(Guid id, UserCreate userCreate)
     {
         var user = userRepository.GetById(id);

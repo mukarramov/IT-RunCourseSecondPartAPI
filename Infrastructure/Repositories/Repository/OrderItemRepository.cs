@@ -21,6 +21,17 @@ public class OrderItemRepository(AppDbContext context, ILogger<OrderItem> logger
         return context.OrderItems.Include(x => x.Order)
             .Include(x => x.Product).ToList();
     }
+    
+    public IEnumerable<OrderItem> GetOrderItemByPagination(int page, int pageSize)
+    {
+        var users = context.OrderItems.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        if (users.Count <= 0)
+        {
+            return null;
+        }
+
+        return users;
+    }
 
     public OrderItem? Update(OrderItem orderItem)
     {

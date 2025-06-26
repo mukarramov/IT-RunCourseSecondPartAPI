@@ -35,7 +35,7 @@ public class OrderService(
 
         order.UserId = shoppingCart.UserId;
         order.User = shoppingCart.User;
-        var select = shoppingCart.CartItems.Select(x => new OrderItem
+        var selectOrderItems = shoppingCart.CartItems.Select(x => new OrderItem
         {
             ProductId = x.ProductId,
             Product = x.Product,
@@ -48,7 +48,7 @@ public class OrderService(
             IsDeleted = x.IsDeleted
         }).ToList();
 
-        order.OrderItems = select;
+        order.OrderItems = selectOrderItems;
         order.TotalPrice = shoppingCart.TotalPrice;
         order.CreateAt = shoppingCart.CreateAt;
         order.UpdateAt = shoppingCart.UpdateAt;
@@ -56,7 +56,7 @@ public class OrderService(
 
         orderRepository.Add(order);
 
-        select.Select(orderItemRepository.Add);
+        selectOrderItems.Select(orderItemRepository.Add);
 
         var cartItems = cartItemRepository.GetAll()
             .Where(x => x.ShoppingCartId == shoppingCart.Id);
@@ -72,6 +72,13 @@ public class OrderService(
     {
         return orderRepository.GetAll()
             .Select(mapper.Map<OrderResponse>);
+    }
+    
+    public IEnumerable<OrderResponse> GetOrderByPagination(int page, int pageSize)
+    {
+        var orderByPagination = orderRepository.GetOrderByPagination(page, pageSize);
+
+        return orderByPagination.Select(mapper.Map<OrderResponse>);
     }
 
     public OrderResponse? Update(Guid id, OrderCreate orderCreate)

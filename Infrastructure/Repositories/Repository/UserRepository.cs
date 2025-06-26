@@ -20,6 +20,17 @@ public class UserRepository(AppDbContext context, ILogger<User> logger) : IUserR
         return context.Users.ToList();
     }
 
+    public IEnumerable<User> GetUserByPagination(int page, int pageSize)
+    {
+        var users = context.Users.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        if (users.Count <= 0)
+        {
+            return null;
+        }
+
+        return users;
+    }
+
     public User? Update(User user)
     {
         var firstOrDefault = context.Users.FirstOrDefault(x => x.Id == user.Id);

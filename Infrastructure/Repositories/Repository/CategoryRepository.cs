@@ -20,6 +20,17 @@ public class CategoryRepository(AppDbContext context, ILogger<Category> logger) 
         return context.Categories.ToList();
     }
 
+    public IEnumerable<Category> GetCategoryByPagination(int page, int pageSize)
+    {
+        var users = context.Categories.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+        if (users.Count <= 0)
+        {
+            return null;
+        }
+
+        return users;
+    }
+
     public Category? Update(Category category)
     {
         var firstOrDefault = context.Categories.FirstOrDefault(x => x.Id == category.Id);

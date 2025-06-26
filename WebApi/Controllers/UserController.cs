@@ -20,6 +20,12 @@ public class UserController(IUserService userService) : ControllerBase
         return Ok(userService.GetAll());
     }
 
+    [HttpGet]
+    public IActionResult GetUserByPagination(int page, int pageSize)
+    {
+        return Ok(userService.GetUserByPagination(page, pageSize));
+    }
+
     [HttpPut]
     public IActionResult UpdateUser(Guid id, UserCreate userCreate)
     {

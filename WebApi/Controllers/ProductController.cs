@@ -19,6 +19,12 @@ public class ProductController(IProductService productService) : ControllerBase
     {
         return Ok(productService.GetAll());
     }
+    
+    [HttpGet]
+    public IActionResult GetProductByPagination(int page, int pageSize)
+    {
+        return Ok(productService.GetProductByPagination(page, pageSize));
+    }
 
     [HttpPut]
     public IActionResult Update(Guid id, ProductCreate product)

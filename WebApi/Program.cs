@@ -2,11 +2,12 @@ using FluentValidation;
 using Infrastructure.ApplicationDbContext;
 using Infrastructure.Interceptors;
 using Infrastructure.Validations;
-using IT_RunCourseSecondPartAPI;
 using IT_RunCourseSecondPartAPI.Extensions;
 using IT_RunCourseSecondPartAPI.Mapper;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+
+namespace IT_RunCourseSecondPartAPI;
 
 public class Program
 {
