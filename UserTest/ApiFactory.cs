@@ -17,7 +17,7 @@ public class ApiFactory : WebApplicationFactory<Program>
                                                           typeof(DbContextOptions<AppDbContext>));
 
             if (descriptor == null)
-            {
+            {   
                 service.Remove(descriptor);
             }
 

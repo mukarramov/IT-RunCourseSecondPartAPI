@@ -539,3 +539,8 @@ C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\obj\De
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\obj\Debug\net9.0\UserTest.pdb
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\obj\Debug\net9.0\UserTest.genruntimeconfig.cache
 C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\obj\Debug\net9.0\ref\UserTest.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\bin\Debug\net9.0\AutoFixture.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\bin\Debug\net9.0\Castle.Core.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\bin\Debug\net9.0\Fare.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\bin\Debug\net9.0\Moq.dll
+C:\Users\Bobo\Base\C#\IT-RUN course c#\IT-RunCourseSecondPartAPI\UserTest\bin\Debug\net9.0\NSubstitute.dll

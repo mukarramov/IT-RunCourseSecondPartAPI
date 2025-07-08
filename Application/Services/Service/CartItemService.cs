@@ -27,13 +27,13 @@ public class CartItemService(
 
         var cartItem = mapper.Map<CartItem>(cartItemCreate);
 
-        var item = cartItemRepository.GetByProductAndShoppingCartId(cartItemCreate.ProductId,
+        var cartItemByProductIdAndShoppingCartId = cartItemRepository.GetByProductAndShoppingCartId(cartItemCreate.ProductId,
             cartItemCreate.ShoppingCartId);
 
-        if (item is not null)
+        if (cartItemByProductIdAndShoppingCartId is not null)
         {
-            mapper.Map(item, cartItem);
-            cartItem.Product = item.Product;
+            mapper.Map(cartItemByProductIdAndShoppingCartId, cartItem);
+            cartItem.Product = cartItemByProductIdAndShoppingCartId.Product;
 
             if (cartItem.Product != null)
             {
@@ -54,12 +54,12 @@ public class CartItemService(
 
         shoppingCartById.TotalPrice += cartItem.TotalPrice;
 
-        if (cartItemCreate.ProductId != item?.ProductId)
+        if (cartItemCreate.ProductId != cartItemByProductIdAndShoppingCartId?.ProductId)
         {
             cartItemRepository.Add(cartItem);
         }
 
-        if (cartItemCreate.ProductId == item?.ProductId)
+        if (cartItemCreate.ProductId == cartItemByProductIdAndShoppingCartId?.ProductId)
         {
             cartItemRepository.Update(cartItem);
         }
